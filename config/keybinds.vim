@@ -17,6 +17,8 @@ nnoremap <silent> <F5> :<C-U>silent update $MYVIMRC <bar> source $MYVIMRC <bar>
 nnoremap <silent> <leader><leader>t :AsyncRun! alacritty.exe --working-directory "<cwd>"<CR>
 " Open explorer at cwd
 nnoremap <silent> <leader><leader>e :AsyncRun! explorer.exe "<cwd>"<CR>
+" Open in Vscode
+nnoremap <silent> <leader><leader>c :AsyncRun! code % <CR>
 " Find a file
 nnoremap <leader><leader>f :find<Space>
 
@@ -52,9 +54,10 @@ nnoremap <S-j> gj
 vnoremap <S-k> gk
 vnoremap <S-j> gj
 
+" Switched to barbar
 " Tab and Shift + Tab between buffers
-nnoremap <silent> <Tab> :bnext<CR>
-nnoremap <silent> <S-Tab> :bprevious<CR>
+" nnoremap <silent> <Tab> :bnext<CR>
+" nnoremap <silent> <S-Tab> :bprevious<CR>
 
 " Spell check
 inoremap <C-z> <c-g>u<Esc>[s1z=`]a<c-g>u

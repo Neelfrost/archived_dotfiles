@@ -19,9 +19,14 @@ hi SpellBad guifg=red gui=underline
 hi SpellBad ctermfg=red cterm=underline
 
 " Airline theme
-let g:airline_powerline_fonts=1
+" let g:airline_powerline_fonts=1
 " let g:airline#extensions#tabline#enabled=1
-let g:airline#extensions#tabline#formatter='unique_tail'
-let g:airline#extensions#wordcount#filetypes='\vasciidoc|help|mail|markdown|pandoc|org|rst|tex|text'
-let g:airline_theme='deus'
+" let g:airline#extensions#tabline#formatter='unique_tail'
+" let g:airline#extensions#wordcount#filetypes='\vasciidoc|help|mail|markdown|pandoc|org|rst|tex|text'
+" let g:airline_theme='deus'
+
+" Lightline theme
+let g:lightline = {
+            \ 'colorscheme': 'ayu_mirage',
+            \   }
 

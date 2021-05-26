@@ -42,40 +42,41 @@ autocmd BufEnter * silent! lcd %:p:h
 " ---------------------------------- Plugins --------------------------------- "
 
 call plug#begin(stdpath('data').'\plugin')
-Plug 'skywind3000/asyncrun.vim'
-Plug 'skywind3000/asyncrun.extra'
-Plug 'jiangmiao/auto-pairs'
+" ----------------------------------- Style ---------------------------------- "
+Plug 'romgrk/barbar.nvim'
+Plug 'gruvbox-community/gruvbox'
+Plug 'lukas-reineke/indent-blankline.nvim'
+Plug 'Yggdroot/indentLine'
+Plug 'itchyny/lightline.vim'
+Plug 'kaicataldo/material.vim', {'branch': 'main'}
+Plug 'preservim/nerdtree'
+Plug 'kyazdani42/nvim-web-devicons'
+Plug 'luochen1990/rainbow'
+Plug 'pineapplegiant/spaceduck', {'branch': 'main'}
+Plug 'ryanoasis/vim-devicons'
+Plug 'machakann/vim-highlightedyank'
+" --------------------------------- Language --------------------------------- "
 Plug 'psf/black', {'branch': 'stable', 'for': 'python'}
 Plug 'zchee/deoplete-jedi', {'for': 'python'}
-Plug 'Shougo/deoplete.nvim', {'do': ':UpdateRemotePlugins'}
-Plug 'gruvbox-community/gruvbox'
 Plug 'davidhalter/jedi-vim', {'for': 'python'}
-Plug 'kaicataldo/material.vim', {'branch': 'main'}
+Plug 'lervag/vimtex', {'for': 'tex'}
+" --------------------------------- Features --------------------------------- "
+Plug 'skywind3000/asyncrun.extra'
+Plug 'skywind3000/asyncrun.vim'
+Plug 'jiangmiao/auto-pairs'
+Plug 'Shougo/deoplete.nvim', {'do': ':UpdateRemotePlugins'}
 Plug 'neomake/neomake'
-Plug 'preservim/nerdtree'
-Plug 'vim-python/python-syntax', {'for': 'python'}
 Plug 'SirVer/ultisnips'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
 Plug 'tpope/vim-commentary'
-Plug 'ryanoasis/vim-devicons'
+Plug 'easymotion/vim-easymotion'
 Plug 'ludovicchabant/vim-gutentags'
-Plug 'machakann/vim-highlightedyank'
+Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-repeat'
 Plug 'honza/vim-snippets'
 Plug 'mhinz/vim-startify'
 Plug 'tpope/vim-surround'
-Plug 'mg979/vim-visual-multi', {'branch': 'master'}
-Plug 'lervag/vimtex', {'for': 'tex'}
-Plug 'luochen1990/rainbow'
 Plug 'christoomey/vim-titlecase'
-Plug 'easymotion/vim-easymotion'
-Plug 'Yggdroot/indentLine'
-Plug 'lukas-reineke/indent-blankline.nvim'
-Plug 'sheerun/vim-polyglot'
-Plug 'pineapplegiant/spaceduck', {'branch': 'main'}
-Plug 'kyazdani42/nvim-web-devicons'
-Plug 'romgrk/barbar.nvim'
+Plug 'mg979/vim-visual-multi', {'branch': 'master'}
 call plug#end()
 
 " --------------------------------- Settings --------------------------------- "
@@ -136,6 +137,9 @@ let g:webdevicons_enable=1
 let bufferline = get(g:, 'bufferline', {})
 " Enable/disable animations
 let bufferline.animation = v:false
+" Keybinds
+nnoremap <silent> <Tab> :BufferNext<CR>
+nnoremap <silent> <S-Tab> :BufferPrevious<CR>
 
 " Comment
 nnoremap <silent> <C-/> :Commentary<CR>
@@ -162,4 +166,3 @@ let g:rainbow_active=1
 "             \ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">")<cr>
 " nnoremap <f3> :echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')<cr>
 " nnoremap <f4> :exec 'syn list '.synIDattr(synID(line('.'), col('.'), 0), 'name')<cr>
-
