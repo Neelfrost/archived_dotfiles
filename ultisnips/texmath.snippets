@@ -1,0 +1,430 @@
+# --------------------------------- Contexts --------------------------------- #
+global !p
+def math():
+    return vim.eval('vimtex#syntax#in_mathzone()') == '1'
+
+def comment():
+	return vim.eval('vimtex#syntax#in_comment()') == '1'
+
+def env(name):
+	[x,y] = vim.eval("vimtex#env#is_inside('" + name + "')")
+	return x != '0' and x != '0'
+endglobal
+
+# -------------------------------- Math fonts -------------------------------- #
+
+snippet mcal "Caligraphy" i
+\mathcal{${1:${VISUAL}}}
+endsnippet
+
+snippet mrm "Roman" i
+\mathrm{${1:${VISUAL}}}
+endsnippet
+
+snippet mit "Italics" i
+\mathit{${1:${VISUAL}}}
+endsnippet
+
+snippet mfr "Fraktur" i
+\mathfrak{${1:${VISUAL}}}
+endsnippet
+
+snippet mbb "Blackboard bold" i
+\mathbb{${1:${VISUAL}}}
+endsnippet
+
+priority 10
+snippet msc "Script" i
+\mathscr{${1:${VISUAL}}}
+endsnippet
+
+priority 10
+snippet mbf "Bold" i
+\mathbf{${1:${VISUAL}}}
+endsnippet
+
+# ----------------------------- Math environments ---------------------------- #
+
+snippet ilc "Chemmacro environment" wA
+\ch{${1:${VISUAL}}}$0
+endsnippet
+
+snippet ilm "Inline math environment" wA
+$ ${1:${VISUAL}} $$0
+endsnippet
+
+snippet beq "Equation environment" b
+\begin{equation}
+	${0:${VISUAL}}
+\end{equation}
+endsnippet
+
+snippet bal "Align environment" b
+\begin{align}
+	${0:${VISUAL}}
+\end{align}
+endsnippet
+
+snippet bga "Gather environment" b
+\begin{gather}
+	${0:${VISUAL}}
+\end{gather}
+endsnippet
+
+# ---------------------- Sized brackets and parenthesis ---------------------- #
+
+snippet @) "long (" iA
+\left( ${1:${VISUAL}} \right)
+endsnippet
+
+snippet @} "long {" iA
+\left{ ${1:${VISUAL}} \right}
+endsnippet
+
+snippet @] "long [" iA
+\left[ ${1:${VISUAL}} \right]
+endsnippet
+
+snippet \} "Chemmacros escaped {}" iA
+\\{${1:${VISUAL}}\\}
+endsnippet
+
+# ---------------------------------- SIunitx --------------------------------- #
+
+# Angle
+snippet '(\d+\.\d+|\d+)ang' "Angle" rA
+\ang{`!p snip.rv = match.group(1)`}$0
+endsnippet
+
+# Number
+snippet '(\d+\.\d+|\d+|[\w\d]+)num' "Number" rA
+\num{`!p snip.rv = match.group(1)`}$0
+endsnippet
+
+# Number range
+priority 10
+snippet '(\d+\.\d+|\d+|[\w\d]+)-(\d+\.\d+|\d+|[\w\d]+)num' "Number range" rA
+\numrange{`!p snip.rv = match.group(1)`}{`!p snip.rv = match.group(2)`}$0
+endsnippet
+
+# SI unit with value
+snippet si "SI-Unit" w
+\SI{${1:${VISUAL}}}{${2:Unit}}$0
+endsnippet
+
+# SI range
+snippet sr "SI-Range" w
+\SIrange{$1}{$2}{${3:Unit}}$0
+endsnippet
+
+snippet asi "Auto SI-Unit" wA
+\SI{`!p snip.rv = re.search("(\d+\.\d+|\d+)", snip.v.text).group()`}{${1:Unit}}$0
+endsnippet
+
+snippet asr "Auto SI-Range" wA
+\SIrange{`!p snip.rv = re.search("(\d+\.\d+|\d+).+?(\d+\.\d+|\d+)", snip.v.text).group(1)`}{`!p snip.rv = re.search("(\d+\.\d+|\d+).+?(\d+\.\d+|\d+)", snip.v.text).group(2)`}{${1:Unit}}$0
+endsnippet
+
+# Degree Celsius
+snippet '(\d+\.\d+|\d+|[\w\d]+);dc' "Degree celsius" rA
+\SI{`!p snip.rv = match.group(1)`}{\celsius}$0
+endsnippet
+
+priority 10
+snippet ;dc "Degree celsius" wA
+\SI{`!p snip.rv = re.search("(\d+\.\d+|\d+)", snip.v.text).group()`}{\celsius}$0
+endsnippet
+
+# ------------------------------ Math functions ------------------------------ #
+
+# Trig, log functions
+context "math()"
+snippet '(?<!\\)(sin|cos|tan|cosec|sec|cot|ln|log|exp)' "Trig, log functions" wrA
+\\`!p snip.rv = match.group(1)``!p snip.rv = '' if re.search(r'\s*\(.+\)|\s*\[.+\]', t[1]) else ' '`$1
+endsnippet
+
+# Fractions
+context "math()"
+snippet frac "Math fraction" iA
+\frac{${1:Num}}{${2:Den}} $0
+endsnippet
+
+context "math()"
+snippet drac "Display fraction" iA
+\dfrac{${1:Num}}{${2:Den}} $0
+endsnippet
+
+# Sub and Superscripts
+context "math()"
+snippet < "Subscript" i
+_{$1}$0
+endsnippet
+
+context "math()"
+snippet > "Superscript" i
+^{$1}$0
+endsnippet
+
+context "math()"
+snippet '(\w)<(\S+) ' "Auto subscript" rA
+`!p snip.rv = match.group(1)`_{`!p snip.rv = match.group(2)`}
+endsnippet
+
+context "math()"
+snippet '(\w)>(\S+) ' "Auto superscript" rA
+`!p snip.rv = match.group(1)`^{`!p snip.rv = match.group(2)`}
+endsnippet
+
+# Math environment text
+context "math()"
+snippet ;t "Text in math environment" iA
+\text{${1:${VISUAL:Text}}}$0
+endsnippet
+
+context "math()"
+snippet ;q "Text between quads" iA
+\quad\text{${1:${VISUAL:Text}}}\quad$0
+endsnippet
+
+context "math()"
+snippet ;bt "Before text" iA
+\beforetext{${1:${VISUAL:Text}}}$0
+endsnippet
+
+context "math()"
+snippet ;it "Intertext" iA
+\intertext{${1:${VISUAL:Text}}}$0
+endsnippet
+
+# Aligned =
+context "env('align')"
+snippet ;= "&=" wA
+&= $0
+endsnippet
+
+# Reaction arrows
+context "env('gather')"
+snippet ;a "Arrow ->" wA
+-> $0
+endsnippet
+
+context "env('align')"
+snippet ;a "Arrow aligned &->" wA
+&-> $0
+endsnippet
+
+context "env('gather')"
+# Chem equilibrium
+snippet ;e "Equilibrium <=>" wA
+<=> $0
+endsnippet
+
+context "env('align')"
+snippet ;e "Equilibrium aligned &<=>" wA
+&<=> $0
+endsnippet
+
+# ------------------------------- Math symbols ------------------------------- #
+
+snippet =e "equivalent" wA
+\equiv $0
+endsnippet
+
+snippet =a "approx" wA
+\approx $0
+endsnippet
+
+snippet =p "proportional" wA
+\propto $0
+endsnippet
+
+context "math()"
+snippet to "->" wA
+\to $0
+endsnippet
+
+snippet ;x "times" iA
+\times $0
+endsnippet
+
+snippet ;cl "Chemical reaction with underset" iA
+!( ${1:${VISUAL:Bottom}} )( ${2:${VISUAL:Top}} ) $0
+endsnippet
+
+snippet ;us "underset" iA
+\underset{${1:${VISUAL:Bottom}}}{${2:${VISUAL:Top}}} $0
+endsnippet
+
+snippet @2 "sqrt" iA
+\sqrt{${1:${VISUAL}}} $0
+endsnippet
+
+snippet @8 "infinity" iA
+\infty $0
+endsnippet
+
+snippet @6 "partial" iA
+\partial $0
+endsnippet
+
+snippet @@ "circ" iA
+\circ $0
+endsnippet
+
+snippet @. "cdot" iA
+\cdot $0
+endsnippet
+
+# ------------------------------ Greek alphabets ----------------------------- #
+
+snippet @a "alpha" iA
+\alpha
+endsnippet
+
+snippet @b "beta" iA
+\beta
+endsnippet
+
+snippet @c "chi" iA
+\chi
+endsnippet
+
+snippet @d "delta" iA
+\delta
+endsnippet
+
+snippet @e "epsilon" iA
+\epsilon
+endsnippet
+
+snippet @ve "varepsilon" iA
+\varepsilon
+endsnippet
+
+snippet @f "phi" iA
+\phi
+endsnippet
+
+snippet @vf "varphi" iA
+\varphi
+endsnippet
+
+snippet @g "gamma" iA
+\gamma
+endsnippet
+
+snippet @h "eta" iA
+\eta
+endsnippet
+
+snippet @i "iota" iA
+\iota
+endsnippet
+
+snippet @k "kappa" iA
+\kappa
+endsnippet
+
+snippet @l "lambda" iA
+\lambda
+endsnippet
+
+snippet @m "mu" iA
+\mu
+endsnippet
+
+snippet @n "nu" iA
+\nu
+endsnippet
+
+snippet @p "pi" iA
+\pi
+endsnippet
+
+snippet @q "theta" iA
+\theta
+endsnippet
+
+snippet @vq "vartheta" iA
+\vartheta
+endsnippet
+
+snippet @r "rho" iA
+\rho
+endsnippet
+
+snippet @s "sigma" iA
+\sigma
+endsnippet
+
+snippet @vs "varsigma" iA
+\varsigma
+endsnippet
+
+snippet @t "tau" iA
+\tau
+endsnippet
+
+snippet @u "upsilon" iA
+\upsilon
+endsnippet
+
+snippet @o "omega" iA
+\omega
+endsnippet
+
+snippet @& "wedge" iA
+\wedge
+endsnippet
+
+snippet @x "xi" iA
+\xi
+endsnippet
+
+snippet @y "psi" iA
+\psi
+endsnippet
+
+snippet @z "zeta" iA
+\zeta
+endsnippet
+
+snippet @D "Delta" iA
+\Delta
+endsnippet
+
+snippet @F "Phi" iA
+\Phi
+endsnippet
+
+snippet @G "Gamma" iA
+\Gamma
+endsnippet
+
+snippet @Q "Theta" iA
+\Theta
+endsnippet
+
+snippet @L "Lambda" iA
+\Lambda
+endsnippet
+
+snippet @X "Xi" iA
+\Xi
+endsnippet
+
+snippet @Y "Psi" iA
+\Psi
+endsnippet
+
+snippet @S "Sigma" iA
+\Sigma
+endsnippet
+
+snippet @U "Upsilon" iA
+\Upsilon
+endsnippet
+
+snippet @W "Omega" iA
+\Omega
+endsnippet

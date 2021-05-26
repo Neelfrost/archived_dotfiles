@@ -1,0 +1,28 @@
+global !p
+def comment_type():
+	if snip.ft == 'vim':
+		return '"'
+	elif snip.ft == 'snippets':
+		return '#'
+endglobal
+
+snippet box "Box"
+`!p snip.rv = '┌' + '─' * (len(t[1]) + 2) + '┐'`
+│ $1 │
+`!p snip.rv = '└' + '─' * (len(t[1]) + 2) + '┘'`
+$0
+endsnippet
+
+snippet '(.+)div' "Divider comment" brA
+`!p
+if int(72 - len(match.group(1))) % 2 == 0:
+	snip.rv = comment_type() + ' ' + '-' * (int((80 - len(match.group(1)) - 8)/2) + 1)
+else:
+	snip.rv = comment_type() + ' ' + '-' * (int((80 - len(match.group(1)) - 8)/2) + 2)
+` `!p snip.rv = match.group(1)` `!p
+if int(72 - len(match.group(1))) % 2 == 0:
+	snip.rv = '-' * (int((80 - len(match.group(1)) - 8)/2) + 1) + ' ' + comment_type()
+else:
+	snip.rv = '-' * (int((80 - len(match.group(1)) - 8)/2) + 1) + ' ' + comment_type()
+`$0
+endsnippet

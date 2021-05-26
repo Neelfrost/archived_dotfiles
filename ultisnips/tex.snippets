@@ -1,0 +1,316 @@
+extends texmath
+
+snippet begin "Begin environment" b
+\begin{\\$1}
+	$0
+\end{\\$1}
+endsnippet
+
+snippet adj "Adjustbox" b
+\adjustbox{$1}{%
+	${2:${VISUAL}}
+}$0
+endsnippet
+
+snippet mulc "Multicols" b
+\begin{multicols}{$1}
+${2:${VISUAL}}
+\end{multicols}$0
+endsnippet
+
+snippet cb "Columnbreak for multicols"
+
+\columnbreak
+
+endsnippet
+
+# ---------------------------- Table environments ---------------------------- #
+
+snippet table "Table environment" b
+\begin{table}[ht]
+	\centering
+	\caption{${3:caption}}
+	\begin{tabular}{$1}
+	$2
+	\end{tabular}
+\end{table}$0
+endsnippet
+
+snippet tablel "Table environment with label" b
+\begin{table}[ht]
+	\centering
+	\caption{${3:caption}}
+	\label{table:${4:label}}
+	\begin{tabular}{$1}
+	$2
+	\end{tabular}
+\end{table}$0
+endsnippet
+
+# snippet tablec "Centered Table environment" b
+# \begin{table}[ht]
+#	\centering
+#	\caption{${2:caption}}
+#	\begin{tabular}{|l|>{\centering\arraybackslash}m{0.4\textwidth}|l|>{\centering\arraybackslash}m{0.4\textwidth}|}
+#	$1
+#	\end{tabular}
+# \end{table}$0
+# endsnippet
+
+# -------------------------- References and labels -------------------------- #
+
+snippet '([fF])ref' "Figure reference" wr
+`!p snip.rv = match.group(1)`igure.~\ref{$1}$0
+endsnippet
+
+snippet '([eE])ref' "Equation reference" wr
+`!p snip.rv = match.group(1)`quation.~\ref{$1}$0
+endsnippet
+
+snippet '([rR])ref' "Reaction reference" wr
+`!p snip.rv = match.group(1)`eaction.~\ref{$1}$0
+endsnippet
+
+snippet '([tT])ref' "Table reference" wr
+`!p snip.rv = match.group(1)`able.~\ref{$1}$0
+endsnippet
+
+snippet flabel "Figure label" w
+\label{fig:$1}
+endsnippet
+
+snippet elabel "Equation label" w
+\label{eq:$1}
+endsnippet
+
+snippet rlabel "Reaction label" w
+\label{rxn:$1}
+endsnippet
+
+snippet tlabel "Reaction label" w
+\label{table:$1}
+endsnippet
+
+# ---------------------------- Figure environments --------------------------- #
+
+snippet fig "Figure environment" b
+\begin{figure}[ht]
+	\centering
+	\includegraphics[width=0.45\textwidth]{${1:File}}
+	\caption{${2:Caption}}%
+\end{figure}$0
+endsnippet
+
+snippet figl "Figure environment with label" b
+\begin{figure}[ht]
+	\centering
+	\includegraphics[width=0.45\textwidth]{${1:File}}
+	\caption{${2:Caption}}%
+	\label{fig:${1/\.\w+//}}
+\end{figure}$0
+endsnippet
+
+snippet subfig "Subfigure environment" b
+\begin{figure}[ht]
+	\centering
+	\subfloat[${3:Caption1}]{\includegraphics[width=0.45\textwidth]{${1:File1}}}
+	\qquad
+	\subfloat[${4:Caption2}]{\includegraphics[width=0.45\textwidth]{${2:File2}}}
+	\caption{}%
+\end{figure}$0
+endsnippet
+
+snippet subfigl "Subfigure environment with label" b
+\begin{figure}[ht]
+	\centering
+	\subfloat[${3:Caption1}]{\includegraphics[width=0.45\textwidth]{${1:File1}}\label{sfig:${1/\.\w+//}}}
+	\qquad
+	\subfloat[${4:Caption2}]{\includegraphics[width=0.45\textwidth]{${2:File2}}\label{sfig:${2/\.\w+//}}}
+	\caption{}%
+\end{figure}$0
+endsnippet
+
+snippet fts "Figure to subfigure" wA
+\begin{figure}[ht]
+	\centering
+`!p
+caption = re.search("caption{(.+)}", snip.v.text).group(1)
+file = re.search("textwidth\]{(.+)}", snip.v.text).group(1)
+if 'label' in snip.v.text:
+	label = re.search("label{(.+)}", snip.v.text).group(1)
+	snip.rv = "\subfloat[" + f"{caption}" "]{\includegraphics[width=0.45\textwidth]{" + f"{file}" + "}\label{s" + f"{label}" + "}}"
+else:
+	snip.rv = "\subfloat[" + f"{caption}" "]{\includegraphics[width=0.45\textwidth]{" + f"{file}" + "}}"
+`
+	\qquad
+	\subfloat[${4:Caption2}]{\includegraphics[width=0.45\textwidth]{${2:File2}}\label{sfig:${2/\.\w+//}}}
+	\caption{}%
+\end{figure}$0
+endsnippet
+
+# ----------------------------- List environments ---------------------------- #
+
+snippet bde "Description" b
+\begin{description}
+	\item[$1] $0
+\end{description}
+endsnippet
+
+snippet ben "Enumerate" b
+\begin{enumerate}
+`!p
+if snip.v.text:
+	snip.rv = snip.v.text.strip()
+else:
+	snip.rv = "\t\\item "
+`$0
+\end{enumerate}
+endsnippet
+
+snippet bit "Itemize" b
+\begin{itemize}
+`!p
+if snip.v.text:
+	snip.rv = snip.v.text.strip()
+else:
+	snip.rv = "\t\\item "
+`$0
+\end{itemize}
+endsnippet
+
+snippet bta "Task" b
+\begin{tasks}($1)
+`!p
+if snip.v.text:
+	if r"\task" in snip.v.text:
+		snip.rv = snip.v.text.strip()
+	else:
+		snip.rv = snip.v.text.strip().replace(r"\item", r"\task")
+else:
+	snip.rv = "\t\\task "
+`$0
+\end{tasks}
+endsnippet
+
+snippet it "Individual item" b
+\item $0
+endsnippet
+
+snippet ta "Individual task" b
+\task $0
+endsnippet
+
+snippet itt "Item to Task" b
+`!p snip.rv = snip.v.text.strip().replace(r"\item", r"\task")`$0
+endsnippet
+
+snippet nosep "noitemsep" w
+[noitemsep]$0
+endsnippet
+
+# --------------------------- Section environments --------------------------- #
+
+snippet part "Part" b
+\part{${1:${VISUAL:Part}}}%
+$0
+endsnippet
+
+snippet cha "Chapter" b
+\chapter{${1:${VISUAL:Chapter}}}%
+$0
+endsnippet
+
+snippet sec "Section" b
+\section{${1:${VISUAL:Section}}}%
+$0
+endsnippet
+
+snippet sec* "Section" b
+\section*{${1:${VISUAL:Section}}}%
+${0}
+endsnippet
+
+snippet sub "Subsection" b
+\subsection{${1:${VISUAL:Subsection}}}%
+$0
+endsnippet
+
+snippet sub* "Subsection" b
+\subsection*{${1:${VISUAL:Subsection}}}%
+${0}
+endsnippet
+
+snippet ssub "Subsubsection" b
+\subsubsection{${1:${VISUAL:Subsubsection}}}%
+$0
+endsnippet
+
+snippet ssub* "Subsubsection" b
+\subsubsection*{${1:${VISUAL:Subsubsection}}}%
+${0}
+endsnippet
+
+snippet par "Paragraph" b
+\paragraph{${1:${VISUAL:Paragraph}}}%
+$0
+endsnippet
+
+snippet subp "Subparagraph" b
+\subparagraph{${1:${VISUAL:Subparagraph}}}%
+$0
+endsnippet
+
+snippet noind "Non-indented paragraph" b
+\noindent
+$0
+endsnippet
+
+# ----------------------------------- Fonts ---------------------------------- #
+
+# Emph text
+snippet emph "Emphasize" i
+\emph{${1:${VISUAL}}}$0
+endsnippet
+
+# Bold text
+snippet bf "Bold" i
+\textbf{${1:${VISUAL}}}$0
+endsnippet
+
+# Italic text
+snippet ita "Italics" i
+\textit{${1:${VISUAL}}}$0
+endsnippet
+
+# Underlined text - Requires "soul" package
+snippet und "Underline" i
+\ul{${1:${VISUAL}}}$0
+endsnippet
+
+snippet sc "Shortcaps" i
+\textsc{${1:${VISUAL}}}$0
+endsnippet
+
+# Custom command
+# Bold - Italics Text
+snippet bi "Bold - Italics" i
+\textbi{${1:${VISUAL}}}$0
+endsnippet
+
+# ----------------------------------- Misc ----------------------------------- #
+
+snippet % "Escaped %" iA
+\%
+endsnippet
+
+snippet ie "i.e.," w
+i.e.,
+endsnippet
+
+snippet eg "e.g.," w
+e.g.,
+endsnippet
+
+snippet Eg "E.g.," w
+E.g.,
+endsnippet
