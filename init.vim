@@ -29,6 +29,11 @@ set ignorecase
 set smartcase
 set background=dark
 set termguicolors
+set laststatus=2
+set fillchars=eob:—
+
+" Ignore LaTeX aux files
+set wildignore+=*.aux,*.lof,*.log,*.lot,*.fls,*.out,*.toc,*.fmt,*.fot,*.cb,*.cb2,.*.lb,__latex*,*.fdb_latexmk,*.synctex,*.synctex(busy),*.synctex.gz,*.synctex.gz(busy),*.pdfsync,*.bbl,*.bcf,*.blg,*-blx.aux,*-blx.bib,*.run.xml
 
 " Python path
 let g:python3_host_prog="C:\\Program Files\\Python39\\python.exe"
@@ -55,6 +60,8 @@ Plug 'luochen1990/rainbow'
 Plug 'pineapplegiant/spaceduck', {'branch': 'main'}
 Plug 'ryanoasis/vim-devicons'
 Plug 'machakann/vim-highlightedyank'
+" Plug 'vim-airline/vim-airline'
+" Plug 'vim-airline/vim-airline-themes'
 " --------------------------------- Language --------------------------------- "
 Plug 'psf/black', {'branch': 'stable', 'for': 'python'}
 Plug 'zchee/deoplete-jedi', {'for': 'python'}
@@ -77,6 +84,7 @@ Plug 'mhinz/vim-startify'
 Plug 'tpope/vim-surround'
 Plug 'christoomey/vim-titlecase'
 Plug 'mg979/vim-visual-multi', {'branch': 'master'}
+Plug 'kevinhwang91/nvim-bqf'
 call plug#end()
 
 " --------------------------------- Settings --------------------------------- "
@@ -89,6 +97,10 @@ source ~\AppData\Local\nvim\config\deoplete.vim
 source ~\AppData\Local\nvim\config\nerdtree.vim
 " Easy Motion
 source ~\AppData\Local\nvim\config\easymotion.vim
+" Statusline
+source ~\AppData\Local\nvim\config\statusline.vim
+" Tabline
+source ~\AppData\Local\nvim\config\tabline.vim
 " Theme
 source ~\AppData\Local\nvim\config\theme.vim
 " Keybinds
@@ -125,7 +137,7 @@ let g:AutoPairsShortcutJump="<C-l>"
 
 " indent-blankline, indentLine config
 let g:indentLine_char='|'
-let g:indentLine_fileTypeExclude=['tex', 'vim']
+let g:indentLine_fileTypeExclude=['tex', 'vim', 'help']
 let g:indentLine_setColors=0
 let g:indentLine_setConceal=0
 let g:indent_blankline_char='|'
@@ -133,15 +145,7 @@ let g:indent_blankline_char='|'
 " Enable devicons
 let g:webdevicons_enable=1
 
-" Barbar tabline
-let bufferline = get(g:, 'bufferline', {})
-" Enable/disable animations
-let bufferline.animation = v:false
-" Keybinds
-nnoremap <silent> <Tab> :BufferNext<CR>
-nnoremap <silent> <S-Tab> :BufferPrevious<CR>
-
-" Comment
+" Comments
 nnoremap <silent> <C-/> :Commentary<CR>
 vnoremap <silent> <C-/> :Commentary<CR>
 
@@ -152,7 +156,7 @@ nnoremap <silent> <leader>pu :PlugUpdate<CR>
 
 " louchen rainbow config
 let g:rainbow_active=1
-" let g:rainbow_conf = {
+" let g:rainbow_conf={
 "             \   'separately': {
 "             \       'tex': {
 "             \           'parentheses_options': 'containedin=texMathGroup',
@@ -166,3 +170,4 @@ let g:rainbow_active=1
 "             \ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">")<cr>
 " nnoremap <f3> :echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')<cr>
 " nnoremap <f4> :exec 'syn list '.synIDattr(synID(line('.'), col('.'), 0), 'name')<cr>
+

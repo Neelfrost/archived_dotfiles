@@ -1,12 +1,14 @@
-" Save and Trim whitespace
+" Trim trailing whitespace
 fun! TrimWhitespace()
     let l:save=winsaveview()
     keeppatterns %s/^\n*\%$//e " removes trailing space
     keeppatterns %s/\s\+$//e " removes trailing lines
+    keeppatterns %s/\\item$/\\item /e " do not remove trailing space after LaTeX \item 
+    keeppatterns %s/\\task$/\\task /e " do not remove trailing space after LaTeX \task 
     call winrestview(l:save)
 endfun
 
-nnoremap <silent> <C-s> :silent call TrimWhitespace()<CR><Esc>:w!<CR>
+nnoremap <silent> <C-s> :call TrimWhitespace()<CR><Esc>:w!<CR>
 
 " Reload config
 " https://github.com/jdhao/nvim-config/blob/master/core/mappings.vim

@@ -15,8 +15,6 @@ let NERDTreeRespectWildIgnore=1
 let NERDTreeWinPos='right'
 let NERDTreeWinSize=24
 
-" " Ignore tex auxillary files
-" let NERDTreeIgnore=['\.log$', '\.aux$', '\.fls$', '\.fdb_latexmk$', '\.synctex\.gz$']
+" --------------------------------- Keybinds --------------------------------- "
 
-" Keybinds
 nnoremap <silent> <C-b> :call NERDTreeToggleAndRefresh()<CR>

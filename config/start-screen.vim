@@ -5,7 +5,7 @@
 " 'header': ['   <Header>']    },
 let s:max_files_amount=100
 function! s:list_files(...) abort
-    let l:file_amount=get(a:, 1, s:max_files_amount)
+    let l:file_amount = get(a:, 1, s:max_files_amount)
     " Ensure boundries 0 < v <= max
     if l:file_amount > s:max_files_amount
         let l:file_amount=s:max_files_amount
@@ -13,7 +13,7 @@ function! s:list_files(...) abort
         let l:file_amount=1
     endif
 
-    let l:all_files=split(globpath(get(a:, 2), get(a:, 3)), '\n')
+    let l:all_files = split(globpath(get(a:, 2), get(a:, 3)), '\n')
 
     " Sort based on modified time
     function! s:sort_by_mtime(foo, bar)
@@ -26,6 +26,7 @@ function! s:list_files(...) abort
 endfunction
 
 let g:startify_lists=[
+            \ { 'type': 'sessions', 'header': ['    Sessions'] },
             \ { 'type': 'bookmarks', 'header': ['   Bookmarks'] },
             \ { 'type': 'files', 'header': ['   Recent Files']  },
             \ { 'type': function('s:list_files', [5, '~\Documents\LaTeX\', '**/*.tex']), 'header': ['   LaTeX']    },
@@ -40,7 +41,7 @@ let g:startify_bookmarks=[
             \ '~\AppData\Local\nvim\ultisnips\texmath.snippets'
             \ ]
 
-let g:startify_custom_header=[
+let g:custom_header=[
             \ '    ███╗   ██╗███████╗ ██████╗ ██╗   ██╗██╗███╗   ███╗',
             \ '    ████╗  ██║██╔════╝██╔═══██╗██║   ██║██║████╗ ████║',
             \ '    ██╔██╗ ██║█████╗  ██║   ██║██║   ██║██║██╔████╔██║',
@@ -48,10 +49,14 @@ let g:startify_custom_header=[
             \ '    ██║ ╚████║███████╗╚██████╔╝ ╚████╔╝ ██║██║ ╚═╝ ██║',
             \ '    ╚═╝  ╚═══╝╚══════╝ ╚═════╝   ╚═══╝  ╚═╝╚═╝     ╚═╝',
             \]
+let g:startify_custom_header=g:custom_header
 
 " Sort wrt to modified
 let g:startify_session_sort=1
+" Number of files to be displayed
 let g:startify_files_number=5
+
+" --------------------------------- Keybinds --------------------------------- "
 
 " Open Startify
 nnoremap <leader>n :Startify<CR>

@@ -1,10 +1,7 @@
-" Vimtex Toggle Compile
-nnoremap <F6> :w!<CR>:VimtexCompile<CR>
-
 " Auto insert \item on <CR>
 " https://stackoverflow.com/questions/2547739/auto-insert-text-at-a-newline-in-vim
 function! AutoItem()
-    let [end_lnum, end_col]=searchpairpos('\\begin{', '', '\\end{', 'nW')
+    let [end_lnum, end_col] = searchpairpos('\\begin{', '', '\\end{', 'nW')
     if match(getline(end_lnum), '\(itemize\|enumerate\|description\)') != -1
         return "\\item "
     elseif match(getline(end_lnum), '\(tasks\)') != -1
@@ -15,18 +12,16 @@ function! AutoItem()
 endfunction
 
 inoremap <expr> <CR> getline('.') =~ '\item $'
-            \ ? '<c-w><c-w>'
+            \ ? '<C-w><C-w>'
             \ : (col(".") < col("$") ? '<CR>' : '<CR>'.AutoItem() )
-inoremap <expr> <CR> getline('.') =~ '\\task $'
-            \ ? '<c-w><c-w>'
-            \ : (col(".") < col("$") ? '<CR>' : '<CR>'.AutoItem() )
+
 nnoremap <expr> o "o".AutoItem()
 nnoremap <expr> O "O".AutoItem()
 
 " Inverse search
 " https://github.com/lervag/vimtex/blob/master/doc/vimtex.txt
 function! SetServerName()
-    let nvim_server_file=has('win32')
+    let nvim_server_file = has('win32')
                 \ ? $TEMP . "/curnvimserver.txt"
                 \ : "/tmp/curnvimserver.txt"
     call system(printf("echo %s > %s", v:servername, nvim_server_file))
@@ -37,15 +32,36 @@ augroup vimtex_common
     call SetServerName()
 augroup END
 
-" Ignore aux files
-set wildignore+=*.aux,*.lof,*.log,*.lot,*.fls,*.out,*.toc,*.fmt,*.fot,*.cb,*.cb2,.*.lb,__latex*,*.fdb_latexmk,*.synctex,*.synctex(busy),*.synctex.gz,*.synctex.gz(busy),*.pdfsync,*.bbl,*.bcf,*.blg,*-blx.aux,*-blx.bib,*.run.xml
+" Replace \ with / in LaTex input fields
+fun! FixInputs()
+    let l:save = winsaveview()
+    keeppatterns %s/\(input\|include\)\({.\+\)\\\(.\+}\)/\1\2\/\3/ge "
+    call winrestview(l:save)
+endfun
 
-" Keybinds
-nnoremap <M-i> i<CR>\item <Esc>
-vnoremap <M-b> @m
-nnoremap <M-b> @n
-nnoremap <M-v> @v
+autocmd BufWritePre <buffer> :call FixInputs()
+
+" --------------------------------- Keybinds --------------------------------- "
+
+" Vimtex Toggle Compile
+nnoremap <F6> :w!<CR>:VimtexCompile<CR>
+
+" Push to next item of the list
+nnoremap <Insert> i<CR>\item <Esc>
+" Adjoin next item
+nnoremap <Delete> gJi<C-o>dW<C-o>dW <Esc>
+
+" Bold - italics word under cursor or selected
+vnoremap <M-b> di\textbi{}<Esc>P
+nnoremap <M-b> diwi\textbi{}<Esc>P
+
+" Put the word inside chem environment
+nnoremap <M-v> diwi\ch{}<Esc>P
+vnoremap <M-v> di\ch{}<Esc>P
+
 vnoremap <leader><leader>n :norm A
+
+" ------------------------------ Vimtex Settings ----------------------------- "
 
 " Do not open pdfviwer on compile
 let g:vimtex_view_automatic=0
@@ -65,4 +81,7 @@ let g:vimtex_quickfix_ignore_filters=[
             \'Package hyperref Warning: Token not allowed in a PDF string',
             \'Package typearea Warning: Bad type area settings!',
             \'Command terminated with space',
+            \'Package fancyhdr Warning: \\headheight is too small ',
+            \'Package caption Warning: The option ',
+            \'Package caption Warning: Unused \\captionsetup',
             \]

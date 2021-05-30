@@ -1,3 +1,4 @@
+" Enable
 let g:deoplete#enable_at_startup=1
 
 " Deoplete vimtex config
@@ -9,7 +10,8 @@ call deoplete#custom#option({
             \   'smart_case': v:true,
             \})
 
-" Keybinds
+" --------------------------------- Keybinds --------------------------------- "
+
 " taken from : https://vi.stackexchange.com/questions/12394/change-keybinding-for-up-down-when-in-vim-popup
 inoremap <expr> <C-j> pumvisible() ? "\<C-n>" : "\<C-j>"
 inoremap <expr> <C-k> pumvisible() ? "\<C-p>" : "\<C-k>"
