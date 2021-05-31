@@ -50,8 +50,7 @@ call plug#begin(stdpath('data').'\plugin')
 " ----------------------------------- Style ---------------------------------- "
 Plug 'romgrk/barbar.nvim'
 Plug 'gruvbox-community/gruvbox'
-Plug 'lukas-reineke/indent-blankline.nvim'
-Plug 'Yggdroot/indentLine'
+Plug 'lukas-reineke/indent-blankline.nvim', {'branch': 'lua'}
 Plug 'itchyny/lightline.vim'
 Plug 'kaicataldo/material.vim', {'branch': 'main'}
 Plug 'preservim/nerdtree'
@@ -60,6 +59,7 @@ Plug 'luochen1990/rainbow'
 Plug 'pineapplegiant/spaceduck', {'branch': 'main'}
 Plug 'ryanoasis/vim-devicons'
 Plug 'machakann/vim-highlightedyank'
+" Plug 'Yggdroot/indentLine'
 " Plug 'vim-airline/vim-airline'
 " Plug 'vim-airline/vim-airline-themes'
 " --------------------------------- Language --------------------------------- "
@@ -136,14 +136,15 @@ let g:gutentags_generate_on_empty_buffer=0
 let g:AutoPairsShortcutJump="<C-l>"
 
 " indent-blankline, indentLine config
-let g:indentLine_char='|'
-let g:indentLine_fileTypeExclude=['tex', 'vim', 'help']
-let g:indentLine_setColors=0
-let g:indentLine_setConceal=0
-let g:indent_blankline_char='|'
+let g:indent_blankline_filetype_exclude = ['help', 'vim', 'tex']
+" let g:indent_blankline_char='▏'
+let g:indent_blankline_char='┊'
+let g:indent_blankline_show_trailing_blankline_indent=v:false
 
 " Enable devicons
 let g:webdevicons_enable=1
+let g:webdevicons_conceal_nerdtree_brackets=1
+let g:DevIconsEnableFoldersOpenClose=1
 
 " Comments
 nnoremap <silent> <C-/> :Commentary<CR>
@@ -156,18 +157,9 @@ nnoremap <silent> <leader>pu :PlugUpdate<CR>
 
 " louchen rainbow config
 let g:rainbow_active=1
-" let g:rainbow_conf={
-"             \   'separately': {
-"             \       'tex': {
-"             \           'parentheses_options': 'containedin=texMathGroup',
-"             \           'parentheses': ['start=/(/ end=/)/ fold', 'start=/\[/ end=/\]/ fold', 'start=/{/ end=/}/ fold'],
-"             \       },
-"             \}
-"             \}
-" nnoremap <f1> :echo synIDattr(synID(line('.'), col('.'), 0), 'name')<cr>
-" nnoremap <f2> :echo ("hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
-"             \ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
-"             \ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">")<cr>
-" nnoremap <f3> :echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')<cr>
-" nnoremap <f4> :exec 'syn list '.synIDattr(synID(line('.'), col('.'), 0), 'name')<cr>
+let g:rainbow_conf={
+            \   'separately': {
+            \       'nerdtree': 0,
+            \   },
+            \}
 

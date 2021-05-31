@@ -14,6 +14,7 @@ function! s:list_files(...) abort
     endif
 
     let l:all_files = split(globpath(get(a:, 2), get(a:, 3)), '\n')
+    " echomsg(l:all_files:e)
 
     " Sort based on modified time
     function! s:sort_by_mtime(foo, bar)
@@ -22,7 +23,11 @@ function! s:list_files(...) abort
         return foo == bar ? 0 : (foo < bar ? 1 : -1)
     endfunction
     call sort(l:all_files, 's:sort_by_mtime')
-    return map(l:all_files[:l:file_amount-1], '{"line": v:val, "cmd": "edit " . v:val }')
+    return map(l:all_files[:l:file_amount-1], '{"line": WebDevIconsGetFileTypeSymbol(v:val) . " " . v:val, "cmd": "edit " . v:val }')
+endfunction
+
+function! StartifyEntryFormat() abort
+    return 'WebDevIconsGetFileTypeSymbol(absolute_path) ." ". entry_path'
 endfunction
 
 let g:startify_lists=[

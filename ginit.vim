@@ -7,7 +7,8 @@ cnoremap <S-Insert> <C-R>+
 " see https://github.com/equalsraf/neovim-qt/issues/219
 if exists('g:GuiLoaded')
 " GuiFont! VictorMono\ NF:h12
-GuiFont! JetBrainsMono\ NF:h11
+" GuiFont! JetBrainsMono\ NF:h11
+GuiFont! CaskaydiaCove\ NF:h11
   GuiTabline 0
   GuiPopupmenu 0
   " GuiRenderLigatures 1
