@@ -42,6 +42,7 @@ let g:startify_lists=[
 let g:startify_bookmarks=[
             \ '~\AppData\Local\nvim\init.vim',
             \ '~\AppData\Local\nvim\config\keybinds.vim',
+            \ '~\AppData\Local\nvim\after\ftplugin\tex.vim',
             \ '~\AppData\Local\nvim\ultisnips\tex.snippets',
             \ '~\AppData\Local\nvim\ultisnips\texmath.snippets'
             \ ]
@@ -64,4 +65,4 @@ let g:startify_files_number=5
 " --------------------------------- Keybinds --------------------------------- "
 
 " Open Startify
-nnoremap <leader>n :Startify<CR>
+nnoremap <silent> <leader>n :Startify<CR>

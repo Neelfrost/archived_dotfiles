@@ -3,7 +3,8 @@
 function NERDTreeToggleAndRefresh()
     :NERDTreeToggle %
     if g:NERDTree.IsOpen()
-        :NERDTreeRefreshRoot
+        :silent NERDTreeRefreshRoot
+        :call lightline#update() " Update lightline when opened
     endif
 endfunction
 

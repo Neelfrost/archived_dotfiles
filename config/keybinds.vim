@@ -60,6 +60,8 @@ vnoremap <S-j> gj
 " Tab and Shift + Tab between buffers
 " nnoremap <silent> <Tab> :bnext<CR>
 " nnoremap <silent> <S-Tab> :bprevious<CR>
+" Ctrl Tab between tabs
+nnoremap <silent> <C-Tab> :tabnext<CR>
 
 " Spell check
 inoremap <C-z> <c-g>u<Esc>[s1z=`]a<c-g>u
@@ -82,5 +84,10 @@ xnoremap <M-[> <gv
 " Window switching
 nnoremap <M-left> <C-w>h
 nnoremap <M-right> <C-w>l
-nnoremap <M-down> <C-w>j
 nnoremap <M-up> <C-w>k
+nnoremap <M-down> <C-w>j
+
+" Disable word search
+map <S-LeftMouse> <nop>
+map <S-LeftDrag> <nop>
+

@@ -7,7 +7,7 @@ let g:gruvbox_contrast_dark='hard'
 let g:gruvbox_contrast_light='hard'
 colorscheme gruvbox
 
-" colorscheme spaceduck
+colorscheme onehalfdark
 
 " Change bad word color to red with underline
 hi clear SpellBad
