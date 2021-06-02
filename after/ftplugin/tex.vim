@@ -11,10 +11,18 @@ function! AutoItem()
     endif
 endfunction
 
-inoremap <expr> <CR> getline('.') =~ '\item $'
+function! GetLine()
+    let list = ['\\task $', '\item $']
+    if getline('.') =~ list[0] || getline('.') =~ list[1]
+        return 1
+    else
+        return 0
+    endif
+endfunction
+
+inoremap <buffer> <expr> <CR> GetLine()
             \ ? '<C-w><C-w>'
             \ : (col(".") < col("$") ? '<CR>' : '<CR>'.AutoItem() )
-
 nnoremap <expr> o "o".AutoItem()
 nnoremap <expr> O "O".AutoItem()
 
@@ -63,15 +71,19 @@ vnoremap <leader><leader>n :norm A
 
 " ------------------------------ Vimtex Settings ----------------------------- "
 
+" Disable imaps (using Ultisnips)
+let g:vimtex_imaps_enabled=0
 " Do not open pdfviwer on compile
 let g:vimtex_view_automatic=0
 " Disable conceal
 let g:vimtex_syntax_conceal_default=0
+" Disable quickfix auto open
+let g:vimtex_quickfix_ignore_mode=0
+" PDF viewer settings
 let g:vimtex_view_general_viewer='SumatraPDF'
 let g:vimtex_view_general_options
             \='-reuse-instance -forward-search @tex @line @pdf'
 let g:vimtex_view_general_options_latexmk='-reuse-instance'
-
 " Latex warnings to ignore
 let g:vimtex_quickfix_ignore_filters=[
             \'Underfull \\hbox (badness [0-9]*) in paragraph at lines',
@@ -84,4 +96,5 @@ let g:vimtex_quickfix_ignore_filters=[
             \'Package fancyhdr Warning: \\headheight is too small ',
             \'Package caption Warning: The option ',
             \'Package caption Warning: Unused \\captionsetup',
+            \'Package enumitem Warning: Negative labelwidth',
             \]

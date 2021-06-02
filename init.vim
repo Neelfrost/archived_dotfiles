@@ -16,21 +16,22 @@ set tabstop=4
 set softtabstop=4
 set expandtab
 set scrolloff=8
-set autoindent
-set smartindent
-set incsearch
-set number
-set relativenumber
-set linebreak
-set wrap
+set background=dark
+set fillchars=eob:—
+set laststatus=2
 set mouse=nv
+set autoindent
 set hidden
 set ignorecase
+set incsearch
+set linebreak
+set noshowmode
+set number
+set relativenumber
 set smartcase
-set background=dark
+set smartindent
 set termguicolors
-set laststatus=2
-set fillchars=eob:—
+set wrap
 
 " Ignore LaTeX aux files
 set wildignore+=*.aux,*.lof,*.log,*.lot,*.fls,*.out,*.toc,*.fmt,*.fot,*.cb,*.cb2,.*.lb,__latex*,*.fdb_latexmk,*.synctex,*.synctex(busy),*.synctex.gz,*.synctex.gz(busy),*.pdfsync,*.bbl,*.bcf,*.blg,*-blx.aux,*-blx.bib,*.run.xml
@@ -52,13 +53,12 @@ Plug 'romgrk/barbar.nvim'
 Plug 'gruvbox-community/gruvbox'
 Plug 'lukas-reineke/indent-blankline.nvim', {'branch': 'lua'}
 Plug 'itchyny/lightline.vim'
-Plug 'kaicataldo/material.vim', {'branch': 'main'}
-Plug 'preservim/nerdtree'
+Plug 'preservim/nerdtree', {'on': 'NERDTreeToggle'}
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'luochen1990/rainbow'
-Plug 'pineapplegiant/spaceduck', {'branch': 'main'}
 Plug 'ryanoasis/vim-devicons'
 Plug 'machakann/vim-highlightedyank'
+Plug 'sonph/onehalf', {'rtp': 'vim'}
 " Plug 'Yggdroot/indentLine'
 " Plug 'vim-airline/vim-airline'
 " Plug 'vim-airline/vim-airline-themes'
@@ -66,7 +66,7 @@ Plug 'machakann/vim-highlightedyank'
 Plug 'psf/black', {'branch': 'stable', 'for': 'python'}
 Plug 'zchee/deoplete-jedi', {'for': 'python'}
 Plug 'davidhalter/jedi-vim', {'for': 'python'}
-Plug 'lervag/vimtex', {'for': 'tex'}
+Plug 'lervag/vimtex'
 " --------------------------------- Features --------------------------------- "
 Plug 'skywind3000/asyncrun.extra'
 Plug 'skywind3000/asyncrun.vim'
@@ -85,6 +85,7 @@ Plug 'tpope/vim-surround'
 Plug 'christoomey/vim-titlecase'
 Plug 'mg979/vim-visual-multi', {'branch': 'master'}
 Plug 'kevinhwang91/nvim-bqf'
+Plug 'ctrlpvim/ctrlp.vim'
 call plug#end()
 
 " --------------------------------- Settings --------------------------------- "
