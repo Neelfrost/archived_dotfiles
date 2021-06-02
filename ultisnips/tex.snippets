@@ -1,5 +1,13 @@
 extends texmath
 
+snippet input "Input" b
+\input{${1:File}}
+endsnippet
+
+snippet include "Include" b
+\include{${1:File}}
+endsnippet
+
 snippet begin "Begin environment" b
 \begin{\\$1}
 	$0
@@ -24,6 +32,12 @@ snippet cb "Columnbreak for multicols"
 
 endsnippet
 
+snippet mini "Minipage environment" b
+\begin{minipage}{0.5\linewidth}
+	${1:${VISUAL:Content}}
+\end{minipage}%$0
+endsnippet
+
 # ---------------------------- Table environments ---------------------------- #
 
 snippet table "Table environment" b
@@ -39,7 +53,7 @@ endsnippet
 snippet tablel "Table environment with label" b
 \begin{table}[ht]
 	\centering
-	\caption{${3:caption}}
+	\caption{${3:caption}}%
 	\label{table:${4:label}}
 	\begin{tabular}{$1}
 	$2
@@ -51,7 +65,7 @@ endsnippet
 # \begin{table}[ht]
 #	\centering
 #	\caption{${2:caption}}
-#	\begin{tabular}{|l|>{\centering\arraybackslash}m{0.4\textwidth}|l|>{\centering\arraybackslash}m{0.4\textwidth}|}
+#	\begin{tabular}{|l|>{\centering\arraybackslash}m{0.4\linewidth}|l|>{\centering\arraybackslash}m{0.4\linewidth}|}
 #	$1
 #	\end{tabular}
 # \end{table}$0
@@ -75,19 +89,19 @@ snippet '([tT])ref' "Table reference" wr
 `!p snip.rv = match.group(1)`able.~\ref{$1}$0
 endsnippet
 
-snippet flabel "Figure label" w
+snippet flab "Figure label" w
 \label{fig:$1}
 endsnippet
 
-snippet elabel "Equation label" w
+snippet elab "Equation label" w
 \label{eq:$1}
 endsnippet
 
-snippet rlabel "Reaction label" w
+snippet rlab "Reaction label" w
 \label{rxn:$1}
 endsnippet
 
-snippet tlabel "Reaction label" w
+snippet tlab "Reaction label" w
 \label{table:$1}
 endsnippet
 
@@ -96,7 +110,7 @@ endsnippet
 snippet fig "Figure environment" b
 \begin{figure}[ht]
 	\centering
-	\includegraphics[width=0.45\textwidth]{${1:File}}
+	\includegraphics[width=0.45\linewidth]{${1:File}}
 	\caption{${2:Caption}}%
 \end{figure}$0
 endsnippet
@@ -104,48 +118,92 @@ endsnippet
 snippet figl "Figure environment with label" b
 \begin{figure}[ht]
 	\centering
-	\includegraphics[width=0.45\textwidth]{${1:File}}
+	\includegraphics[width=0.45\linewidth]{${1:File}}
 	\caption{${2:Caption}}%
 	\label{fig:${1/\.\w+//}}
 \end{figure}$0
 endsnippet
 
+# snippet subfig "Subfigure environment" b
+# \begin{figure}[ht]
+#	\centering
+#	\subfloat[${3:Caption1}]{\includegraphics[width=0.45\linewidth]{${1:File1}}}
+#	\qquad
+#	\subfloat[${4:Caption2}]{\includegraphics[width=0.45\linewidth]{${2:File2}}}
+#	\caption{}%
+# \end{figure}$0
+# endsnippet
+
+# snippet subfigl "Subfigure environment with label" b
+# \begin{figure}[ht]
+#	\centering
+#	\subfloat[${3:Caption1}]{\includegraphics[width=0.45\linewidth]{${1:File1}}\label{sfig:${1/\.\w+//}}}
+#	\qquad
+#	\subfloat[${4:Caption2}]{\includegraphics[width=0.45\linewidth]{${2:File2}}\label{sfig:${2/\.\w+//}}}
+#	\caption{}%
+# \end{figure}$0
+# endsnippet
+
 snippet subfig "Subfigure environment" b
 \begin{figure}[ht]
-	\centering
-	\subfloat[${3:Caption1}]{\includegraphics[width=0.45\textwidth]{${1:File1}}}
-	\qquad
-	\subfloat[${4:Caption2}]{\includegraphics[width=0.45\textwidth]{${2:File2}}}
-	\caption{}%
-\end{figure}$0
+    \centering
+    \begin{subfigure}{.5\linewidth}
+        \centering
+        \includegraphics[width=0.9\linewidth]{${1:File1}}
+        \caption{${2:Caption1}}
+    \end{subfigure}%
+    \begin{subfigure}{.5\linewidth}
+        \centering
+        \includegraphics[width=0.9\linewidth]{${3:File1}}
+        \caption{${4:Caption1}}
+    \end{subfigure}%
+    \caption{}%
+\end{figure}
 endsnippet
 
 snippet subfigl "Subfigure environment with label" b
 \begin{figure}[ht]
-	\centering
-	\subfloat[${3:Caption1}]{\includegraphics[width=0.45\textwidth]{${1:File1}}\label{sfig:${1/\.\w+//}}}
-	\qquad
-	\subfloat[${4:Caption2}]{\includegraphics[width=0.45\textwidth]{${2:File2}}\label{sfig:${2/\.\w+//}}}
-	\caption{}%
-\end{figure}$0
+    \centering
+    \begin{subfigure}{.5\linewidth}
+        \centering
+        \includegraphics[width=0.9\linewidth]{${1:File1}}
+        \caption{${2:Caption1}}%
+        \label{sfig:${1/\.\w+//}}
+    \end{subfigure}%
+    \begin{subfigure}{.5\linewidth}
+        \centering
+        \includegraphics[width=0.9\linewidth]{${4:File1}}
+        \caption{${5:Caption1}}%
+        \label{sfig:${4/\.\w+//}}
+    \end{subfigure}%
+    \caption{}%
+    %\label{fig:main_label}%
+\end{figure}
 endsnippet
 
-snippet fts "Figure to subfigure" wA
+snippet fts "Figure to subfigure" bA
 \begin{figure}[ht]
 	\centering
+    \begin{subfigure}{.5\linewidth}
+        \centering
 `!p
 caption = re.search("caption{(.+)}", snip.v.text).group(1)
-file = re.search("textwidth\]{(.+)}", snip.v.text).group(1)
+file = re.search("linewidth\]{(.+)}", snip.v.text).group(1)
 if 'label' in snip.v.text:
 	label = re.search("label{(.+)}", snip.v.text).group(1)
-	snip.rv = "\subfloat[" + f"{caption}" "]{\includegraphics[width=0.45\textwidth]{" + f"{file}" + "}\label{s" + f"{label}" + "}}"
+	snip.rv = r'\includegraphics[width=0.9\linewidth]{' + f'{file}' + '}\n' + r'\caption{' + f'{caption}' + '}%\n' + r'\label{s' + f'{label}' + '}\n' + r'\end{subfigure}%'
 else:
-	snip.rv = "\subfloat[" + f"{caption}" "]{\includegraphics[width=0.45\textwidth]{" + f"{file}" + "}}"
+	snip.rv = r'\includegraphics[width=0.9\linewidth]{' + f'{file}' + '}\n' + r'\caption{' + f'{caption}' + '}%\n' +  r'\end{subfigure}%'
 `
-	\qquad
-	\subfloat[${4:Caption2}]{\includegraphics[width=0.45\textwidth]{${2:File2}}\label{sfig:${2/\.\w+//}}}
-	\caption{}%
-\end{figure}$0
+    \begin{subfigure}{.5\linewidth}
+        \centering
+        \includegraphics[width=0.9\linewidth]{${1:File1}}
+        \caption{${2:Caption1}}%
+        \label{sfig:${1/\.\w+//}}
+    \end{subfigure}%
+    \caption{}%
+    %\label{fig:main_label}%
+\end{figure}
 endsnippet
 
 # ----------------------------- List environments ---------------------------- #
@@ -200,11 +258,11 @@ snippet ta "Individual task" b
 \task $0
 endsnippet
 
-snippet itt "Item to Task" b
+snippet itt "Item to Task" bA
 `!p snip.rv = snip.v.text.strip().replace(r"\item", r"\task")`$0
 endsnippet
 
-snippet nosep "noitemsep" w
+snippet nosep "noitemsep" i
 [noitemsep]$0
 endsnippet
 
@@ -299,7 +357,7 @@ endsnippet
 
 # ----------------------------------- Misc ----------------------------------- #
 
-snippet % "Escaped %" iA
+snippet '(?<!\\)%' "Escaped %" rA
 \%
 endsnippet
 
@@ -314,3 +372,5 @@ endsnippet
 snippet Eg "E.g.," w
 E.g.,
 endsnippet
+
+# vim:ft=snippets:
