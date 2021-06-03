@@ -13,7 +13,7 @@ function! LightlineFilename()
       let fname = filename =~# 'NERD_tree' ? '' :
                         \ filename ==# '[Plugins]' ? '' :
                         \ filename !=# '' ? filename : '[No Name]'
-      let icon = (strlen(&filetype) ? WebDevIconsGetFileTypeSymbol() . ' ' : '')
+      let icon = winwidth(0) > 70 ? (strlen(&filetype) ? WebDevIconsGetFileTypeSymbol() . ' ' : '') : ''
       let modified = &modified ? ' ' : ''
       return icon . fname . modified
 endfunction
@@ -27,15 +27,23 @@ function! LightLineMode()
       return fname =~ 'NERD_tree' ? 'NERDTree' :
                         \ fname ==# '[Plugins]' ? 'Plug' :
                         \ &filetype =~ 'startify' ? 'Startify' :
-                        \ winwidth(0) > 60 ? lightline#mode() : ''
+                        \ lightline#mode()
 endfunction
 
 function! LightlineFileformat()
-      return winwidth(0) > 70 ? &fileformat : ''
+      return winwidth(0) > 70 ? &fileformat : WebDevIconsGetFileFormatSymbol()
 endfunction
 
 function! LightlineWordCount()
       return &filetype =~# '\v(tex|markdown)' ? wordcount().words . ' Words' : ''
+endfunction
+
+function! LightlinePercent()
+      return winwidth(0) > 70 ? '☰ ' . (100 * line('.') / line('$')) . '%' : ''
+endfunction
+
+function! LightlineLineInfo()
+      return winwidth(0) > 70 ? printf(' %d:%-2d', line('.'), col('.')) : ''
 endfunction
 
 let g:lightline = {
@@ -43,20 +51,24 @@ let g:lightline = {
                   \ 'colorscheme': 'ayu_dark',
                   \ 'active': {
                   \   'left': [ [ 'mode' ],
-                  \             [ 'readonly', 'filename', 'fileformat'] ],
+                  \             [ 'readonly', 'filename', 'fileformat' ] ],
                   \   'right': [ [ 'lineinfo' ],
-                  \              [ 'percent' ], ['spell', 'wordcount'] ]
+                  \                 [ 'spell', 'wordcount', 'percent' ] ]
+                  \ },
+                  \ 'inactive': {
+                  \   'left': [ [ 'mode' ],
+                  \             [ 'readonly', 'filename', 'fileformat' ] ],
+                  \   'right': [ [ 'lineinfo' ],
+                  \                 [ 'spell', 'wordcount', 'percent' ] ]
                   \ },
                   \ 'component_function': {
-                  \   'filename': 'LightlineFilename',
-                  \   'fileformat': 'LightlineFileformat',
-                  \   'readonly': 'LightlineReadonly',
                   \   'mode': 'LightLineMode',
+                  \   'filename': 'LightlineFilename',
+                  \   'readonly': 'LightlineReadonly',
+                  \   'fileformat': 'LightlineFileformat',
+                  \   'percent': 'LightlinePercent',
+                  \   'lineinfo': 'LightlineLineInfo',
                   \   'wordcount': 'LightlineWordCount',
-                  \ },
-                  \ 'component': {
-                  \   'lineinfo': ' %3l:%-2v%<',
-                  \   'percent': '☰ %3p%%',
                   \ },
                   \ 'separator': {
                   \   'left': '',

@@ -1,8 +1,8 @@
 " List recently modified files in a directory
 " https://github.com/mhinz/vim-startify/issues/445
 " https://github.com/mhinz/vim-startify/blob/master/autoload/startify.vim : lines 713-718
-" usage (add to g:startify_lists): \ { 'type': function('s:list_files', [<number of files to be shown>, '<directory>', '<glob for file type>']),
-" 'header': ['   <Header>']    },
+" usage (add to g:startify_lists): \ { 'type': function('s:list_files', [<number of files to be shown>, '<directory>', '<glob for file type>']), 'header': ['   <Header>']    },
+
 let s:max_files_amount=100
 function! s:list_files(...) abort
     let l:file_amount = get(a:, 1, s:max_files_amount)
@@ -35,7 +35,7 @@ let g:startify_lists=[
             \ { 'type': 'bookmarks', 'header': ['   Bookmarks'] },
             \ { 'type': 'files', 'header': ['   Recent Files']  },
             \ { 'type': function('s:list_files', [5, '~\Documents\LaTeX\', '**/*.tex']), 'header': ['   LaTeX']    },
-            \ { 'type': function('s:list_files', [5, "D:/Neel's Folder/Dev/Python/", '**/*.py']), 'header': ['   Python']    },
+            \ { 'type': function('s:list_files', [5, 'D:\My Folder\Dev\Python\', '**/*.py']), 'header': ['   Python']    },
             \ { 'type': 'dir', 'header': ['   Current Directory '. getcwd()] },
             \ ]
 
