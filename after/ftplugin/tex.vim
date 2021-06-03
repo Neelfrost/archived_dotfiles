@@ -1,3 +1,11 @@
+" ---------------------------------- Options --------------------------------- "
+
+set spell
+set linebreak
+set wrap
+
+" --------------------------------- Functions -------------------------------- "
+
 " Auto insert \item on <CR>
 " https://stackoverflow.com/questions/2547739/auto-insert-text-at-a-newline-in-vim
 function! AutoItem()

@@ -7,31 +7,30 @@
 " ---------------------------------- Options --------------------------------- "
 
 syntax on
-filetype plugin on
-set encoding=utf-8
-set fileencoding=utf-8
-set spell spelllang=en_us
-set shiftwidth=4
-set tabstop=4
-set softtabstop=4
-set expandtab
+filetype plugin indent on
+
+set encoding=utf-8     " File encoding
+set fileencoding=utf-8 " File encoding
+set spelllang=en_us    " Use en_us to spellcheck
+set shiftwidth=4       " Number of auto-indent spaces
+set tabstop=4          " Number of columns per tab
+set softtabstop=4      " Number of spaces per Tab
+set expandtab          " Use spaces instead of tabs
+set autoindent         " Auto-indent new lines
+set smartindent        " Enable smart-indent
+set number             " Show line numbers
+set relativenumber     " Enable relative line numbers
+set smartcase          " Enable smart-case search
+set ignorecase         " Always case-insensitive
+set incsearch          " Searches for strings incrementally
 set scrolloff=8
-set background=dark
-set fillchars=eob:—
 set laststatus=2
-set mouse=nv
-set autoindent
-set hidden
-set ignorecase
-set incsearch
-set linebreak
-set noshowmode
-set number
-set relativenumber
-set smartcase
-set smartindent
-set termguicolors
-set wrap
+set mouse=nv           " Enable mouse for normal and visual modes
+set hidden             " Enable moving between unsaved buffers
+set background=dark    " Enable dark background colorschemes
+set fillchars=eob:—    " Replace ~ at buffer end with —
+set noshowmode         " Disable secondary mode bar
+set termguicolors      " Enable 24bit colors in terminal
 
 " Ignore LaTeX aux files
 set wildignore+=*.aux,*.lof,*.log,*.lot,*.fls,*.out,*.toc,*.fmt,*.fot,*.cb,*.cb2,.*.lb,__latex*,*.fdb_latexmk,*.synctex,*.synctex(busy),*.synctex.gz,*.synctex.gz(busy),*.pdfsync,*.bbl,*.bcf,*.blg,*-blx.aux,*-blx.bib,*.run.xml
@@ -48,7 +47,9 @@ autocmd BufEnter * silent! lcd %:p:h
 " ---------------------------------- Plugins --------------------------------- "
 
 call plug#begin(stdpath('data').'\plugin')
+
 " ----------------------------------- Style ---------------------------------- "
+
 Plug 'romgrk/barbar.nvim'
 Plug 'gruvbox-community/gruvbox'
 Plug 'lukas-reineke/indent-blankline.nvim', {'branch': 'lua'}
@@ -58,16 +59,20 @@ Plug 'kyazdani42/nvim-web-devicons'
 Plug 'luochen1990/rainbow'
 Plug 'ryanoasis/vim-devicons'
 Plug 'machakann/vim-highlightedyank'
-Plug 'sonph/onehalf', {'rtp': 'vim'}
-" Plug 'Yggdroot/indentLine'
+Plug 'Neelfrost/onehalf'
+Plug 'lilydjwg/colorizer'
 " Plug 'vim-airline/vim-airline'
 " Plug 'vim-airline/vim-airline-themes'
+
 " --------------------------------- Language --------------------------------- "
+
 Plug 'psf/black', {'branch': 'stable', 'for': 'python'}
 Plug 'zchee/deoplete-jedi', {'for': 'python'}
 Plug 'davidhalter/jedi-vim', {'for': 'python'}
 Plug 'lervag/vimtex'
+
 " --------------------------------- Features --------------------------------- "
+
 Plug 'skywind3000/asyncrun.extra'
 Plug 'skywind3000/asyncrun.vim'
 Plug 'jiangmiao/auto-pairs'
@@ -83,9 +88,9 @@ Plug 'honza/vim-snippets'
 Plug 'mhinz/vim-startify'
 Plug 'tpope/vim-surround'
 Plug 'christoomey/vim-titlecase'
-Plug 'mg979/vim-visual-multi', {'branch': 'master'}
 Plug 'kevinhwang91/nvim-bqf'
 Plug 'ctrlpvim/ctrlp.vim'
+Plug 'junegunn/vim-easy-align'
 call plug#end()
 
 " --------------------------------- Settings --------------------------------- "
@@ -119,6 +124,7 @@ endif
 let g:highlightedyank_highlight_duration=1000
 
 " Ultisnips config
+let g:UltiSnipsEnableSnipMate=0
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<S-tab>"

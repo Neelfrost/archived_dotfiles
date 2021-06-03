@@ -21,5 +21,5 @@ augroup END
 " Set window title
 augroup dirchange
     autocmd!
-    autocmd BufEnter * :set title | let &titlestring = expand('%') . ''
+    autocmd BufEnter * :set title | let &titlestring = expand('%')
 augroup END
