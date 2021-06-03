@@ -1,0 +1,68 @@
+snippet gvar "global / configuration variable" b
+if !exists("g:${1:MyUltraImportantVar}")
+let g:$1 = ${2:"${3:<tab>}"}
+endif
+endsnippet
+
+snippet guard "script reload guard" b
+if exists('${1:did_`!p snip.rv = snip.fn.replace('.','_')`}') || &cp${2: || version < 700}
+finish
+endif
+let $1 = 1$3
+endsnippet
+
+snippet func! "function" b
+function! ${1:function_name}($2)
+	${3:" code}
+endfunction
+endsnippet
+
+snippet au "augroup ... autocmd block" b
+augroup ${1:AU_NAME}
+	autocmd!
+	autocmd ${2:BufRead,BufNewFile} ${3:*.ext,*.ext3|<buffer[=N]>} ${0}
+augroup END
+endsnippet
+
+snippet tryc "try ... catch statement" b
+try
+	${1:${VISUAL}}
+catch ${2}
+	${0}
+endtry
+endsnippet
+
+snippet for "for ... in loop" b
+for ${1} in ${2}
+	${0:${VISUAL}}
+endfor
+endsnippet
+
+snippet forkv "for [key, value] in loop" b
+for [${1},${2}] in items(${3})
+	${0}
+	unlet $1 $2
+endfor
+endsnippet
+
+snippet wh "while loop" b
+while ${1}
+	${0:${VISUAL}}
+endw
+endsnippet
+
+snippet if "if statement" b
+if ${1}
+	${0:${VISUAL}}
+endif
+endsnippet
+
+snippet ife "if ... else statement" b
+if ${1}
+	${2:${VISUAL}}
+else
+	${0}
+endif
+endsnippet
+
+# vim:ft=snippets:
