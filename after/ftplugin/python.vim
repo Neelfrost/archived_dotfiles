@@ -9,10 +9,10 @@ setlocal textwidth=119
 autocmd BufWritePre *.py execute 'silent :Black'
 
 " Black config
-let g:black_linelength=119
+let g:black_linelength = 119
 
 " Use deoplete-jedi's completion
-let g:jedi#completions_enabled=0
+let g:jedi#completions_enabled = 0
 
 " --------------------------------- Keybinds --------------------------------- "
 

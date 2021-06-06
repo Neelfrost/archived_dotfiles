@@ -37,10 +37,10 @@ set lazyredraw
 set wildignore+=*.aux,*.lof,*.lot,*.fls,*.out,*.toc,*.fmt,*.fot,*.cb,*.cb2,.*.lb,__latex*,*.fdb_latexmk,*.synctex,*.synctex(busy),*.synctex.gz,*.synctex.gz(busy),*.pdfsync,*.bbl,*.bcf,*.blg,*-blx.aux,*-blx.bib,*.run.xml
 
 " Python path
-let g:python3_host_prog="C:\\Program Files\\Python39\\python.exe"
+let g:python3_host_prog = "C:\\Program Files\\Python39\\python.exe"
 
 " Polyglot
-let g:polyglot_disabled=['sensible', 'ftdetect']
+let g:polyglot_disabled = ['sensible', 'ftdetect']
 
 " Set file's dir to cwd
 autocmd BufEnter * silent! lcd %:p:h
@@ -129,32 +129,32 @@ endif
 " ------------------------------ Plugin Settings ----------------------------- "
 
 " Highlight yank for 1s
-let g:highlightedyank_highlight_duration=1000
+let g:highlightedyank_highlight_duration = 1000
 
 " Ultisnips config
-let g:UltiSnipsEnableSnipMate=0
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<tab>"
-let g:UltiSnipsJumpBackwardTrigger="<S-tab>"
+let g:UltiSnipsEnableSnipMate = 0
+let g:UltiSnipsExpandTrigger = "<tab>"
+let g:UltiSnipsJumpForwardTrigger = "<tab>"
+let g:UltiSnipsJumpBackwardTrigger = "<S-tab>"
 
 " Gutentags config
-let g:gutentags_generate_on_new=1
-let g:gutentags_generate_on_missing=1
-let g:gutentags_generate_on_write=1
-let g:gutentags_generate_on_empty_buffer=0
+let g:gutentags_generate_on_new = 1
+let g:gutentags_generate_on_missing = 1
+let g:gutentags_generate_on_write = 1
+let g:gutentags_generate_on_empty_buffer = 0
 
 " Autopairs config
-let g:AutoPairsShortcutJump="<C-l>"
+let g:AutoPairsShortcutJump = "<C-l>"
 
 " indent-blankline, indentLine config
 let g:indent_blankline_filetype_exclude = ['help', 'vim', 'startify', 'nerdtree']
-let g:indent_blankline_char='▏'
-let g:indent_blankline_show_trailing_blankline_indent=v:false
+let g:indent_blankline_char = '▏'
+let g:indent_blankline_show_trailing_blankline_indent = v:false
 
 " Enable devicons
-let g:webdevicons_enable=1
-let g:webdevicons_conceal_nerdtree_brackets=1
-let g:DevIconsEnableFoldersOpenClose=1
+let g:webdevicons_enable = 1
+let g:webdevicons_conceal_nerdtree_brackets = 1
+let g:DevIconsEnableFoldersOpenClose = 1
 
 " Comments
 nnoremap <silent> <C-/> :Commentary<CR>
@@ -167,15 +167,15 @@ nnoremap <silent> <leader>pu :PlugUpdate<CR>
 
 " louchen rainbow config
 autocmd BufEnter * :silent RainbowToggleOn
-let g:rainbow_conf={
+let g:rainbow_conf = {
             \   'separately': {
             \       'nerdtree': 0,
             \   },
-            \}
+            \   }
 
 " Vim-Autoformat
-let g:autoformat_autoindent=0
-let g:autoformat_retab=0
-let g:autoformat_remove_trailing_spaces=0
+let g:autoformat_autoindent = 0
+let g:autoformat_retab = 0
+let g:autoformat_remove_trailing_spaces = 0
 let g:formatdef_latexindent = '"latexindent.exe -"'
-let g:autoformat_verbosemode=1
+let g:autoformat_verbosemode = 1

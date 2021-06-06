@@ -1,5 +1,5 @@
 " Enable
-let g:deoplete#enable_at_startup=1
+let g:deoplete#enable_at_startup = 1
 
 " Deoplete vimtex config
 call deoplete#custom#var('omni', 'input_patterns', {

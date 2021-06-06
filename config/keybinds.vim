@@ -1,12 +1,12 @@
 " Trim trailing whitespace
-fun! TrimWhitespace()
+function! TrimWhitespace()
     let l:save=winsaveview()
     keeppatterns %s/^\n*\%$//e " removes trailing space
     keeppatterns %s/\s\+$//e " removes trailing lines
     keeppatterns %s/\\item$/\\item /e " do not remove trailing space after LaTeX \item 
     keeppatterns %s/\\task$/\\task /e " do not remove trailing space after LaTeX \task 
     call winrestview(l:save)
-endfun
+endfunction
 
 nnoremap <silent> <C-s> :call TrimWhitespace()<CR><Esc>:w!<CR>
 
@@ -26,6 +26,8 @@ nnoremap <leader><leader>f :find<Space>
 
 " Format entire document
 nnoremap <C-f> gg=G<C-o>zt<Esc>
+" Format variable assigment
+nnoremap <leader>= :%s/^\(let\)\s*\(\S\+\)\s*=\s*\(.\+\)/\1 \2 = \3/e<CR>:noh<CR>
 
 " Remove highlight
 nnoremap <silent> <leader>h :nohl<CR>

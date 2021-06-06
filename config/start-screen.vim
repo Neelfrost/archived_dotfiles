@@ -3,7 +3,7 @@
 " https://github.com/mhinz/vim-startify/blob/master/autoload/startify.vim : lines 713-718
 " usage (add to g:startify_lists): \ { 'type': function('s:list_files', [<number of files to be shown>, '<directory>', '<glob for file type>']), 'header': ['   <Header>']    },
 
-let s:max_files_amount=100
+let s:max_files_amount = 100
 function! s:list_files(...) abort
     let l:file_amount = get(a:, 1, s:max_files_amount)
     " Ensure boundries 0 < v <= max
@@ -30,37 +30,37 @@ function! StartifyEntryFormat() abort
     return 'WebDevIconsGetFileTypeSymbol(absolute_path) ." ". entry_path'
 endfunction
 
-let g:startify_lists=[
-            \ { 'type': 'sessions', 'header': ['    Sessions'] },
-            \ { 'type': 'bookmarks', 'header': ['   Bookmarks'] },
-            \ { 'type': 'files', 'header': ['   Recent Files']  },
-            \ { 'type': function('s:list_files', [5, '~\Documents\LaTeX\', '**/*.tex']), 'header': ['   LaTeX']    },
-            \ { 'type': function('s:list_files', [5, 'D:\My Folder\Dev\Python\', '**/*.py']), 'header': ['   Python']    },
-            \ { 'type': 'dir', 'header': ['   Current Directory '. getcwd()] },
-            \ ]
+let g:startify_lists = [
+            \   { 'type': 'sessions', 'header': ['    Sessions'] },
+            \   { 'type': 'bookmarks', 'header': ['   Bookmarks'] },
+            \   { 'type': 'files', 'header': ['   Recent Files']  },
+            \   { 'type': function('s:list_files', [5, '~\Documents\LaTeX\', '**/*.tex']), 'header': ['   LaTeX']    },
+            \   { 'type': function('s:list_files', [5, 'D:\My Folder\Dev\Python\', '**/*.py']), 'header': ['   Python']    },
+            \   { 'type': 'dir', 'header': ['   Current Directory '. getcwd()] },
+            \   ]
 
-let g:startify_bookmarks=[
-            \ '~\AppData\Local\nvim\init.vim',
-            \ '~\AppData\Local\nvim\config\keybinds.vim',
-            \ '~\AppData\Local\nvim\after\ftplugin\tex.vim',
-            \ '~\AppData\Local\nvim\ultisnips\tex.snippets',
-            \ '~\AppData\Local\nvim\ultisnips\texmath.snippets'
-            \ ]
+let g:startify_bookmarks = [
+            \   '~\AppData\Local\nvim\init.vim',
+            \   '~\AppData\Local\nvim\config\keybinds.vim',
+            \   '~\AppData\Local\nvim\after\ftplugin\tex.vim',
+            \   '~\AppData\Local\nvim\ultisnips\tex.snippets',
+            \   '~\AppData\Local\nvim\ultisnips\texmath.snippets'
+            \   ]
 
-let g:custom_header=[
-            \ '    ███╗   ██╗███████╗ ██████╗ ██╗   ██╗██╗███╗   ███╗',
-            \ '    ████╗  ██║██╔════╝██╔═══██╗██║   ██║██║████╗ ████║',
-            \ '    ██╔██╗ ██║█████╗  ██║   ██║██║   ██║██║██╔████╔██║',
-            \ '    ██║╚██╗██║██╔══╝  ██║   ██║╚██╗ ██╔╝██║██║╚██╔╝██║',
-            \ '    ██║ ╚████║███████╗╚██████╔╝ ╚████╔╝ ██║██║ ╚═╝ ██║',
-            \ '    ╚═╝  ╚═══╝╚══════╝ ╚═════╝   ╚═══╝  ╚═╝╚═╝     ╚═╝',
-            \]
-let g:startify_custom_header=g:custom_header
+let g:custom_header = [
+            \   '    ███╗   ██╗███████╗ ██████╗ ██╗   ██╗██╗███╗   ███╗',
+            \   '    ████╗  ██║██╔════╝██╔═══██╗██║   ██║██║████╗ ████║',
+            \   '    ██╔██╗ ██║█████╗  ██║   ██║██║   ██║██║██╔████╔██║',
+            \   '    ██║╚██╗██║██╔══╝  ██║   ██║╚██╗ ██╔╝██║██║╚██╔╝██║',
+            \   '    ██║ ╚████║███████╗╚██████╔╝ ╚████╔╝ ██║██║ ╚═╝ ██║',
+            \   '    ╚═╝  ╚═══╝╚══════╝ ╚═════╝   ╚═══╝  ╚═╝╚═╝     ╚═╝',
+            \   ]
+let g:startify_custom_header = g:custom_header
 
 " Sort wrt to modified
-let g:startify_session_sort=1
+let g:startify_session_sort = 1
 " Number of files to be displayed
-let g:startify_files_number=5
+let g:startify_files_number = 5
 
 " --------------------------------- Keybinds --------------------------------- "
 

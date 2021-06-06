@@ -47,35 +47,35 @@ function! LightlineLineInfo()
 endfunction
 
 let g:lightline = {
-                  \ 'enable': { 'tabline': 0 },
-                  \ 'colorscheme': 'ayu_dark',
-                  \ 'active': {
-                  \   'left': [ [ 'mode' ],
-                  \             [ 'readonly', 'filename', 'fileformat' ] ],
-                  \   'right': [ [ 'lineinfo' ],
-                  \                 [ 'spell', 'wordcount', 'percent' ] ]
-                  \ },
-                  \ 'inactive': {
-                  \   'left': [ [ 'mode' ],
-                  \             [ 'readonly', 'filename', 'fileformat' ] ],
-                  \   'right': [ [ 'lineinfo' ],
-                  \                 [ 'spell', 'wordcount', 'percent' ] ]
-                  \ },
-                  \ 'component_function': {
-                  \   'mode': 'LightLineMode',
-                  \   'filename': 'LightlineFilename',
-                  \   'readonly': 'LightlineReadonly',
-                  \   'fileformat': 'LightlineFileformat',
-                  \   'percent': 'LightlinePercent',
-                  \   'lineinfo': 'LightlineLineInfo',
-                  \   'wordcount': 'LightlineWordCount',
-                  \ },
-                  \ 'separator': {
-                  \   'left': '',
-                  \   'right': ''
-                  \ },
-                  \ 'subseparator': {
-                  \   'left': '',
-                  \   'right': ''
-                  \ }
-                  \ }
+                  \   'enable': { 'tabline': 0 },
+                  \   'colorscheme': 'ayu_dark',
+                  \   'active': {
+                  \     'left': [ [ 'mode' ],
+                  \               [ 'readonly', 'filename', 'fileformat' ] ],
+                  \     'right': [ [ 'lineinfo' ],
+                  \                   [ 'spell', 'wordcount', 'percent' ] ]
+                  \   },
+                  \   'inactive': {
+                  \     'left': [ [ 'mode' ],
+                  \               [ 'readonly', 'filename', 'fileformat' ] ],
+                  \     'right': [ [ 'lineinfo' ],
+                  \                   [ 'spell', 'wordcount', 'percent' ] ]
+                  \   },
+                  \   'component_function': {
+                  \     'mode': 'LightLineMode',
+                  \     'filename': 'LightlineFilename',
+                  \     'readonly': 'LightlineReadonly',
+                  \     'fileformat': 'LightlineFileformat',
+                  \     'percent': 'LightlinePercent',
+                  \     'lineinfo': 'LightlineLineInfo',
+                  \     'wordcount': 'LightlineWordCount',
+                  \   },
+                  \   'separator': {
+                  \     'left': '',
+                  \     'right': ''
+                  \   },
+                  \   'subseparator': {
+                  \     'left': '',
+                  \     'right': ''
+                  \   }
+                  \   }

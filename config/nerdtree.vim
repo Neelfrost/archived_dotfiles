@@ -8,13 +8,13 @@ function NERDTreeToggleAndRefresh()
     endif
 endfunction
 
-let g:NERDTreeDirArrowCollapsible='▼'
-let g:NERDTreeDirArrowExpandable='►'
-let g:NERDTreeMinimalUI=1
-let NERDTreeQuitOnOpen=1
-let NERDTreeRespectWildIgnore=1
-let NERDTreeWinPos='right'
-let NERDTreeWinSize=24
+let g:NERDTreeDirArrowCollapsible = '▼'
+let g:NERDTreeDirArrowExpandable = '►'
+let g:NERDTreeMinimalUI = 1
+let NERDTreeQuitOnOpen = 1
+let NERDTreeRespectWildIgnore = 1
+let NERDTreeWinPos = 'right'
+let NERDTreeWinSize = 24
 
 " --------------------------------- Keybinds --------------------------------- "
 
