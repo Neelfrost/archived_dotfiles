@@ -1,8 +1,11 @@
 " ---------------------------------- Options --------------------------------- "
 
-set spell
-set linebreak
-set wrap
+setlocal spell
+setlocal linebreak
+setlocal wrap
+
+" let g:indent_blankline_space_char='◦'
+" let g:indent_blankline_char='◦'
 
 " --------------------------------- Functions -------------------------------- "
 
@@ -49,18 +52,33 @@ augroup vimtex_common
 augroup END
 
 " Replace \ with / in LaTex input fields
-fun! FixInputs()
+function! FixInputs()
     let l:save = winsaveview()
     keeppatterns %s/\(input\|include\)\({.\+\)\\\(.\+}\)/\1\2\/\3/ge "
     call winrestview(l:save)
-endfun
+endfunction
 
 autocmd BufWritePre <buffer> :call FixInputs()
+
+function! SetIndentLine()
+    let g:indent_blankline_char='◦'
+    let g:indent_blankline_space_char='◦'
+endfunction
+
+function! ResetIndentLine()
+    let g:indent_blankline_char='▏'
+    let g:indent_blankline_space_char=' '
+endfunction
+
+autocmd BufEnter *.tex :call SetIndentLine()
+autocmd BufLeave * :call ResetIndentLine()
 
 " --------------------------------- Keybinds --------------------------------- "
 
 " Vimtex Toggle Compile
 nnoremap <F6> :w!<CR>:VimtexCompile<CR>
+" Vim-autoformat latexindent
+nnoremap <F4> :Autoformat<CR>
 
 " Push to next item of the list
 nnoremap <Insert> i<CR>\item <Esc>

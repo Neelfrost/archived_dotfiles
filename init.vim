@@ -31,9 +31,10 @@ set background=dark    " Enable dark background colorschemes
 set fillchars=eob:—    " Replace ~ at buffer end with —
 set noshowmode         " Disable secondary mode bar
 set termguicolors      " Enable 24bit colors in terminal
+set lazyredraw
 
 " Ignore LaTeX aux files
-set wildignore+=*.aux,*.lof,*.log,*.lot,*.fls,*.out,*.toc,*.fmt,*.fot,*.cb,*.cb2,.*.lb,__latex*,*.fdb_latexmk,*.synctex,*.synctex(busy),*.synctex.gz,*.synctex.gz(busy),*.pdfsync,*.bbl,*.bcf,*.blg,*-blx.aux,*-blx.bib,*.run.xml
+set wildignore+=*.aux,*.lof,*.lot,*.fls,*.out,*.toc,*.fmt,*.fot,*.cb,*.cb2,.*.lb,__latex*,*.fdb_latexmk,*.synctex,*.synctex(busy),*.synctex.gz,*.synctex.gz(busy),*.pdfsync,*.bbl,*.bcf,*.blg,*-blx.aux,*-blx.bib,*.run.xml
 
 " Python path
 let g:python3_host_prog="C:\\Program Files\\Python39\\python.exe"
@@ -51,7 +52,6 @@ call plug#begin(stdpath('data').'\plugin')
 " ----------------------------------- Style ---------------------------------- "
 
 Plug 'romgrk/barbar.nvim'
-Plug 'gruvbox-community/gruvbox'
 Plug 'lukas-reineke/indent-blankline.nvim', {'branch': 'lua'}
 Plug 'itchyny/lightline.vim'
 Plug 'preservim/nerdtree', {'on': 'NERDTreeToggle'}
@@ -61,6 +61,8 @@ Plug 'ryanoasis/vim-devicons'
 Plug 'machakann/vim-highlightedyank'
 Plug 'Neelfrost/onehalf'
 Plug 'lilydjwg/colorizer'
+Plug 'sainnhe/gruvbox-material'
+" Plug 'gruvbox-community/gruvbox'
 " Plug 'vim-airline/vim-airline'
 " Plug 'vim-airline/vim-airline-themes'
 
@@ -69,6 +71,7 @@ Plug 'lilydjwg/colorizer'
 Plug 'psf/black', {'branch': 'stable', 'for': 'python'}
 Plug 'zchee/deoplete-jedi', {'for': 'python'}
 Plug 'davidhalter/jedi-vim', {'for': 'python'}
+" Plug 'python-rope/ropevim', {'for': 'python'}
 Plug 'lervag/vimtex'
 
 " --------------------------------- Features --------------------------------- "
@@ -77,7 +80,6 @@ Plug 'skywind3000/asyncrun.extra'
 Plug 'skywind3000/asyncrun.vim'
 Plug 'jiangmiao/auto-pairs'
 Plug 'Shougo/deoplete.nvim', {'do': ':UpdateRemotePlugins'}
-Plug 'neomake/neomake'
 Plug 'SirVer/ultisnips'
 Plug 'tpope/vim-commentary'
 Plug 'easymotion/vim-easymotion'
@@ -91,10 +93,16 @@ Plug 'christoomey/vim-titlecase'
 Plug 'kevinhwang91/nvim-bqf'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'junegunn/vim-easy-align'
+Plug 'vim-autoformat/vim-autoformat'
+Plug 'inkarkat/vim-ingo-library'
+Plug 'inkarkat/vim-SpellCheck'
+Plug 'dense-analysis/ale'
 call plug#end()
 
 " --------------------------------- Settings --------------------------------- "
 
+" Ale
+source ~\AppData\Local\nvim\config\ale.vim
 " Startify
 source ~\AppData\Local\nvim\config\start-screen.vim
 " Deoplete
@@ -129,10 +137,6 @@ let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<S-tab>"
 
-" Neomake config
-call neomake#configure#automake('w')
-let g:neomake_python_enabled_makers=['flake8']
-
 " Gutentags config
 let g:gutentags_generate_on_new=1
 let g:gutentags_generate_on_missing=1
@@ -143,9 +147,8 @@ let g:gutentags_generate_on_empty_buffer=0
 let g:AutoPairsShortcutJump="<C-l>"
 
 " indent-blankline, indentLine config
-let g:indent_blankline_filetype_exclude = ['help', 'vim', 'tex']
-" let g:indent_blankline_char='▏'
-let g:indent_blankline_char='┊'
+let g:indent_blankline_filetype_exclude = ['help', 'vim', 'startify', 'nerdtree']
+let g:indent_blankline_char='▏'
 let g:indent_blankline_show_trailing_blankline_indent=v:false
 
 " Enable devicons
@@ -163,10 +166,16 @@ nnoremap <silent> <leader>pc :PlugClean<CR>
 nnoremap <silent> <leader>pu :PlugUpdate<CR>
 
 " louchen rainbow config
-let g:rainbow_active=1
+autocmd BufEnter * :silent RainbowToggleOn
 let g:rainbow_conf={
             \   'separately': {
             \       'nerdtree': 0,
             \   },
             \}
 
+" Vim-Autoformat
+let g:autoformat_autoindent=0
+let g:autoformat_retab=0
+let g:autoformat_remove_trailing_spaces=0
+let g:formatdef_latexindent = '"latexindent.exe -"'
+let g:autoformat_verbosemode=1
