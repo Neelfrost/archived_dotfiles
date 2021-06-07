@@ -50,7 +50,7 @@ let g:lightline = {
                   \   'enable': { 'tabline': 0 },
                   \   'colorscheme': 'ayu_dark',
                   \   'active': {
-                  \     'left': [ [ 'mode' ],
+                  \     'left': [ [ 'mode', 'paste' ],
                   \               [ 'readonly', 'filename', 'fileformat' ] ],
                   \     'right': [ [ 'lineinfo' ],
                   \                   [ 'spell', 'wordcount', 'percent' ] ]
