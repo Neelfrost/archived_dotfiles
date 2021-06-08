@@ -11,6 +11,7 @@
 function! LightlineFilename()
       let filename = expand('%:t')
       let fname = filename =~# 'NERD_tree' ? '' :
+                        \ filename =~# 'NvimTree' ? '' :
                         \ filename ==# '[Plugins]' ? '' :
                         \ filename !=# '' ? filename : '[No Name]'
       let icon = winwidth(0) > 70 ? (strlen(&filetype) ? WebDevIconsGetFileTypeSymbol() . ' ' : '') : ''
@@ -25,6 +26,7 @@ endfunction
 function! LightLineMode()
       let fname = expand('%:t')
       return fname =~ 'NERD_tree' ? 'NERDTree' :
+                        \ fname =~# 'NvimTree' ? 'NvimTree' :
                         \ fname ==# '[Plugins]' ? 'Plug' :
                         \ &filetype =~ 'startify' ? 'Startify' :
                         \ lightline#mode()

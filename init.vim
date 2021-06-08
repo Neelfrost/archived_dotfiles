@@ -56,7 +56,6 @@ call plug#begin(stdpath('data').'\plugin')
 Plug 'romgrk/barbar.nvim'
 Plug 'lukas-reineke/indent-blankline.nvim', {'branch': 'lua'}
 Plug 'itchyny/lightline.vim'
-Plug 'preservim/nerdtree', {'on': 'NERDTreeToggle'}
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'luochen1990/rainbow'
 Plug 'ryanoasis/vim-devicons'
@@ -64,6 +63,8 @@ Plug 'machakann/vim-highlightedyank'
 Plug 'Neelfrost/onehalf'
 Plug 'lilydjwg/colorizer'
 Plug 'sainnhe/gruvbox-material'
+Plug 'kyazdani42/nvim-tree.lua'
+" Plug 'preservim/nerdtree', {'on': 'NERDTreeToggle'}
 " Plug 'gruvbox-community/gruvbox'
 " Plug 'vim-airline/vim-airline'
 " Plug 'vim-airline/vim-airline-themes'
@@ -109,14 +110,14 @@ source ~\AppData\Local\nvim\config\ale.vim
 source ~\AppData\Local\nvim\config\start-screen.vim
 " Deoplete
 source ~\AppData\Local\nvim\config\deoplete.vim
-" NERDTree
-source ~\AppData\Local\nvim\config\nerdtree.vim
+" Nvim-tree
+source ~\AppData\Local\nvim\config\nvim-tree.vim
 " Easy Motion
 source ~\AppData\Local\nvim\config\easymotion.vim
 " Statusline
 source ~\AppData\Local\nvim\config\statusline.vim
-" Tabline
-source ~\AppData\Local\nvim\config\tabline.vim
+" Bufferline
+source ~\AppData\Local\nvim\config\bufferline.vim
 " Theme
 source ~\AppData\Local\nvim\config\theme.vim
 " Keybinds
@@ -149,7 +150,7 @@ let g:gutentags_generate_on_empty_buffer = 0
 let g:AutoPairsShortcutJump = "<C-l>"
 
 " indent-blankline, indentLine config
-let g:indent_blankline_filetype_exclude = ['help', 'vim', 'startify', 'nerdtree']
+let g:indent_blankline_filetype_exclude = ['help', 'vim', 'startify', 'nerdtree', 'NvimTree']
 let g:indent_blankline_char = '▏'
 let g:indent_blankline_show_trailing_blankline_indent = v:false
 
