@@ -31,12 +31,12 @@ function! StartifyEntryFormat() abort
 endfunction
 
 let g:startify_lists = [
-            \   { 'type': 'sessions', 'header': ['    Sessions'] },
-            \   { 'type': 'bookmarks', 'header': ['   Bookmarks'] },
-            \   { 'type': 'files', 'header': ['   Recent Files']  },
-            \   { 'type': function('s:list_files', [5, '~\Documents\LaTeX\', '**/*.tex']), 'header': ['   LaTeX']    },
-            \   { 'type': function('s:list_files', [5, 'D:\My Folder\Dev\Python\', '**/*.py']), 'header': ['   Python']    },
-            \   { 'type': 'dir', 'header': ['   Current Directory '. getcwd()] },
+            \   { 'type': 'sessions', 'header': ['   ﮦ Sessions'] },
+            \   { 'type': 'bookmarks', 'header': ['    Bookmarks'] },
+            \   { 'type': 'files', 'header': ['    Recent Files']  },
+            \   { 'type': function('s:list_files', [5, '~\Documents\LaTeX\', '**/*.tex']), 'header': ['   ﭨ LaTeX']    },
+            \   { 'type': function('s:list_files', [5, 'D:\My Folder\Dev\Python\', '**/*.py']), 'header': ['    Python']    },
+            \   { 'type': 'dir', 'header': ['    Current Directory: '. getcwd()] },
             \   ]
 
 let g:startify_bookmarks = [
@@ -61,6 +61,10 @@ let g:startify_custom_header = g:custom_header
 let g:startify_session_sort = 1
 " Number of files to be displayed
 let g:startify_files_number = 5
+" Update session on close
+let g:startify_session_persistence = 0
+" Change dir when opening
+let g:startify_change_to_dir = 1
 
 " --------------------------------- Keybinds --------------------------------- "
 
