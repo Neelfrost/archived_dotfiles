@@ -2,7 +2,6 @@
 
 " Disable scrolloff
 setlocal nospell
-setlocal scrolloff=0
 setlocal textwidth=119
 
 " Format on save

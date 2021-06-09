@@ -61,9 +61,9 @@ Plug 'luochen1990/rainbow'
 Plug 'ryanoasis/vim-devicons'
 Plug 'machakann/vim-highlightedyank'
 Plug 'Neelfrost/onehalf'
-Plug 'lilydjwg/colorizer'
 Plug 'sainnhe/gruvbox-material'
 Plug 'kyazdani42/nvim-tree.lua'
+Plug 'norcalli/nvim-colorizer.lua'
 " Plug 'preservim/nerdtree', {'on': 'NERDTreeToggle'}
 " Plug 'gruvbox-community/gruvbox'
 " Plug 'vim-airline/vim-airline'
@@ -153,6 +153,7 @@ let g:AutoPairsShortcutJump = "<C-l>"
 let g:indent_blankline_filetype_exclude = ['help', 'vim', 'startify', 'nerdtree', 'NvimTree']
 let g:indent_blankline_char = '▏'
 let g:indent_blankline_show_trailing_blankline_indent = v:false
+let g:indent_blankline_show_first_indent_level = v:false
 
 " Enable devicons
 let g:webdevicons_enable = 1
