@@ -14,9 +14,16 @@ function! LightlineFilename()
                         \ filename =~# 'NvimTree' ? '' :
                         \ filename ==# '[Plugins]' ? '' :
                         \ filename !=# '' ? filename : '[No Name]'
-      let icon = winwidth(0) > 70 ? (strlen(&filetype) ? WebDevIconsGetFileTypeSymbol() . ' ' : '') : ''
-      let modified = &modified ? ' ' : ''
-      return icon . fname . modified
+      return LightlineFileIcon() . fname
+endfunction
+
+function! LightlineFileIcon()
+      let filename = expand('%:t')
+      let icon = filename ==# '[Plugins]' ? '' :
+                        \ filename =~# 'NERD_tree' ? '' :
+                        \ &filetype =~ 'startify' ? '' :
+                        \ winwidth(0) > 70 ? (strlen(&filetype) ? WebDevIconsGetFileTypeSymbol() . ' ' : '') : ''
+      return icon
 endfunction
 
 function! LightlineReadonly()
@@ -72,12 +79,12 @@ let g:lightline = {
                   \     'lineinfo': 'LightlineLineInfo',
                   \     'wordcount': 'LightlineWordCount',
                   \   },
-                  \   'separator': {
-                  \     'left': '',
-                  \     'right': ''
-                  \   },
-                  \   'subseparator': {
-                  \     'left': '',
-                  \     'right': ''
                   \   }
-                  \   }
+" \   'separator': {
+" \     'left': '',
+" \     'right': ''
+" \   },
+" \   'subseparator': {
+" \     'left': '',
+" \     'right': ''
+" \   }
