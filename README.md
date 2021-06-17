@@ -12,7 +12,7 @@ Just another visually appealing Neovim IDE. Currently supports LaTeX and Python.
 
 > Snippet and Completion Preview
 
-![snip_comp_preview](.assets\texpreview.gif "Config in Action")
+![snip_comp_preview](.assets/texpreview.gif "Config in Action")
 
 ---
 
