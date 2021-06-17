@@ -34,6 +34,10 @@ set termguicolors      " Enable 24bit colors in terminal
 set lazyredraw
 set pastetoggle=<F2>   " Toggle paste mode
 set nostartofline      " Do not move the cursor to the first non-blank char of the line
+set cursorline         " Enable highlighting of the current line
+set iskeyword+=-       " Treat dash separated words as a word text object"
+set updatetime=300     " Faster completion
+set pumheight=10
 
 " Ignore LaTeX aux files
 set wildignore+=*.aux,*.lof,*.lot,*.fls,*.out,*.toc,*.fmt,*.fot,*.cb,*.cb2,.*.lb,__latex*,*.fdb_latexmk,*.synctex,*.synctex(busy),*.synctex.gz,*.synctex.gz(busy),*.pdfsync,*.bbl,*.bcf,*.blg,*-blx.aux,*-blx.bib,*.run.xml
