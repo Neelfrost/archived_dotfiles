@@ -143,7 +143,7 @@ endsnippet
 # Trig, log functions
 context "math()"
 snippet '(?<!\\)(sin|cos|tan|cosec|sec|cot|ln|log|exp)' "Trig, log functions" wrA
-\\`!p snip.rv = match.group(1)``!p snip.rv = '' if re.search(r'\s*\(.+\)|\s*\[.+\]', t[1]) else ' '`$1
+\\`!p snip.rv = match.group(1) + ' '`
 endsnippet
 
 # Fractions
