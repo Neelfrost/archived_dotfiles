@@ -18,6 +18,8 @@ Just another visually appealing Neovim IDE. Currently supports LaTeX and Python.
 
 # Installation ⚡
 
+The following instructions are for Windows (powershell).
+
 1. Install chocolatey
 
     ```powershell
@@ -28,13 +30,13 @@ Just another visually appealing Neovim IDE. Currently supports LaTeX and Python.
 
     ```
     choco install neovim --pre
-    choco install python universal-ctags sumatrapdf miktex
+    choco install git python universal-ctags sumatrapdf miktex
     ```
 
 3. Configure python
 
     ```
-    pip install pynvim flake8 black jedi
+    py -m pip install pynvim flake8 black jedi
     ```
 
 4. Install Vim-Plug
@@ -50,10 +52,16 @@ Just another visually appealing Neovim IDE. Currently supports LaTeX and Python.
     git clone https://github.com/Neelfrost/dotfiles.git $HOME\Appdata\Local\nvim
     ```
 
-6. Open Neovim and type
+6. Reboot and type the following in nvim/nvim-qt
 
     ```
     :PlugInstall
+    ```
+
+7. Open `init.vim` and configure python path
+
+    ```vim
+    let g:python3_host_prog = "<Location>"
     ```
 
 ---
@@ -74,35 +82,35 @@ LaTeX
 
 ## Plugins Used
 
--   Buffer navigation : [barbar.nvim](https://github.com/romgrk/barbar.nvim)
--   Minimal and extensible statusline : [lightline.vim](https://github.com/itchyny/lightline.vim)
--   Start screen : [vim-startify](https://github.com/mhinz/vim-startify)
--   File navigation : [nvim-tree.lua](https://github.com/kyazdani42/nvim-tree.lua)
--   Fuzzy file search : [ctrlp.vim](https://github.com/ctrlpvim/ctrlp.vim)
--   Icons for NvimTree, Startify, bufferline/statusline : [nvim-web-devicons](https://github.com/kyazdani42/nvim-web-devicons), [vim-devicons](https://github.com/ryanoasis/vim-devicons)
--   Syntax highlighting : [vim-polyglot](https://github.com/sheerun/vim-polyglot)
--   Async completion : [deoplete.nvim](https://github.com/Shougo/deoplete.nvim)
--   Syntax checking and formatting : [ale](https://github.com/dense-analysis/ale), [vim-autoformat](https://github.com/vim-autoformat/vim-autoformat)
--   Indent lines : [indent-blankline.nvim](https://github.com/lukas-reineke/indent-blankline.nvim)
--   Auto pair brackets : [auto-pairs](https://github.com/jiangmiao/auto-pairs)
--   Colored matching brackets : [rainbow](https://github.com/luochen1990/rainbow)
--   Highlight yank : [vim-highlightedyank](https://github.com/machakann/vim-highlightedyank)
--   Display color : [nvim-colorizer.lua](https://github.com/norcalli/nvim-colorizer.lua)
--   Python formatter : [black](https://github.com/psf/black)
--   Python support : [deoplete-jedi](https://github.com/zchee/deoplete-jedi), [jedi-vim](https://github.com/davidhalter/jedi-vim)
--   LaTeX support : [vimtex](https://github.com/lervag/vimtex)
--   Run commands asynchronously : [asyncrun.vim](https://github.com/skywind3000/asyncrun.vim), [asyncrun.extra](https://github.com/skywind3000/asyncrun.extra)
--   Snippet engine : [ultisnips](https://github.com/SirVer/ultisnips)
--   Snippet collection : [vim-snippets](https://github.com/honza/vim-snippets)
--   Commenting : [vim-commentary](https://github.com/tpope/vim-commentary)
--   Faster motion : [vim-easymotion](https://github.com/easymotion/vim-easymotion)
--   Tag management : [vim-gutentags](https://github.com/ludovicchabant/vim-gutentags)
--   Repeat actions : [vim-repeat](https://github.com/tpope/vim-repeat)
--   Bracket Operations : [vim-surround](https://github.com/tpope/vim-surround)
--   TitleCase : [vim-titlecase](https://github.com/christoomey/vim-titlecase)
--   Better quickfix : [nvim-bqf](https://github.com/kevinhwang91/nvim-bqf)
--   Aligning : [vim-easy-align](https://github.com/junegunn/vim-easy-align)
--   Spelling errors in quickfix list : [vim-SpellCheck](https://github.com/inkarkat/vim-SpellCheck), [vim-ingo-library](https://github.com/inkarkat/vim-ingo-library)
+-   Buffer navigation: [barbar.nvim](https://github.com/romgrk/barbar.nvim)
+-   Minimal and extensible statusline: [lightline.vim](https://github.com/itchyny/lightline.vim)
+-   Start screen: [vim-startify](https://github.com/mhinz/vim-startify)
+-   File navigation: [nvim-tree.lua](https://github.com/kyazdani42/nvim-tree.lua)
+-   Fuzzy file search: [ctrlp.vim](https://github.com/ctrlpvim/ctrlp.vim)
+-   Icons for NvimTree, Startify, bufferline/statusline: [nvim-web-devicons](https://github.com/kyazdani42/nvim-web-devicons), [vim-devicons](https://github.com/ryanoasis/vim-devicons)
+-   Syntax highlighting: [vim-polyglot](https://github.com/sheerun/vim-polyglot)
+-   Async completion: [deoplete.nvim](https://github.com/Shougo/deoplete.nvim)
+-   Syntax checking and formatting: [ale](https://github.com/dense-analysis/ale), [vim-autoformat](https://github.com/vim-autoformat/vim-autoformat)
+-   Indent lines: [indent-blankline.nvim](https://github.com/lukas-reineke/indent-blankline.nvim)
+-   Auto pair brackets: [auto-pairs](https://github.com/jiangmiao/auto-pairs)
+-   Colored matching brackets: [rainbow](https://github.com/luochen1990/rainbow)
+-   Highlight yank: [vim-highlightedyank](https://github.com/machakann/vim-highlightedyank)
+-   Display color: [nvim-colorizer.lua](https://github.com/norcalli/nvim-colorizer.lua)
+-   Python formatter: [black](https://github.com/psf/black)
+-   Python support: [deoplete-jedi](https://github.com/zchee/deoplete-jedi), [jedi-vim](https://github.com/davidhalter/jedi-vim)
+-   LaTeX support: [vimtex](https://github.com/lervag/vimtex)
+-   Run commands asynchronously: [asyncrun.vim](https://github.com/skywind3000/asyncrun.vim), [asyncrun.extra](https://github.com/skywind3000/asyncrun.extra)
+-   Snippet engine: [ultisnips](https://github.com/SirVer/ultisnips)
+-   Snippet collection: [vim-snippets](https://github.com/honza/vim-snippets)
+-   Commenting: [vim-commentary](https://github.com/tpope/vim-commentary)
+-   Faster motion: [vim-easymotion](https://github.com/easymotion/vim-easymotion)
+-   Tag management: [vim-gutentags](https://github.com/ludovicchabant/vim-gutentags)
+-   Repeat actions: [vim-repeat](https://github.com/tpope/vim-repeat)
+-   Bracket Operations: [vim-surround](https://github.com/tpope/vim-surround)
+-   TitleCase: [vim-titlecase](https://github.com/christoomey/vim-titlecase)
+-   Better quickfix: [nvim-bqf](https://github.com/kevinhwang91/nvim-bqf)
+-   Aligning: [vim-easy-align](https://github.com/junegunn/vim-easy-align)
+-   Spelling errors in quickfix list: [vim-SpellCheck](https://github.com/inkarkat/vim-SpellCheck), [vim-ingo-library](https://github.com/inkarkat/vim-ingo-library)
 
 <!-- ## Keybinds -->
 
