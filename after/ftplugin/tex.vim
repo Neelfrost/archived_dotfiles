@@ -4,9 +4,6 @@ setlocal spell
 setlocal linebreak
 setlocal wrap
 
-" let g:indent_blankline_space_char = '◦'
-" let g:indent_blankline_char = '◦'
-
 " --------------------------------- Functions -------------------------------- "
 
 " Auto insert \item on <CR>
@@ -60,9 +57,10 @@ endfunction
 
 autocmd BufWritePre <buffer> :call FixInputs()
 
+" Set and Restore indent
 function! SetIndentLine()
-    let g:indent_blankline_char = '◦'
-    let g:indent_blankline_space_char = '◦'
+    let g:indent_blankline_char = '·'
+    let g:indent_blankline_space_char = '·'
 endfunction
 
 function! ResetIndentLine()
@@ -72,6 +70,9 @@ endfunction
 
 autocmd BufEnter *.tex :call SetIndentLine()
 autocmd BufLeave * :call ResetIndentLine()
+
+" Clean up auxiliary files on quit
+autocmd User VimtexEventQuit VimtexClean
 
 " --------------------------------- Keybinds --------------------------------- "
 
@@ -110,6 +111,7 @@ let g:vimtex_view_general_viewer = 'SumatraPDF'
 let g:vimtex_view_general_options
             \='-reuse-instance -forward-search @tex @line @pdf'
 let g:vimtex_view_general_options_latexmk = '-reuse-instance'
+let g:vimtex_quickfix_mode = 0
 " Latex warnings to ignore
 let g:vimtex_quickfix_ignore_filters = [
             \   'Underfull \\hbox (badness [0-9]*) in paragraph at lines',
@@ -123,4 +125,6 @@ let g:vimtex_quickfix_ignore_filters = [
             \   'Package caption Warning: The option ',
             \   'Package caption Warning: Unused \\captionsetup',
             \   'Package enumitem Warning: Negative labelwidth',
+            \   'LaTeX Font Warning: Font shape'
             \   ]
+
