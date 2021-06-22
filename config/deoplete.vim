@@ -15,3 +15,7 @@ call deoplete#custom#option({
 " taken from : https://vi.stackexchange.com/questions/12394/change-keybinding-for-up-down-when-in-vim-popup
 inoremap <expr> <C-j> pumvisible() ? "\<C-n>" : "\<C-j>"
 inoremap <expr> <C-k> pumvisible() ? "\<C-p>" : "\<C-k>"
+
+" Auto-complete first option on Tab
+inoremap <expr> <Enter> pumvisible() ? "\<C-y>" : "\<Enter>"
+

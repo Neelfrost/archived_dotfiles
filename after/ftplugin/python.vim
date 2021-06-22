@@ -17,9 +17,9 @@ let g:jedi#completions_enabled = 0
 
 " Run python script
 " With terminal
-nnoremap <F6> :w!<CR>:AsyncRun -mode=term -pos=external python %<CR>
+nnoremap <leader>t :w!<CR>:AsyncRun -mode=term -pos=external python %<CR>
 " Without terminal
-nnoremap <F7> :w!<CR>:AsyncRun python %<CR>
+nnoremap <leader>r :w!<CR>:AsyncRun python %<CR>
 
 nnoremap <C-f> <nop>
 " Format on Ctrl-F
