@@ -48,3 +48,4 @@ vim.g.nvim_tree_bindings = {
 ["q"]              = tree_cb("close"),
 }
 EOF
+

@@ -1,3 +1,5 @@
+" --------------------------------- Settings --------------------------------- "
+
 " Refresh and open
 " https://stackoverflow.com/questions/8584182/how-to-refresh-in-nerdtree-plugin#:~:text=Keymap%20to%20Refresh%20NERDTree&text=Once%20set%2C%20pressing%20Leader%20%2B%20r%20would%20refresh%20NERDTree%20.
 function NERDTreeToggleAndRefresh()
@@ -19,3 +21,4 @@ let NERDTreeWinSize = 24
 " --------------------------------- Keybinds --------------------------------- "
 
 nnoremap <silent> <C-b> :call NERDTreeToggleAndRefresh()<CR>
+

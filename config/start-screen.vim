@@ -1,3 +1,5 @@
+" --------------------------------- Settings --------------------------------- "
+
 " List recently modified files in a directory
 " https://github.com/mhinz/vim-startify/issues/445
 " https://github.com/mhinz/vim-startify/blob/master/autoload/startify.vim : lines 713-718
@@ -70,3 +72,4 @@ let g:startify_change_to_dir = 1
 
 " Open Startify
 nnoremap <silent> <leader>n :Startify<CR>
+

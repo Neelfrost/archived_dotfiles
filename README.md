@@ -36,29 +36,16 @@ The following instructions are for Windows (powershell).
 3. Configure python
 
     ```
-    py -m pip install pynvim flake8 black jedi
+    py -m pip install pynvim flake8 black jedi rope
     ```
 
-4. Install Vim-Plug
-
-    ```powershell
-    iwr -useb https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim |`
-    ni "$(@($env:XDG_DATA_HOME, $env:LOCALAPPDATA)[$null -eq $env:XDG_DATA_HOME])/nvim-data/site/autoload/plug.vim" -Force
-    ```
-
-5. Clone repo
+4. Clone repo
 
     ```
     git clone https://github.com/Neelfrost/dotfiles.git $HOME\Appdata\Local\nvim
     ```
 
-6. Reboot and type the following in nvim/nvim-qt
-
-    ```
-    :PlugInstall
-    ```
-
-7. Open `init.vim` and configure python path
+5. Open `config\options.vim` and configure python3 path
 
     ```vim
     let g:python3_host_prog = "<Location>"

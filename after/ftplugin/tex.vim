@@ -77,7 +77,7 @@ autocmd User VimtexEventQuit VimtexClean
 " --------------------------------- Keybinds --------------------------------- "
 
 " Vimtex Toggle Compile
-nnoremap <F6> :w!<CR>:VimtexCompile<CR>
+" nnoremap <F6> :w!<CR>:VimtexCompile<CR>
 " Vim-autoformat latexindent
 nnoremap <F4> :Autoformat<CR>
 

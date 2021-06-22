@@ -1,3 +1,5 @@
+" ------------------------ Autocommands and Functions ------------------------ "
+
 " Automatically reload the file if it is changed outside of Nvim, see
 " https://unix.stackexchange.com/a/383044/221410. It seems that `checktime`
 " command does not work in command line. We need to check if we are in command
@@ -52,3 +54,15 @@ if v:version >= 700
     autocmd BufLeave * call AutoSaveWinView()
     autocmd BufEnter * call AutoRestoreWinView()
 endif
+
+" Add newline to eof, trim trailing whitespace.
+function! Cleanup()
+    let l:save=winsaveview()
+    keeppatterns %s/\%$/\r/e          " adds newline to eof
+    keeppatterns %s/^\n*\%$//e        " removes trailing space
+    keeppatterns %s/\s\+$//e          " removes trailing lines
+    keeppatterns %s/\\item$/\\item /e " do not remove trailing space after LaTeX \item 
+    keeppatterns %s/\\task$/\\task /e " do not remove trailing space after LaTeX \task 
+    call winrestview(l:save)
+endfunction
+

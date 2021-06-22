@@ -88,3 +88,4 @@ let g:lightline = {
 " \     'left': '',
 " \     'right': ''
 " \   }
+
