@@ -30,25 +30,19 @@ The following instructions are for Windows (powershell).
 
     ```
     choco install neovim --pre
-    choco install git python universal-ctags sumatrapdf miktex
+    choco install git python universal-ctags sumatrapdf miktex which
     ```
 
 3. Configure python
 
     ```
-    py -m pip install pynvim flake8 black jedi rope
+    py -m pip install pynvim flake8 black jedi
     ```
 
-4. Clone repo
+4. Clone repo and open nvim-qt or nvim
 
     ```
     git clone https://github.com/Neelfrost/dotfiles.git $HOME\Appdata\Local\nvim
-    ```
-
-5. Open `config\options.vim` and configure python3 path
-
-    ```vim
-    let g:python3_host_prog = "<Location>"
     ```
 
 ---
