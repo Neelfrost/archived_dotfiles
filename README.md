@@ -45,6 +45,8 @@ The following instructions are for Windows (powershell).
     git clone https://github.com/Neelfrost/dotfiles.git $HOME\Appdata\Local\nvim
     ```
 
+    if directory exists, delete it before cloning.
+
 ---
 
 # Features 📃
@@ -102,6 +104,6 @@ LaTeX
 -   [x] Automatic plugin install
 -   [ ] One-click install script
 -   [x] Clear contrast between active and inactive tabs
+-   [ ] Create video to showcase snippets, add snippet list
 -   [ ] Add keybinds list
--   [ ] Add snippet list
 -   [ ] Add C# Support
