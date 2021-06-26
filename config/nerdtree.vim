@@ -21,4 +21,3 @@ let NERDTreeWinSize = 24
 " --------------------------------- Keybinds --------------------------------- "
 
 nnoremap <silent> <C-b> :call NERDTreeToggleAndRefresh()<CR>
-

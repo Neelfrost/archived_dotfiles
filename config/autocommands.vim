@@ -58,7 +58,6 @@ endif
 " Add newline to eof, trim trailing whitespace.
 function! Cleanup()
     let l:save=winsaveview()
-    keeppatterns %s/\%$/\r/e          " adds newline to eof
     keeppatterns %s/^\n*\%$//e        " removes trailing space
     keeppatterns %s/\s\+$//e          " removes trailing lines
     keeppatterns %s/\\item$/\\item /e " do not remove trailing space after LaTeX \item 
@@ -66,3 +65,15 @@ function! Cleanup()
     call winrestview(l:save)
 endfunction
 
+" Quickfix toggle
+" https://vim.fandom.com/wiki/Toggle_to_open_or_close_the_quickfix_window
+command -bang -nargs=? QFix call QFixToggle(<bang>0)
+function! QFixToggle(forced)
+  if exists("g:qfix_win") && a:forced == 0
+    cclose
+    unlet g:qfix_win
+  else
+    copen 10
+    let g:qfix_win = bufnr("$")
+  endif
+endfunction

@@ -12,4 +12,3 @@ vnoremap <silent> <C-/> :Commentary<CR>
 let g:webdevicons_enable = 1
 let g:webdevicons_conceal_nerdtree_brackets = 1
 let g:DevIconsEnableFoldersOpenClose = 1
-

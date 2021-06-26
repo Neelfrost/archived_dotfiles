@@ -4,7 +4,7 @@
 if empty(glob(stdpath('data') . '\site\autoload\plug.vim'))
     silent execute '!curl -fLo ' . '"' . stdpath('data') . '\site\autoload\plug.vim' . '"' . ' --create-dirs ' . '"https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"'
     autocmd VimEnter * source $MYVIMRC | PlugInstall --sync | source $MYVIMRC
-" Enable plugins if plugins are installed
+" Enable plugins if vim-plug is installed
 else
     call plug#begin(stdpath('data').'\plugged')
 
@@ -65,4 +65,3 @@ endif
 nnoremap <silent> <leader>pi :PlugInstall<CR>
 nnoremap <silent> <leader>pc :PlugClean<CR>
 nnoremap <silent> <leader>pu :PlugUpdate<CR>
-

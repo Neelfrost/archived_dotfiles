@@ -48,4 +48,3 @@ source ~\AppData\Local\nvim\config\autocommands.vim
 if exists('g:neovide')
     source ~\AppData\Local\nvim\config\neovide.vim
 endif
-

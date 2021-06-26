@@ -8,4 +8,3 @@ let g:rainbow_conf = {
 
 " Enable rainbow when entering buffer
 autocmd BufEnter * :silent RainbowToggleOn
-

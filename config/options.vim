@@ -35,7 +35,7 @@ set completeopt+=noinsert " Autoselect first completion
 set noswapfile            " No swap file
 
 " Ignore LaTeX aux files
-set wildignore+=*.aux,*.lof,*.lot,*.fls,*.out,*.toc,*.fmt,*.fot,*.cb,*.cb2,.*.lb,__latex*,*.fdb_latexmk,*.synctex,*.synctex(busy),*.synctex.gz,*.synctex.gz(busy),*.pdfsync,*.bbl,*.bcf,*.blg,*-blx.aux,*-blx.bib,*.run.xml
+set wildignore+=*.aux,*.lof,*.lot,*.fls,*.out,*.toc,*.fmt,*.fot,*.cb,*.cb2,.*.lb,__latex*,*.fdb_latexmk,*.synctex,*.synctex(busy),*.synctex.gz,*.synctex.gz(busy),*.pdfsync,*.bbl,*.bcf,*.blg,*-blx.aux,*-blx.bib,*.run.xml,indent.log
 
 " Set python3 path
 let py_loc = trim(system("which python"))
@@ -46,3 +46,5 @@ let g:polyglot_disabled = ['sensible', 'ftdetect']
 
 " Set current file's dir to cwd
 autocmd BufEnter * silent! lcd %:p:h
+" If on startify, set lcd to nvim
+autocmd FileType startify silent! lcd ~\Appdata\Local\nvim\

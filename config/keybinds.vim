@@ -20,11 +20,20 @@ nnoremap <leader><leader>f :find<Space>
 " Trim whitespace
 nnoremap <silent> <C-s> :call Cleanup()<CR><Esc>:w!<CR>
 
+" Toggle quickfix
+nnoremap <silent> <leader>q :QFix<CR>
+
 " Format entire document
 nnoremap <C-f> gg=G<C-o>zt<Esc>
 
 " Format variable assigment
 nnoremap <leader>= :%s/^\(let\)\s*\(\S\+\)\s*=\s*\(.\+\)/\1 \2 = \3/e<CR>:noh<CR>
+
+" Toggle spell
+nnoremap <F1> :setlocal spell!<CR>
+
+" Replace word under cursor
+nnoremap <leader>r :%s/\<<C-r><C-w>\>/
 
 " Remove highlight
 nnoremap <silent> <leader>h :nohl<CR>
@@ -97,4 +106,3 @@ nnoremap <M-j> <C-w>j
 " Disable word search on shift mouse
 map <S-LeftMouse> <nop>
 map <S-LeftDrag> <nop>
-

@@ -129,4 +129,3 @@ let g:vimtex_quickfix_ignore_filters = [
             \   'Package enumitem Warning: Negative labelwidth',
             \   'LaTeX Font Warning: Font shape'
             \   ]
-
