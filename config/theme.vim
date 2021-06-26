@@ -53,8 +53,21 @@ colorscheme gruvbox-material
 " onehalfdarker
 " colorscheme onehalfdarker
 
-" Change bad word bgcolor to red
+" Change bad word fg to red and bg to black and bold
 hi clear SpellBad
-hi SpellBad guibg = '#ea6962'
-hi SpellBad guifg = '#000000'
+hi SpellBad guifg = '#ea6962' gui=bold term=bold cterm=bold
+hi SpellBad guibg = '#000000'
 
+" Barbar colors
+highlight! link BufferCurrent Visual
+highlight! link BufferCurrentIndex Visual
+highlight! link BufferCurrentMod Visual
+highlight! link BufferCurrentSign Visual
+highlight! link BufferCurrentTarget Visual
+highlight! link BufferCurrentIcon Visual
+highlight! link BufferVisible Normal
+highlight! link BufferVisibleIndex Normal
+highlight! link BufferVisibleMod Normal
+highlight! link BufferVisibleSign Normal
+highlight! link BufferVisibleTarget Visual
+highlight! link BufferVisibleIcon Normal

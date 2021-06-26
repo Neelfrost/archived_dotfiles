@@ -34,4 +34,3 @@ let g:jedi#documentation_command = ""
 let g:jedi#usages_command = "<Space>n"
 let g:jedi#completions_command = "<C-Space>"
 let g:jedi#rename_command = "<Space>r"
-

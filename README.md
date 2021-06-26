@@ -99,5 +99,9 @@ LaTeX
 
 # Todo 🕒
 
+-   [x] Automatic plugin install
+-   [ ] One-click install script
+-   [x] Clear contrast between active and inactive tabs
 -   [ ] Add keybinds list
+-   [ ] Add snippet list
 -   [ ] Add C# Support

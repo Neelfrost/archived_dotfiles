@@ -73,6 +73,7 @@ autocmd BufEnter *.tex :call SetIndentLine()
 autocmd BufLeave * :call ResetIndentLine()
 
 " Clean up auxiliary files on quit
+autocmd User VimtexEventQuit VimtexStopAll
 autocmd User VimtexEventQuit VimtexClean
 
 " --------------------------------- Keybinds --------------------------------- "
