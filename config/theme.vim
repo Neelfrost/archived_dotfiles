@@ -13,6 +13,7 @@ let g:gruvbox_material_better_performance = 1
 let g:gruvbox_material_sign_column_background = 'none'
 let g:gruvbox_material_background = 'hard'
 let g:gruvbox_material_show_eob = 1
+" Changes: darker bg0, bg1, Addition: bg_blue
 let g:gruvbox_material_palette = {
             \   'bg0':              ['#14171c',   '234'],
             \   'bg1':              ['#191d24',   '235'],
@@ -47,7 +48,49 @@ let g:gruvbox_material_palette = {
             \   'grey1':            ['#928374',   '245'],
             \   'grey2':            ['#928374',   '246'],
             \   'none':             ['NONE',      'NONE'],
+            \   'bg_blue':          ['#36a3d9', '4']
             \   }
+
+" Custom barbar colors
+" https://github.com/romgrk/barbar.nvim/blob/master/doc/barbar.txt
+" https://github.com/sainnhe/gruvbox-material/blob/master/doc/gruvbox-material.txt
+function! s:gruvbox_material_custom() abort
+  " Link a highlight group to a predefined highlight group.
+  " See `colors/gruvbox-material.vim` for all predefined highlight groups.
+  " Initialize the color palette.
+  " The first parameter is a valid value for `g:gruvbox_material_background`,
+  " and the second parameter is a valid value for `g:gruvbox_material_palette`.
+  let l:palette = g:gruvbox_material_palette
+  " Define a highlight group.
+  " The first parameter is the name of a highlight group,
+  " the second parameter is the foreground color,
+  " the third parameter is the background color,
+  " the fourth parameter is for UI highlighting which is optional,
+  " and the last parameter is for `guisp` which is also optional.
+  " See `autoload/gruvbox_material.vim` for the format of `l:palette`.
+  call gruvbox_material#highlight('BufferCurrent', l:palette.bg_blue, l:palette.bg0, 'bold')
+  call gruvbox_material#highlight('BufferCurrentIndex', l:palette.grey0, l:palette.bg0, 'bold')
+  call gruvbox_material#highlight('BufferCurrentMod', l:palette.bg_red, l:palette.bg0, 'bold')
+  call gruvbox_material#highlight('BufferCurrentIcon', l:palette.grey0, l:palette.bg0)
+  call gruvbox_material#highlight('BufferCurrentSign', l:palette.bg_blue, l:palette.bg0)
+
+  call gruvbox_material#highlight('BufferVisible', l:palette.bg_blue, l:palette.bg1)
+  call gruvbox_material#highlight('BufferVisibleIndex', l:palette.grey0, l:palette.bg1)
+  call gruvbox_material#highlight('BufferVisibleMod', l:palette.bg_red, l:palette.bg1)
+  call gruvbox_material#highlight('BufferVisibleIcon', l:palette.grey0, l:palette.bg1)
+  call gruvbox_material#highlight('BufferVisibleSign', l:palette.bg_blue, l:palette.bg1)
+
+  call gruvbox_material#highlight('BufferInactive', l:palette.grey0, l:palette.bg1)
+  call gruvbox_material#highlight('BufferInactiveIndex', l:palette.grey0, l:palette.bg1)
+  call gruvbox_material#highlight('BufferInactiveMod', l:palette.bg_red, l:palette.bg1)
+  call gruvbox_material#highlight('BufferInactiveIcon', l:palette.grey0, l:palette.bg1)
+  call gruvbox_material#highlight('BufferInactiveSign', l:palette.grey0, l:palette.bg1)
+endfunction
+
+augroup GruvboxMaterialCustom
+  autocmd!
+  autocmd ColorScheme gruvbox-material call s:gruvbox_material_custom()
+augroup END
 
 colorscheme gruvbox-material
 
@@ -55,17 +98,3 @@ colorscheme gruvbox-material
 hi clear SpellBad
 hi SpellBad guifg = '#ea6962' gui=bold term=bold cterm=bold
 hi SpellBad guibg = '#000000'
-
-" Barbar colors
-highlight! link BufferCurrent Visual
-highlight! link BufferCurrentIndex Visual
-highlight! link BufferCurrentMod Visual
-highlight! link BufferCurrentSign Visual
-highlight! link BufferCurrentTarget Visual
-highlight! link BufferCurrentIcon Visual
-highlight! link BufferVisible Normal
-highlight! link BufferVisibleIndex Normal
-highlight! link BufferVisibleMod Normal
-highlight! link BufferVisibleSign Normal
-highlight! link BufferVisibleTarget Visual
-highlight! link BufferVisibleIcon Normal

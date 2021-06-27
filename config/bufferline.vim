@@ -7,7 +7,7 @@ let bufferline.animation = v:false
 " Show tabs
 let bufferline.tabpages = v:true
 " Show icons
-let bufferline.icons = 'both'
+let bufferline.icons = 'numbers'
 " Buffer modified icons
 let bufferline.icon_close_tab_modified = '+'
 
