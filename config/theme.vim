@@ -12,6 +12,7 @@ let g:gruvbox_material_palette = 'mix'
 let g:gruvbox_material_better_performance = 1
 let g:gruvbox_material_sign_column_background = 'none'
 let g:gruvbox_material_background = 'hard'
+let g:gruvbox_material_show_eob = 1
 let g:gruvbox_material_palette = {
             \   'bg0':              ['#14171c',   '234'],
             \   'bg1':              ['#191d24',   '235'],
@@ -49,9 +50,6 @@ let g:gruvbox_material_palette = {
             \   }
 
 colorscheme gruvbox-material
-
-" onehalfdarker
-" colorscheme onehalfdarker
 
 " Change bad word fg to red and bg to black and bold
 hi clear SpellBad

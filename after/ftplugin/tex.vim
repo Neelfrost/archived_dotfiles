@@ -3,7 +3,7 @@
 setlocal spell
 setlocal linebreak
 setlocal wrap
-setlocal completeopt-=noinsert
+" setlocal completeopt-=noinsert
 
 " --------------------------------- Functions -------------------------------- "
 

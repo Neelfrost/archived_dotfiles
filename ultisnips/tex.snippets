@@ -1,5 +1,23 @@
 extends texmath
 
+global !p
+def get_tex_prog(letter):
+	tex_prog = ""
+	if letter == "l":
+		tex_prog = "lua"
+	elif letter == "x":
+		tex_prog = "xe"
+	elif letter == "p":
+		tex_prog = "pdf"
+	return tex_prog
+endglobal
+
+snippet '(\w)_texprog' "Set tex program" br
+`!p snip.rv = "%!TEX TS-program = " + get_tex_prog(match.group(0)[0]) + "latex"`
+%!TEX encoding = UTF-8 Unicode
+$0
+endsnippet
+
 snippet usep "Usepackage" b
 \usepackage[${1:Options}]{${2:Package}}
 $0
@@ -22,13 +40,13 @@ endsnippet
 
 snippet begin "Begin environment" b
 \begin{${1:Env}}
-	$0
+	${0:${VISUAL:Content}}
 \end{$1}
 endsnippet
 
-snippet adj "Adjustbox" b
-\adjustbox{$1}{%
-	${2:${VISUAL}}
+snippet resize "Resize box" b
+\resizebox{\linewidth}{!}{%
+	${1:${VISUAL}}
 }$0
 endsnippet
 
@@ -57,38 +75,21 @@ snippet mini "Minipage environment" b
 \end{minipage}%$0
 endsnippet
 
-# ---------------------------- Table environments ---------------------------- #
-
-snippet table "Table environment" b
-\begin{table}[ht]
-	\centering
-	\caption{${3:Caption}}
-	\begin{tabular}{$1}
-	$2
-	\end{tabular}
-\end{table}$0
+snippet href "Hyperref" w
+\href{${1:Link}}{${2:${VISUAL:Text}}}$0
 endsnippet
 
-snippet tablel "Table environment with label" b
-\begin{table}[ht]
-	\centering
-	\caption{${3:Caption}}%
-	\label{table:${4:Label}}
-	\begin{tabular}{$1}
-	$2
-	\end{tabular}
-\end{table}$0
+# ----------------------------------- Tikz ----------------------------------- #
+
+snippet node "Tikz node" b
+\node[
+	${1:Params}
+] (${2/(\w)/\l$1/g}) {${2:Text}};$0
 endsnippet
 
-# snippet tablec "Centered Table environment" b
-# \begin{table}[ht]
-#	\centering
-#	\caption{${2:caption}}
-#	\begin{tabular}{|l|>{\centering\arraybackslash}m{0.4\linewidth}|l|>{\centering\arraybackslash}m{0.4\linewidth}|}
-#	$1
-#	\end{tabular}
-# \end{table}$0
-# endsnippet
+snippet draw "Draw tikz node" b
+\draw[arrow] (${1:From}) ${2:Line} (${3:To});
+endsnippet
 
 # -------------------------- References and labels -------------------------- #
 
@@ -124,6 +125,29 @@ snippet tlab "Reaction label" w
 \label{table:$1}
 endsnippet
 
+# ---------------------------- Table environments ---------------------------- #
+
+snippet tab "Table environment" b
+\begin{table}[ht]
+	\centering
+	\caption{${1:Caption}}
+	\begin{tabular}{$2}
+	$3
+	\end{tabular}
+\end{table}$0
+endsnippet
+
+snippet tabl "Table environment with label" b
+\begin{table}[ht]
+	\centering
+	\caption{${1:Caption}}%
+	\label{table:${4:Label}}
+	\begin{tabular}{$2}
+	$3
+	\end{tabular}
+\end{table}$0
+endsnippet
+
 # ---------------------------- Figure environments --------------------------- #
 
 snippet fig "Figure environment" b
@@ -142,26 +166,6 @@ snippet figl "Figure environment with label" b
 	\label{fig:${1/\.\w+//}}
 \end{figure}$0
 endsnippet
-
-# snippet subfig "Subfigure environment" b
-# \begin{figure}[ht]
-#	\centering
-#	\subfloat[${3:Caption1}]{\includegraphics[width=0.45\linewidth]{${1:File1}}}
-#	\qquad
-#	\subfloat[${4:Caption2}]{\includegraphics[width=0.45\linewidth]{${2:File2}}}
-#	\caption{}%
-# \end{figure}$0
-# endsnippet
-
-# snippet subfigl "Subfigure environment with label" b
-# \begin{figure}[ht]
-#	\centering
-#	\subfloat[${3:Caption1}]{\includegraphics[width=0.45\linewidth]{${1:File1}}\label{sfig:${1/\.\w+//}}}
-#	\qquad
-#	\subfloat[${4:Caption2}]{\includegraphics[width=0.45\linewidth]{${2:File2}}\label{sfig:${2/\.\w+//}}}
-#	\caption{}%
-# \end{figure}$0
-# endsnippet
 
 snippet subfig "Subfigure environment" b
 \begin{figure}[ht]
@@ -255,8 +259,8 @@ else:
 \end{itemize}
 endsnippet
 
-snippet bta "Task" b
-\begin{tasks}($1)
+snippet 'bta(\d+)' "Task" br
+\begin{tasks}(`!p snip.rv = match.group(1)`)
 `!p
 if snip.v.text:
 	if r"\task" in snip.v.text:
@@ -279,6 +283,10 @@ endsnippet
 
 snippet itt "Item to Task" bA
 `!p snip.rv = snip.v.text.strip().replace(r"\item", r"\task")`$0
+endsnippet
+
+snippet tti "Task to Item" bA
+`!p snip.rv = snip.v.text.strip().replace(r"\task", r"\item")`$0
 endsnippet
 
 snippet nosep "noitemsep" i
@@ -376,7 +384,7 @@ endsnippet
 
 # ----------------------------------- Misc ----------------------------------- #
 
-snippet '(?<!\\)%' "Escaped %" rA
+snippet '(?<!\\|}|{)%' "Escaped %" rA
 \%
 endsnippet
 

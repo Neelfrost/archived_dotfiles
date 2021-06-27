@@ -23,7 +23,7 @@ augroup END
 " Set window title
 augroup dirchange
     autocmd!
-    autocmd BufEnter * :set title | let &titlestring = expand('%')
+    autocmd BufEnter * :set title | let &titlestring = expand('%') =~ "" ? "Neovim" : expand('%')
 augroup END
 
 " Save current view settings on a per-window, per-buffer basis.
@@ -58,8 +58,8 @@ endif
 " Add newline to eof, trim trailing whitespace.
 function! Cleanup()
     let l:save=winsaveview()
-    keeppatterns %s/^\n*\%$//e        " removes trailing space
-    keeppatterns %s/\s\+$//e          " removes trailing lines
+    keeppatterns %s/$\n\+\%$//e       " removes trailing lines
+    keeppatterns %s/\s\+$//e          " removes trailing spaces
     keeppatterns %s/\\item$/\\item /e " do not remove trailing space after LaTeX \item 
     keeppatterns %s/\\task$/\\task /e " do not remove trailing space after LaTeX \task 
     call winrestview(l:save)

@@ -17,7 +17,6 @@ else
     Plug 'luochen1990/rainbow'
     Plug 'ryanoasis/vim-devicons'
     Plug 'machakann/vim-highlightedyank'
-    Plug 'Neelfrost/onehalf'
     Plug 'sainnhe/gruvbox-material'
     Plug 'kyazdani42/nvim-tree.lua'
     Plug 'norcalli/nvim-colorizer.lua'

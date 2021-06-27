@@ -9,18 +9,20 @@ snippet box "Box" b
 $0
 endsnippet
 
-snippet '(.+)div' "Divider comment" brA
+snippet '(.+)div' "Divider comment" r
 `!p
-if int(72 - len(match.group(1))) % 2 == 0:
-	snip.rv = get_comment_format()[0] + ' ' + '-' * (int((80 - len(match.group(1)) - 8)/2) + 1)
+div_str = match.group(1).strip()
+if int(72 - len(div_str)) % 2 == 0:
+	snip.rv = get_comment_format()[0] + ' ' + '-' * (int((80 - len(div_str) - 8)/2) + 1)
 else:
-	snip.rv = get_comment_format()[0] + ' ' + '-' * (int((80 - len(match.group(1)) - 8)/2) + 2)
-` `!p snip.rv = match.group(1)` `!p
-if int(72 - len(match.group(1))) % 2 == 0:
-	snip.rv = '-' * (int((80 - len(match.group(1)) - 8)/2) + 1) + ' ' + get_comment_format()[0]
+	snip.rv = get_comment_format()[0] + ' ' + '-' * (int((80 - len(div_str) - 8)/2) + 2)
+` `!p snip.rv = match.group(1).strip()` `!p
+div_str = match.group(1).strip()
+if int(72 - len(div_str)) % 2 == 0:
+	snip.rv = '-' * (int((80 - len(div_str) - 8)/2) + 1) + ' ' + get_comment_format()[0]
 else:
-	snip.rv = '-' * (int((80 - len(match.group(1)) - 8)/2) + 1) + ' ' + get_comment_format()[0]
-`$0
+	snip.rv = '-' * (int((80 - len(div_str) - 8)/2) + 1) + ' ' + get_comment_format()[0]
+`
 endsnippet
 
 # vim:ft=snippets:

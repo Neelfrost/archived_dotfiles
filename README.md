@@ -53,17 +53,21 @@ The following instructions are for Windows (powershell).
 
 General
 
--   Persistent cursor positions when switching buffers
--   Ability to add custom directories to startify
--   Resume cursor position when re-opening a file
--   Auto update file if changed outside of neovim
+-   Persistent cursor positions when switching buffers.
+-   Ability to add custom directories to startify.
+-   Resume cursor position when re-opening a file.
+-   Auto update file if changed outside of neovim.
+-   Automatically trim trailing whitespaces and newlines on save.
+-   Open alacritty terminal, VScode, explorer at current directory using <kbd>\\\\t</kbd>, <kbd>\\\\c</kbd>, <kbd>\\\\e</kbd> respectively.
 
 LaTeX
 
--   Extensive snippets for LaTeX
--   Start newline with \item (or \task) if inside a list environment when pressing <kbd>Enter</kbd>, <kbd>o</kbd> or <kbd>O</kbd>
+-   Extensive snippets for LaTeX.
+-   Automatically substitute `\` in imports (include, input) with `/` on save.
+-   Start newline with \item (or \task) if inside a list environment when pressing <kbd>Enter</kbd>, <kbd>o</kbd> or <kbd>O</kbd>.
 
-## Plugins Used
+<details>
+<summary>Plugins Used</summary>
 
 -   Buffer navigation: [barbar.nvim](https://github.com/romgrk/barbar.nvim)
 -   Minimal and extensible statusline: [lightline.vim](https://github.com/itchyny/lightline.vim)
@@ -94,6 +98,8 @@ LaTeX
 -   Better quickfix: [nvim-bqf](https://github.com/kevinhwang91/nvim-bqf)
 -   Aligning: [vim-easy-align](https://github.com/junegunn/vim-easy-align)
 -   Spelling errors in quickfix list: [vim-SpellCheck](https://github.com/inkarkat/vim-SpellCheck), [vim-ingo-library](https://github.com/inkarkat/vim-ingo-library)
+
+</details>
 
 <!-- ## Keybinds -->
 
