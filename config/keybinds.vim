@@ -15,7 +15,7 @@ nnoremap <silent> <leader><leader>e :AsyncRun! explorer.exe "<cwd>"<CR>
 nnoremap <silent> <leader><leader>c :AsyncRun! code % <CR>
 
 " Find a file
-nnoremap <leader><leader>f :find<Space>
+" nnoremap <leader><leader>f :find<Space>
 
 " Trim whitespace
 nnoremap <silent> <C-s> :call Cleanup()<CR><Esc>:w!<CR>

@@ -1,42 +1,6 @@
-extends texmath
-
-global !p
-def get_tex_prog(letter):
-	tex_prog = ""
-	if letter == "l":
-		tex_prog = "lua"
-	elif letter == "x":
-		tex_prog = "xe"
-	elif letter == "p":
-		tex_prog = "pdf"
-	return tex_prog
-endglobal
-
-snippet '(\w)_texprog' "Set tex program" br
-`!p snip.rv = "%!TEX TS-program = " + get_tex_prog(match.group(0)[0]) + "latex"`
-%!TEX encoding = UTF-8 Unicode
-$0
-endsnippet
-
-snippet usep "Usepackage" b
-\usepackage[${1:Options}]{${2:Package}}
-$0
-endsnippet
-
-snippet doclass "Document class" b
-\documentclass[${1:Options}]{${2:Class}}
-$0
-endsnippet
-
-snippet input "Input" b
-\input{${1:File}}
-$0
-endsnippet
-
-snippet include "Include" b
-\include{${1:File}}
-$0
-endsnippet
+# Author: Neel Basak
+# Github: https://github.com/Neelfrost
+# File name: general.snippets
 
 snippet begin "Begin environment" b
 \begin{${1:Env}}
@@ -44,17 +8,17 @@ snippet begin "Begin environment" b
 \end{$1}
 endsnippet
 
-snippet resize "Resize box" b
-\resizebox{\linewidth}{!}{%
-	${1:${VISUAL}}
-}$0
-endsnippet
-
 snippet maketitle "Make Title" b
 \title{${1:Title}}
 \author{${2:Author}}
 \date{${3:Date}}
 \maketitle
+endsnippet
+
+snippet resize "Resize box" b
+\resizebox{\linewidth}{!}{%
+	${1:${VISUAL}}
+}$0
 endsnippet
 
 snippet mulc "Multicols" b
@@ -148,6 +112,49 @@ snippet tabl "Table environment with label" b
 \end{table}$0
 endsnippet
 
+snippet tabx "Tabularx environment" b
+\begin{table}[ht]
+	\centering
+	\caption{${1:Caption}}
+	\begin{tabularx}{\linewidth}{$2}
+	$3
+	\end{tabularx}
+\end{table}$0
+endsnippet
+
+snippet tabxl "Tabularx environment with label" b
+\begin{table}[ht]
+	\centering
+	\caption{${1:Caption}}%
+	\label{table:${4:Label}}
+	\begin{tabularx}{\linewidth}{$2}
+	$3
+	\end{tabularx}
+\end{table}$0
+endsnippet
+
+# To create: |x|x|x|x|x|x|
+# Usage: x*6, where x can be: l, c, r, p{<size>}, m{<size>}, X (tabularx)
+snippet '(\w+)\*(\d+)' "Non-centered tabular columns" r
+`!p
+col_str = "|" + str(match.group(1))
+col_cnt = int(match.group(2))
+snip.rv = col_str*col_cnt + "|"
+`
+endsnippet
+
+# Needs array package
+# To create: |>{\centering\arraybackslash}x|>{\centering\arraybackslash}x|
+# Usage: c-x*2, where x can be: l, c, r, p{<size>}, m{<size>}, X (tabularx)
+priority 10
+snippet 'c-(\S+)\*(\d+)' "Centered tabular columns" r
+`!p
+col_str = r"|>{\centering\arraybackslash}" + str(match.group(1))
+col_cnt = int(match.group(2))
+snip.rv = col_str*col_cnt + "|"
+`
+endsnippet
+
 # ---------------------------- Figure environments --------------------------- #
 
 snippet fig "Figure environment" b
@@ -167,6 +174,7 @@ snippet figl "Figure environment with label" b
 \end{figure}$0
 endsnippet
 
+# Needs subcaption package
 snippet subfig "Subfigure environment" b
 \begin{figure}[ht]
     \centering
@@ -204,6 +212,8 @@ snippet subfigl "Subfigure environment with label" b
 \end{figure}
 endsnippet
 
+# Converts single figure to subfigure
+# Usage: visual-block select entire figure environment, press tab and type fts
 snippet fts "Figure to subfigure" bA
 \begin{figure}[ht]
 	\centering
@@ -237,6 +247,8 @@ snippet bde "Description" b
 \end{description}
 endsnippet
 
+# Inserts new enumerate
+# Or if triggered after visual selection of items, surrounds them with enumerate
 snippet ben "Enumerate" b
 \begin{enumerate}
 `!p
@@ -248,6 +260,8 @@ else:
 \end{enumerate}
 endsnippet
 
+# Inserts new itemize
+# Or if triggered after visual selection of items, surrounds them with itemize
 snippet bit "Itemize" b
 \begin{itemize}
 `!p
@@ -259,6 +273,10 @@ else:
 \end{itemize}
 endsnippet
 
+# Requires tasks package
+# Inserts tasks
+# Or if triggered after visual selection of items, converts them into task and
+# surrounds them with tasks
 snippet 'bta(\d+)' "Task" br
 \begin{tasks}(`!p snip.rv = match.group(1)`)
 `!p
@@ -281,68 +299,18 @@ snippet ta "Individual task" b
 \task $0
 endsnippet
 
+# Converts visual selected items into task
 snippet itt "Item to Task" bA
 `!p snip.rv = snip.v.text.strip().replace(r"\item", r"\task")`$0
 endsnippet
 
+# Converts visual selected task into items
 snippet tti "Task to Item" bA
 `!p snip.rv = snip.v.text.strip().replace(r"\task", r"\item")`$0
 endsnippet
 
 snippet nosep "noitemsep" i
 [noitemsep]$0
-endsnippet
-
-# --------------------------- Section environments --------------------------- #
-
-snippet part "Part" b
-\part{${1:${VISUAL:Part}}}%
-$0
-endsnippet
-
-snippet cha "Chapter" b
-\chapter{${1:${VISUAL:Chapter}}}%
-$0
-endsnippet
-
-snippet sec "Section" b
-\section{${1:${VISUAL:Section}}}%
-$0
-endsnippet
-
-snippet sec* "Section" b
-\section*{${1:${VISUAL:Section}}}%
-${0}
-endsnippet
-
-snippet sub "Subsection" b
-\subsection{${1:${VISUAL:Subsection}}}%
-$0
-endsnippet
-
-snippet sub* "Subsection" b
-\subsection*{${1:${VISUAL:Subsection}}}%
-${0}
-endsnippet
-
-snippet ssub "Subsubsection" b
-\subsubsection{${1:${VISUAL:Subsubsection}}}%
-$0
-endsnippet
-
-snippet ssub* "Subsubsection" b
-\subsubsection*{${1:${VISUAL:Subsubsection}}}%
-${0}
-endsnippet
-
-snippet par "Paragraph" b
-\paragraph{${1:${VISUAL:Paragraph}}}%
-$0
-endsnippet
-
-snippet subp "Subparagraph" b
-\subparagraph{${1:${VISUAL:Subparagraph}}}%
-$0
 endsnippet
 
 snippet noind "Non-indented paragraph" b

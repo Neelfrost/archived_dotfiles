@@ -43,8 +43,8 @@ let g:startify_lists = [
 
 let g:startify_bookmarks = [
             \   '~\AppData\Local\nvim\config\options.vim',
-            \   '~\AppData\Local\nvim\ultisnips\tex.snippets',
-            \   '~\AppData\Local\nvim\ultisnips\texmath.snippets'
+            \   '~\AppData\Local\nvim\ultisnips\tex\general.snippets',
+            \   '~\AppData\Local\nvim\ultisnips\tex\math.snippets'
             \   ]
 
 let g:custom_header = [

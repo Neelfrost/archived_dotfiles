@@ -1,4 +1,9 @@
+# Author: Neel Basak
+# Github: https://github.com/Neelfrost
+# File name: math.snippets
+
 # --------------------------------- Contexts --------------------------------- #
+
 global !p
 def math():
     return vim.eval('vimtex#syntax#in_mathzone()') == '1'
@@ -45,7 +50,7 @@ endsnippet
 
 # ----------------------------- Math environments ---------------------------- #
 
-snippet ilc "Chemmacro environment" wA
+snippet ilc "Chemmacros environment" wA
 \ch{${1:${VISUAL}}}$0
 endsnippet
 
@@ -92,52 +97,6 @@ snippet \} "Chemmacros escaped {}" iA
 \\{${1:${VISUAL}}\\}
 endsnippet
 
-# ---------------------------------- SIunitx --------------------------------- #
-
-# Angle
-snippet '(\d+\.\d+|\d+)ang' "Angle" rA
-\ang{`!p snip.rv = match.group(1)`}$0
-endsnippet
-
-# Number
-snippet '(\d+\.\d+|\d+|[\w\d]+)num' "Number" rA
-\num{`!p snip.rv = match.group(1)`}$0
-endsnippet
-
-# Number range
-priority 10
-snippet '(\d+\.\d+|\d+|[\w\d]+)-(\d+\.\d+|\d+|[\w\d]+)num' "Number range" rA
-\numrange{`!p snip.rv = match.group(1)`}{`!p snip.rv = match.group(2)`}$0
-endsnippet
-
-# SI unit with value
-snippet si "SI-Unit" w
-\SI{${1:${VISUAL}}}{${2:Unit}}$0
-endsnippet
-
-# SI range
-snippet sr "SI-Range" w
-\SIrange{$1}{$2}{${3:Unit}}$0
-endsnippet
-
-snippet asi "Auto SI-Unit" wA
-\SI{`!p snip.rv = re.search("(\d+\.\d+|\d+)", snip.v.text).group()`}{${1:Unit}}$0
-endsnippet
-
-snippet asr "Auto SI-Range" wA
-\SIrange{`!p snip.rv = re.search("(\d+\.\d+|\d+).+?(\d+\.\d+|\d+)", snip.v.text).group(1)`}{`!p snip.rv = re.search("(\d+\.\d+|\d+).+?(\d+\.\d+|\d+)", snip.v.text).group(2)`}{${1:Unit}}$0
-endsnippet
-
-# Degree Celsius
-snippet '(\d+\.\d+|\d+|[\w\d]+);dc' "Degree celsius" rA
-\SI{`!p snip.rv = match.group(1)`}{\celsius}$0
-endsnippet
-
-priority 10
-snippet ;dc "Degree celsius" wA
-\SI{`!p snip.rv = re.search("(\d+\.\d+|\d+)", snip.v.text).group()`}{\celsius}$0
-endsnippet
-
 # ------------------------------ Math functions ------------------------------ #
 
 # Trig, log functions
@@ -149,12 +108,12 @@ endsnippet
 # Fractions
 context "math()"
 snippet frac "Math fraction" iA
-\frac{${1:Num}}{${2:Den}} $0
+\frac{ ${1:Num} }{ ${2:Den} } $0
 endsnippet
 
 context "math()"
 snippet drac "Display fraction" iA
-\dfrac{${1:Num}}{${2:Den}} $0
+\dfrac{ ${1:Num} }{ ${2:Den} } $0
 endsnippet
 
 # Sub and Superscripts
@@ -207,6 +166,7 @@ endsnippet
 
 # Reaction arrows
 context "env('gather')"
+# arrow
 snippet ;a "Arrow ->" wA
 -> $0
 endsnippet
@@ -217,7 +177,7 @@ snippet ;a "Arrow aligned &->" wA
 endsnippet
 
 context "env('gather')"
-# Chem equilibrium
+# equilibrium arrow
 snippet ;e "Equilibrium <=>" wA
 <=> $0
 endsnippet

@@ -1,3 +1,7 @@
+# Author: Neel Basak
+# Github: https://github.com/Neelfrost
+# File name: all.snippets
+
 global !p
 from vimsnippets import get_comment_format
 endglobal
@@ -9,7 +13,7 @@ snippet box "Box" b
 $0
 endsnippet
 
-snippet '(.+)div' "Divider comment" r
+snippet '(.+)div' "Comment divider" r
 `!p
 div_str = match.group(1).strip()
 if int(72 - len(div_str)) % 2 == 0:
@@ -23,6 +27,12 @@ if int(72 - len(div_str)) % 2 == 0:
 else:
 	snip.rv = '-' * (int((80 - len(div_str) - 8)/2) + 1) + ' ' + get_comment_format()[0]
 `
+endsnippet
+
+snippet auth "Author" b
+`!p snip.rv = get_comment_format()[0] + " Author: Neel Basak"`
+`!p snip.rv = get_comment_format()[0] + " Github: https://github.com/Neelfrost"`
+`!p snip.rv = get_comment_format()[0] + " File name: " + snip.fn`
 endsnippet
 
 # vim:ft=snippets:
