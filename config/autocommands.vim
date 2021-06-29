@@ -1,5 +1,16 @@
 " ------------------------ Autocommands and Functions ------------------------ "
 
+" Set current file's dir to cwd
+autocmd BufEnter * silent! lcd %:p:h
+
+" Fix buffer movement in startify
+autocmd FileType startify :set buflisted
+
+" If on startify, set lcd to nvim
+autocmd FileType startify silent! lcd ~\Appdata\Local\nvim\
+
+autocmd BufWritePre * silent! call Cleanup()
+
 " Automatically reload the file if it is changed outside of Nvim, see
 " https://unix.stackexchange.com/a/383044/221410. It seems that `checktime`
 " command does not work in command line. We need to check if we are in command
@@ -55,14 +66,18 @@ if v:version >= 700
     autocmd BufEnter * call AutoRestoreWinView()
 endif
 
-" Add newline to eof, trim trailing whitespace.
+" Trim newline at eof, trailing whitespace.
 function! Cleanup()
-    let l:save=winsaveview()
-    keeppatterns %s/$\n\+\%$//e       " removes trailing lines
-    keeppatterns %s/\s\+$//e          " removes trailing spaces
-    keeppatterns %s/\\item$/\\item /e " do not remove trailing space after LaTeX \item 
-    keeppatterns %s/\\task$/\\task /e " do not remove trailing space after LaTeX \task 
-    call winrestview(l:save)
+    if &modified
+        let l:save=winsaveview()
+        keeppatterns %s/$\n\+\%$//e       " removes trailing lines
+        keeppatterns %s/\s\+$//e          " removes trailing spaces
+        if &ft =~ "tex"
+            keeppatterns %s/\\item$/\\item /e " do not remove trailing space after LaTeX \item
+            keeppatterns %s/\\task$/\\task /e " do not remove trailing space after LaTeX \task
+        endif
+        call winrestview(l:save)
+    endif
 endfunction
 
 " Quickfix toggle

@@ -3,7 +3,6 @@
 setlocal spell
 setlocal linebreak
 setlocal wrap
-" setlocal completeopt-=noinsert
 
 " --------------------------------- Functions -------------------------------- "
 
@@ -81,7 +80,7 @@ autocmd User VimtexEventQuit VimtexClean
 " Vimtex Toggle Compile
 " nnoremap <F6> :w!<CR>:VimtexCompile<CR>
 " Vim-autoformat latexindent
-nnoremap <F4> :Autoformat<CR>
+nnoremap <F4> :ALEFix<CR>
 
 " Push to next item of the list
 nnoremap <Insert> i<CR>\item <Esc>

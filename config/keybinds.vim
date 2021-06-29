@@ -14,11 +14,9 @@ nnoremap <silent> <leader><leader>e :AsyncRun! explorer.exe "<cwd>"<CR>
 " Open current file in vscode
 nnoremap <silent> <leader><leader>c :AsyncRun! code % <CR>
 
-" Find a file
-" nnoremap <leader><leader>f :find<Space>
-
 " Trim whitespace
-nnoremap <silent> <C-s> :call Cleanup()<CR><Esc>:w!<CR>
+" nnoremap <silent> <C-s> :call Cleanup()<CR><Esc>:w!<CR>
+nnoremap <silent> <C-s> :w!<CR>
 
 " Toggle quickfix
 nnoremap <silent> <leader>q :QFix<CR>
@@ -42,9 +40,6 @@ nnoremap <silent> <leader>h :nohl<CR>
 nnoremap $ g_
 vnoremap $ g_
 
-" Close buffer
-nnoremap <leader>w :bd!<CR>
-
 " Yank till line end
 nnoremap Y "+yg_<Esc>
 
@@ -66,13 +61,6 @@ nnoremap <S-k> gk
 nnoremap <S-j> gj
 vnoremap <S-k> gk
 vnoremap <S-j> gj
-
-" Switched to barbar
-" Tab and Shift + Tab between buffers
-" nnoremap <silent> <Tab> :bnext<CR>
-" nnoremap <silent> <S-Tab> :bprevious<CR>
-" Ctrl Tab between tabs
-nnoremap <silent> <C-Tab> :tabnext<CR>
 
 " Spell check
 " Correct previous bad word in insert mode

@@ -5,7 +5,7 @@
 " https://github.com/mhinz/vim-startify/blob/master/autoload/startify.vim : lines 713-718
 " usage (add to g:startify_lists): \ { 'type': function('s:list_files', [<number of files to be shown>, '<directory>', '<glob for file type>']), 'header': ['   <Header>']    },
 
-let s:max_files_amount = 100
+let s:max_files_amount = 10
 function! s:list_files(...) abort
     let l:file_amount = get(a:, 1, s:max_files_amount)
     " Ensure boundries 0 < v <= max

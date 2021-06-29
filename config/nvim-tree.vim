@@ -3,11 +3,19 @@
 let g:nvim_tree_auto_close = 1
 let g:nvim_tree_group_empty = 1
 let g:nvim_tree_highlight_opened_files = 1
-let g:nvim_tree_indent_markers = 1
+" let g:nvim_tree_indent_markers = 1
 let g:nvim_tree_quit_on_open = 1
-let g:nvim_tree_gitignore = 1
 let g:nvim_tree_side = 'right'
 let g:nvim_tree_width = 24
+let g:nvim_tree_follow = 1
+let g:nvim_tree_hijack_cursor = 1
+let g:nvim_tree_update_cwd = 1
+let g:nvim_tree_show_icons = {
+            \ 'git': 0,
+            \ 'folders': 1,
+            \ 'files': 1,
+            \ 'folder_arrows': 1,
+            \}
 
 " --------------------------------- Keybinds --------------------------------- "
 
@@ -46,5 +54,5 @@ vim.g.nvim_tree_bindings = {
     ["]c"]             = tree_cb("next_git_item"),
     ["-"]              = tree_cb("dir_up"),
     ["q"]              = tree_cb("close"),
-}
+    }
 EOF

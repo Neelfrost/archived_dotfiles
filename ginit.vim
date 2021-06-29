@@ -6,8 +6,8 @@ cnoremap <S-Insert> <C-R>+
 " To check if neovim-qt is running, use `exists('g:GuiLoaded')`,
 " see https://github.com/equalsraf/neovim-qt/issues/219
 if exists('g:GuiLoaded')
-" GuiFont! VictorMono\ NF:h12
-" GuiFont! JetBrainsMono\ NF:h11
+    " GuiFont! VictorMono\ NF:h12
+    " GuiFont! JetBrainsMono\ NF:h11
     GuiFont! CaskaydiaCove\ NF:h11
     GuiTabline 0
     GuiPopupmenu 0
