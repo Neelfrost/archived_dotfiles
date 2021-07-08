@@ -27,14 +27,12 @@ if !empty(glob(stdpath('data').'\plugged'))
     source ~\AppData\Local\nvim\config\ultisnips.vim
     " Ale
     source ~\AppData\Local\nvim\config\ale.vim
-    " Vim-autoformat
-    source ~\AppData\Local\nvim\config\autoformat.vim
     " Startify
     source ~\AppData\Local\nvim\config\start-screen.vim
-    " Deoplete
-    source ~\AppData\Local\nvim\config\deoplete.vim
     " Nvim-tree
     source ~\AppData\Local\nvim\config\nvim-tree.vim
+    " Ctrl-p
+    source ~\AppData\Local\nvim\config\ctrlp.vim
     " Easy Motion
     source ~\AppData\Local\nvim\config\easymotion.vim
     " Statusline
@@ -52,3 +50,8 @@ source ~\AppData\Local\nvim\config\autocommands.vim
 if exists('g:neovide')
     source ~\AppData\Local\nvim\config\neovide.vim
 endif
+
+lua << EOF
+require("completion")
+require("lsp")
+EOF
