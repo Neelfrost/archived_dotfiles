@@ -31,7 +31,7 @@ set nostartofline                        " Do not move the cursor to the first n
 set iskeyword+=-                         " Treat dash separated words as a word text object"
 set updatetime=300                       " Faster completion
 set pumheight=10                         " Show max. 10 completions
-set completeopt=menuone,noselect,preview " Enable completion for vim-compe
+set completeopt=menuone,noselect         " Enable completion for vim-compe
 set noswapfile                           " No swap file
 
 " Ignore LaTeX aux files

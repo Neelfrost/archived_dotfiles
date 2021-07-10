@@ -16,4 +16,4 @@ let bufferline.icon_close_tab_modified = '+'
 " Set buflisted fixes buffer not found error
 nnoremap <silent> <Tab> :BufferNext<CR>
 nnoremap <silent> <S-Tab> :BufferPrevious<CR>
-nnoremap <silent> <leader>w :BufferClose!<CR>
+nnoremap <silent> <leader>w :bd!<CR>

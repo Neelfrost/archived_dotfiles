@@ -42,9 +42,8 @@ let g:startify_lists = [
             \   ]
 
 let g:startify_bookmarks = [
-            \   '~\AppData\Local\nvim\config\options.vim',
-            \   '~\AppData\Local\nvim\ultisnips\tex\general.snippets',
-            \   '~\AppData\Local\nvim\ultisnips\tex\math.snippets'
+            \   {'i': '~\AppData\Local\nvim\init.vim'},
+            \   {'p': '~\AppData\Local\nvim\config\plugins.vim'},
             \   ]
 
 let g:custom_header = [
@@ -55,6 +54,7 @@ let g:custom_header = [
             \   '    ██║ ╚████║███████╗╚██████╔╝ ╚████╔╝ ██║██║ ╚═╝ ██║',
             \   '    ╚═╝  ╚═══╝╚══════╝ ╚═════╝   ╚═══╝  ╚═╝╚═╝     ╚═╝',
             \   ]
+
 let g:startify_custom_header = g:custom_header
 
 " Sort wrt to modified

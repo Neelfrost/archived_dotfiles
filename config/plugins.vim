@@ -8,8 +8,7 @@ if empty(glob(stdpath('data') . '\site\autoload\plug.vim'))
 else
     call plug#begin(stdpath('data').'\plugged')
 
-" ----------------------------------- Style ---------------------------------- "
-
+    " Style
     Plug 'romgrk/barbar.nvim'
     Plug 'lukas-reineke/indent-blankline.nvim'
     Plug 'itchyny/lightline.vim'
@@ -18,27 +17,22 @@ else
     Plug 'ryanoasis/vim-devicons'
     Plug 'machakann/vim-highlightedyank'
     Plug 'sainnhe/gruvbox-material'
-    Plug 'kyazdani42/nvim-tree.lua'
-    Plug 'norcalli/nvim-colorizer.lua'
+    Plug 'kyazdani42/nvim-tree.lua', {'commit': '10e845e01cb5fe62c952ccedf2edfe4ea78be727'}
     " Plug 'preservim/nerdtree', {'on': 'NERDTreeToggle'}
     " Plug 'gruvbox-community/gruvbox'
     " Plug 'vim-airline/vim-airline'
     " Plug 'vim-airline/vim-airline-themes'
 
-" --------------------------------- Language --------------------------------- "
-
-    " Plug 'zchee/deoplete-jedi'
-    " Plug 'davidhalter/jedi-vim'
-    " Plug 'python-rope/ropevim'
+    " Language
     Plug 'psf/black', {'branch': 'stable'}
     Plug 'lervag/vimtex'
     Plug 'neovim/nvim-lspconfig'
     Plug 'hrsh7th/nvim-compe'
+    " Plug 'zchee/deoplete-jedi'
+    " Plug 'davidhalter/jedi-vim'
+    " Plug 'python-rope/ropevim'
 
-" --------------------------------- Features --------------------------------- "
-
-    " Plug 'Shougo/deoplete.nvim', {'do': ':UpdateRemotePlugins'}
-    " Plug 'honza/vim-snippets'
+    " Features
     Plug 'skywind3000/asyncrun.extra'
     Plug 'skywind3000/asyncrun.vim'
     Plug 'jiangmiao/auto-pairs'
@@ -57,6 +51,8 @@ else
     Plug 'inkarkat/vim-ingo-library'
     Plug 'inkarkat/vim-SpellCheck'
     Plug 'dense-analysis/ale'
+    " Plug 'Shougo/deoplete.nvim', {'do': ':UpdateRemotePlugins'}
+    " Plug 'honza/vim-snippets'
     call plug#end()
 endif
 

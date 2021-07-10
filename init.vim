@@ -12,7 +12,7 @@
 " Vim config
 source ~\AppData\Local\nvim\config\options.vim
 " Plugins
-source ~\AppData\Local\nvim\config\plug.vim
+source ~\AppData\Local\nvim\config\plugins.vim
 " Source plugin settings if installed
 if !empty(glob(stdpath('data').'\plugged'))
     " General plugin settings
