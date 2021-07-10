@@ -1,12 +1,12 @@
-" ---------------------------------- Airline --------------------------------- "
-
-" let g:airline_powerline_fonts=1
-" let g:airline#extensions#tabline#enabled=1
-" let g:airline#extensions#tabline#formatter='unique_tail'
-" let g:airline#extensions#wordcount#filetypes='\vasciidoc|help|mail|markdown|pandoc|org|rst|tex|text'
-" let g:airline_theme='deus'
-
 " --------------------------------- Lightline -------------------------------- "
+
+function! IsPlugin()
+      let filename = expand('%:t')
+      return filename =~ 'NERD_tree' ? 1 :
+                        \ filename =~# 'NvimTree' ? 1 :
+                        \ filename ==# '[Plugins]' ? 1 :
+                        \ &filetype =~ 'startify' ? 1 : 0
+endfunction
 
 function! LightlineFilename()
       let filename = expand('%:t')
@@ -19,15 +19,13 @@ endfunction
 
 function! LightlineFileIcon()
       let filename = expand('%:t')
-      let icon = filename ==# '[Plugins]' ? '' :
-                        \ filename =~# 'NERD_tree' ? '' :
-                        \ &filetype =~ 'startify' ? '' :
+      let icon = IsPlugin() ? '' :
                         \ winwidth(0) > 70 ? (strlen(&filetype) ? WebDevIconsGetFileTypeSymbol() . ' ' : '') : ''
       return icon
 endfunction
 
 function! LightlineReadonly()
-      return &readonly && &filetype !=# 'help' ? '' : ''
+      return &readonly ? '' : ''
 endfunction
 
 function! LightLineMode()
@@ -40,7 +38,13 @@ function! LightLineMode()
 endfunction
 
 function! LightlineFileformat()
-      return winwidth(0) > 70 ? &fileformat : WebDevIconsGetFileFormatSymbol()
+      return IsPlugin() ? '' :
+                        \ winwidth(0) > 70 ? &fileformat : ''
+endfunction
+
+function! LightlineFileencoding()
+      return IsPlugin() ? '' :
+                        \ winwidth(0) > 70 ? &fileencoding : ''
 endfunction
 
 function! LightlineWordCount()
@@ -48,43 +52,36 @@ function! LightlineWordCount()
 endfunction
 
 function! LightlinePercent()
-      return winwidth(0) > 70 ? '☰ ' . (100 * line('.') / line('$')) . '%' : ''
+      return winwidth(0) > 70 ? printf('並%d%% of %d', (100 * line('.') / line('$')), line('$')) : ''
 endfunction
 
 function! LightlineLineInfo()
-      return winwidth(0) > 70 ? printf(' %d:%-2d', line('.'), col('.')) : ''
+      return winwidth(0) > 70 ? printf(': %d:%-2d', line('.'), col('.')) : ''
+endfunction
+
+function! LightlineTotalLines()
+      return winwidth(0) > 70 ? printf('%d ﲯ', line('$')) : ''
 endfunction
 
 let g:lightline = {
                   \   'enable': { 'tabline': 0 },
                   \   'colorscheme': 'ayu_dark',
                   \   'active': {
-                  \     'left': [ [ 'mode', 'paste' ],
-                  \               [ 'readonly', 'filename', 'fileformat' ] ],
-                  \     'right': [ [ 'lineinfo' ],
-                  \                   [ 'spell', 'wordcount', 'percent' ] ]
+                  \     'left': [['mode', 'paste'], ['readonly', 'filename', 'spell'], ['fileencoding', 'fileformat']],
+                  \     'right': [['max'], ['lineinfo'], ['wordcount']]
                   \   },
                   \   'inactive': {
-                  \     'left': [ [ 'mode' ],
-                  \               [ 'readonly', 'filename', 'fileformat' ] ],
-                  \     'right': [ [ 'lineinfo' ],
-                  \                   [ 'spell', 'wordcount', 'percent' ] ]
+                  \     'left': [[], ['readonly', 'filename']],
+                  \     'right': []
                   \   },
                   \   'component_function': {
                   \     'mode': 'LightLineMode',
                   \     'filename': 'LightlineFilename',
                   \     'readonly': 'LightlineReadonly',
                   \     'fileformat': 'LightlineFileformat',
-                  \     'percent': 'LightlinePercent',
+                  \     'fileencoding': 'LightlineFileencoding',
                   \     'lineinfo': 'LightlineLineInfo',
+                  \     'max': 'LightlineTotalLines',
                   \     'wordcount': 'LightlineWordCount',
                   \   },
                   \   }
-" \   'separator': {
-" \     'left': '',
-" \     'right': ''
-" \   },
-" \   'subseparator': {
-" \     'left': '',
-" \     'right': ''
-" \   }
