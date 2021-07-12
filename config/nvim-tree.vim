@@ -16,10 +16,11 @@ let g:nvim_tree_show_icons = {
             \ 'files': 1,
             \ 'folder_arrows': 1,
             \ }
+let g:nvim_tree_ignore = ['*.pdf', '*.gz', '*.aux', '*.lof', '*.lot', '*.fls', '*.out', '*.toc', '*.fmt', '*.fot', '*.cb', '*.cb2', '.*.lb', '*.fdb_*', '*.synctex*']
 
 " --------------------------------- Keybinds --------------------------------- "
 
-nnoremap <C-b> :NvimTreeToggle<CR>
+nnoremap <silent><C-b> :NvimTreeToggle<CR>
 
 lua << EOF
 local tree_cb = require'nvim-tree.config'.nvim_tree_callback
