@@ -1,12 +1,5 @@
 " ---------------------------------- Themes ---------------------------------- "
 
-" gruvbox community
-" let g:gruvbox_colors = {'dark0_hard': '#0A0E14'}
-" let g:gruvbox_improved_warnings = 1
-" let g:gruvbox_invert_selection = 0
-" let g:gruvbox_contrast_dark = 'hard'
-" colorscheme gruvbox
-
 " gruvbox material
 let g:gruvbox_material_palette = 'mix'
 let g:gruvbox_material_better_performance = 1

@@ -32,7 +32,7 @@ augroup resume_edit_position
 augroup END
 
 " Set window title
-augroup dirchange
+augroup update_window_title
     autocmd!
     autocmd BufEnter * :set title | let &titlestring = expand('%') =~ "" ? "Neovim" : expand('%')
 augroup END

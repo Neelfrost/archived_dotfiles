@@ -51,7 +51,7 @@ vnoremap y "+y
 inoremap <C-v> <C-R>+
 
 " Paste from system clipboard in normal mode when paste is on
-nnoremap <expr> <C-v> &paste ? '"+P' : '<C-v>'
+nnoremap <expr> <C-v> &paste ? '"+P\|<F2>' : '<C-v>'
 
 " Move to line end
 inoremap <C-a> <Esc>g_a
@@ -94,3 +94,7 @@ nnoremap <M-j> <C-w>j
 " Disable word search on shift mouse
 map <S-LeftMouse> <nop>
 map <S-LeftDrag> <nop>
+
+" Command mode movement
+cnoremap <C-j> <C-n>
+cnoremap <C-k> <C-p>

@@ -41,17 +41,12 @@ if !empty(glob(stdpath('data').'\plugged'))
     source ~\AppData\Local\nvim\config\bufferline.vim
     " Theme
     source ~\AppData\Local\nvim\config\theme.vim
+    " compe
+    lua require("completion")
+    " lsp
+    lua require("lsp")
 endif
 " Keybinds
 source ~\AppData\Local\nvim\config\keybinds.vim
 " Autocommands
 source ~\AppData\Local\nvim\config\autocommands.vim
-" Neovide
-if exists('g:neovide')
-    source ~\AppData\Local\nvim\config\neovide.vim
-endif
-
-lua << EOF
-require("completion")
-require("lsp")
-EOF

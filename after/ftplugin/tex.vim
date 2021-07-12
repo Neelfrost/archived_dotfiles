@@ -77,11 +77,6 @@ autocmd User VimtexEventQuit VimtexClean
 
 " --------------------------------- Keybinds --------------------------------- "
 
-" Vimtex Toggle Compile
-" nnoremap <F6> :w!<CR>:VimtexCompile<CR>
-" Vim-autoformat latexindent
-nnoremap <F4> :ALEFix<CR>
-
 " Push to next item of the list
 nnoremap <Insert> i<CR>\item <Esc>
 " Adjoin next item
@@ -91,11 +86,17 @@ nnoremap <Delete> gJi<C-o>dW<C-o>dW <Esc>
 vnoremap <M-b> di\textbi{}<Esc>P
 nnoremap <M-b> diwi\textbi{}<Esc>P
 
+" Bold word under cursor or selected
+vnoremap <M-B> di\textbf{}<Esc>P
+nnoremap <M-B> diwi\textbf{}<Esc>P
+
 " Put the word inside chem environment
 nnoremap <M-v> diwi\ch{}<Esc>P
 vnoremap <M-v> di\ch{}<Esc>P
 
-vnoremap <leader><leader>n :norm A
+" Append period or comma to selected lines
+vnoremap np :norm A.
+vnoremap nc :norm A,
 
 " ------------------------------ Vimtex Settings ----------------------------- "
 
