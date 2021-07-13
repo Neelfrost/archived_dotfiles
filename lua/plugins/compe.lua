@@ -1,3 +1,5 @@
+-- -------------------------------- Settings -------------------------------- --
+
 require("compe").setup({
 	enabled = true,
 	autocomplete = true,
