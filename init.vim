@@ -29,8 +29,6 @@ if !empty(glob(stdpath('data').'\plugged'))
     source ~\AppData\Local\nvim\config\ale.vim
     " Startify
     source ~\AppData\Local\nvim\config\start-screen.vim
-    " Nvim-tree
-    source ~\AppData\Local\nvim\config\nvim-tree.vim
     " Ctrl-p
     source ~\AppData\Local\nvim\config\ctrlp.vim
     " Easy Motion
@@ -41,10 +39,14 @@ if !empty(glob(stdpath('data').'\plugged'))
     source ~\AppData\Local\nvim\config\bufferline.vim
     " Theme
     source ~\AppData\Local\nvim\config\theme.vim
-    " compe
-    lua require("completion")
-    " lsp
-    lua require("lsp")
+    " Nvimtree
+    lua require("plugins.nvimtree")
+    " Compe
+    lua require("plugins.compe")
+    " Lsp
+    lua require("plugins.lsp")
+    " Lspsaga
+    lua require("plugins.lspsaga")
 endif
 " Keybinds
 source ~\AppData\Local\nvim\config\keybinds.vim

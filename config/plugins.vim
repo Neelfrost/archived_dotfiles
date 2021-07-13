@@ -23,6 +23,7 @@ else
     Plug 'psf/black', {'branch': 'stable'}
     Plug 'lervag/vimtex'
     Plug 'neovim/nvim-lspconfig'
+    Plug 'glepnir/lspsaga.nvim'
     Plug 'hrsh7th/nvim-compe'
 
     " Features

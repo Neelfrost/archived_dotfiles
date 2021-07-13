@@ -3,7 +3,7 @@ require("compe").setup({
 	autocomplete = true,
 	debug = false,
 	min_length = 2,
-	preselect = "always",
+	preselect = "enable",
 	throttle_time = 80,
 	source_timeout = 200,
 	resolve_timeout = 800,
@@ -21,7 +21,7 @@ require("compe").setup({
 			filetypes = { "tex" },
 		},
 		path = { kind = "  " },
-		buffer = { kind = "  " },
+		buffer = { kind = " ﬘ " },
 		nvim_lsp = { kind = "  " },
 		nvim_lua = { kind = "  " },
 		ultisnips = { kind = "  " },
@@ -36,4 +36,4 @@ vim.cmd([[
 	inoremap <silent><expr> <C-Space> compe#complete()
 	inoremap <silent><expr> <CR> compe#confirm('<CR>')
 	inoremap <silent><expr> <C-e> compe#close('<C-e>')
-	]])
+]])
