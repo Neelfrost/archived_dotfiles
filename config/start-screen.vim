@@ -33,12 +33,12 @@ function! StartifyEntryFormat() abort
 endfunction
 
 let g:startify_lists = [
-            \   { 'type': 'sessions', 'header': ['   ﮦ Sessions'] },
-            \   { 'type': 'bookmarks', 'header': ['    Bookmarks'] },
-            \   { 'type': 'files', 'header': ['    Recent Files']  },
+            \   { 'type': 'sessions', 'header': ['   ﭯ Sessions'] },
+            \   { 'type': 'bookmarks', 'header': ['    Bookmarks'] },
+            \   { 'type': 'files', 'header': ['    Recent Files']  },
             \   { 'type': function('s:list_files', [5, '~\Documents\LaTeX\', '**/*.tex']), 'header': ['   ﭨ LaTeX']    },
-            \   { 'type': function('s:list_files', [5, 'D:\My Folder\Dev\Python\', '**/*.py']), 'header': ['    Python']    },
-            \   { 'type': 'dir', 'header': ['    Current Directory: '. getcwd()] },
+            \   { 'type': function('s:list_files', [5, 'D:\My Folder\Dev\Python\', '**/*.py']), 'header': ['    Python']    },
+            \   { 'type': 'dir', 'header': ['   ﱮ Current Directory: '. getcwd()] },
             \   ]
 
 let g:startify_bookmarks = [

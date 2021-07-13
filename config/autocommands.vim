@@ -9,6 +9,7 @@ autocmd FileType startify :set buflisted
 " If on startify, set lcd to nvim
 autocmd FileType startify silent! lcd ~\Appdata\Local\nvim\
 
+" Remove trailing whitespace and newlines
 autocmd BufWritePre * silent! call Cleanup()
 
 " Automatically reload the file if it is changed outside of Nvim, see
@@ -34,7 +35,7 @@ augroup END
 " Set window title
 augroup update_window_title
     autocmd!
-    autocmd BufEnter * :set title | let &titlestring = expand('%') =~ "" ? "Neovim" : expand('%')
+    autocmd BufEnter * :set title | let &titlestring = expand('%') !=# "" ? expand('%') : "Neovim"
 augroup END
 
 " Save current view settings on a per-window, per-buffer basis.
@@ -84,11 +85,11 @@ endfunction
 " https://vim.fandom.com/wiki/Toggle_to_open_or_close_the_quickfix_window
 command -bang -nargs=? QFix call QFixToggle(<bang>0)
 function! QFixToggle(forced)
-  if exists("g:qfix_win") && a:forced == 0
-    cclose
-    unlet g:qfix_win
-  else
-    copen 10
-    let g:qfix_win = bufnr("$")
-  endif
+    if exists("g:qfix_win") && a:forced == 0
+        cclose
+        unlet g:qfix_win
+    else
+        copen 10
+        let g:qfix_win = bufnr("$")
+    endif
 endfunction

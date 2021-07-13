@@ -3,7 +3,7 @@
 " Reload config
 " https://github.com/jdhao/nvim-config/blob/master/core/mappings.vim
 nnoremap <silent> <F5> :<C-U>silent update $MYVIMRC <bar> source $MYVIMRC <bar>
-            \ echomsg "Config reloaded!"<CR>
+			\ echomsg "Config reloaded!"<CR>
 
 " Open alacritty terminal at cwd
 nnoremap <silent> <leader><leader>t :AsyncRun! alacritty.exe --working-directory "<cwd>"<CR>
@@ -57,10 +57,14 @@ nnoremap <expr> <C-v> &paste ? '"+P\|<F2>' : '<C-v>'
 inoremap <C-a> <Esc>g_a
 
 " Display line movements
-nnoremap <S-k> gk
-nnoremap <S-j> gj
-vnoremap <S-k> gk
-vnoremap <S-j> gj
+nnoremap <expr> j (v:count == 0 ? 'gj' : 'j')
+nnoremap <expr> k (v:count == 0 ? 'gk' : 'k')
+vnoremap <expr> j (v:count == 0 ? 'gj' : 'j')
+vnoremap <expr> k (v:count == 0 ? 'gk' : 'k')
+
+" Fix accidental line joining during visual block selection
+vnoremap J j
+vnoremap K k
 
 " Spell check
 " Correct previous bad word in insert mode
