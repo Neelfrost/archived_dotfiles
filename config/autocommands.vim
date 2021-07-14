@@ -12,6 +12,9 @@ autocmd FileType startify silent! lcd ~\Appdata\Local\nvim\
 " Remove trailing whitespace and newlines
 autocmd BufWritePre * silent! call Cleanup()
 
+" Highlight on yank
+au TextYankPost * lua vim.highlight.on_yank { higroup = "Visual", timeout = 500, on_visual = false, on_macro = true }
+
 " Automatically reload the file if it is changed outside of Nvim, see
 " https://unix.stackexchange.com/a/383044/221410. It seems that `checktime`
 " command does not work in command line. We need to check if we are in command

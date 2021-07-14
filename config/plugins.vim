@@ -15,7 +15,6 @@ else
     Plug 'kyazdani42/nvim-web-devicons'
     Plug 'luochen1990/rainbow'
     Plug 'ryanoasis/vim-devicons'
-    Plug 'machakann/vim-highlightedyank'
     Plug 'sainnhe/gruvbox-material'
     Plug 'kyazdani42/nvim-tree.lua', {'commit': '10e845e01cb5fe62c952ccedf2edfe4ea78be727'}
 
@@ -32,7 +31,6 @@ else
     Plug 'jiangmiao/auto-pairs'
     Plug 'SirVer/ultisnips'
     Plug 'tpope/vim-commentary'
-    Plug 'easymotion/vim-easymotion'
     Plug 'ludovicchabant/vim-gutentags'
     Plug 'sheerun/vim-polyglot'
     Plug 'tpope/vim-repeat'
@@ -45,6 +43,7 @@ else
     Plug 'inkarkat/vim-ingo-library'
     Plug 'inkarkat/vim-SpellCheck'
     Plug 'dense-analysis/ale'
+    Plug 'phaazon/hop.nvim'
     " Plug 'honza/vim-snippets'
     call plug#end()
 endif

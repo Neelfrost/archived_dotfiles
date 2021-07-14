@@ -1,6 +1,3 @@
-" Highlight yank for 1s
-let g:highlightedyank_highlight_duration = 1000
-
 " Autopairs config
 let g:AutoPairsShortcutJump = "<C-l>"
 

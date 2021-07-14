@@ -50,8 +50,8 @@ vnoremap y "+y
 " Paste from system clipboard in insert mode
 inoremap <C-v> <C-R>+
 
-" Paste from system clipboard in normal mode when paste is on
-nnoremap <expr> <C-v> &paste ? '"+P\|<F2>' : '<C-v>'
+" Toggle paste mode and paste from system clipboard
+nnoremap <leader>v <F2>"+P<F2>
 
 " Move to line end
 inoremap <C-a> <Esc>g_a
