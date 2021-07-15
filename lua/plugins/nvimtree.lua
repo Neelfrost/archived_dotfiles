@@ -1,5 +1,12 @@
 -- -------------------------------- Settings -------------------------------- --
 
+vim.api.nvim_exec(
+	[[
+	autocmd BufEnter NvimTree :setlocal fillchars=eob:\ ,
+]],
+	false
+)
+
 local g = vim.g
 
 g.nvim_tree_auto_close = 1

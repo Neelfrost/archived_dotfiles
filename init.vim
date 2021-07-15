@@ -1,6 +1,6 @@
 " Author: Neel Basak
 " Github: https://github.com/Neelfrost
-" File name: init.vim
+" File: init.vim
 
 " ------------ ███╗   ██╗███████╗ ██████╗ ██╗   ██╗██╗███╗   ███╗ ------------ "
 " ------------ ████╗  ██║██╔════╝██╔═══██╗██║   ██║██║████╗ ████║ ------------ "
@@ -19,8 +19,6 @@ if !empty(glob(stdpath('data').'\plugged'))
     source ~\AppData\Local\nvim\config\general.vim
     " Gutentags
     source ~\AppData\Local\nvim\config\gutentags.vim
-    " Indent-blankline
-    source ~\AppData\Local\nvim\config\indentline.vim
     " Rainbow Brackets
     source ~\AppData\Local\nvim\config\rainbow-brackets.vim
     " Ultisnips
@@ -35,6 +33,8 @@ if !empty(glob(stdpath('data').'\plugged'))
     source ~\AppData\Local\nvim\config\statusline.vim
     " Bufferline
     source ~\AppData\Local\nvim\config\bufferline.vim
+    " Indent-blankline
+    lua require("plugins.indentline")
     " Nvimtree
     lua require("plugins.nvimtree")
     " Compe
