@@ -6,11 +6,15 @@ setlocal formatoptions-=o
 setlocal formatoptions-=r
 setlocal textwidth=120
 
+" --------------------------------- Mappings --------------------------------- "
+
 " Run lua script
 " With terminal
 nnoremap <leader>t :w!<CR>:AsyncRun -mode=term -pos=external lua %<CR>
 " Without terminal
 nnoremap <leader>r :w!<CR>:AsyncRun lua %<CR>
+
+" Run love2d
 " With terminal
 nnoremap <leader>lt :w!<CR>:AsyncRun -mode=term -pos=external lovec .<CR>
 " Without terminal

@@ -24,10 +24,12 @@ else
     Plug 'neovim/nvim-lspconfig'
     Plug 'glepnir/lspsaga.nvim'
     Plug 'hrsh7th/nvim-compe'
+    Plug 'ray-x/lsp_signature.nvim'
 
     " Features
     Plug 'skywind3000/asyncrun.extra'
     Plug 'skywind3000/asyncrun.vim'
+    " Plug 'voldikss/vim-floaterm'
     Plug 'jiangmiao/auto-pairs'
     Plug 'SirVer/ultisnips'
     Plug 'tpope/vim-commentary'
@@ -44,11 +46,14 @@ else
     Plug 'inkarkat/vim-SpellCheck'
     Plug 'dense-analysis/ale'
     Plug 'phaazon/hop.nvim'
+    Plug 'axvr/zepl.vim'
+    Plug 'skywind3000/vim-terminal-help'
+    Plug 'dhruvasagar/vim-open-url'
     " Plug 'honza/vim-snippets'
     call plug#end()
 endif
 
-" --------------------------------- Keybinds --------------------------------- "
+" --------------------------------- Mappings --------------------------------- "
 
 nnoremap <silent> <leader>pi :PlugInstall<CR>
 nnoremap <silent> <leader>pc :PlugClean<CR>

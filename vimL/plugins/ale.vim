@@ -11,25 +11,25 @@ let g:ale_fix_on_save = 1
 
 " Set syntax checkers
 let g:ale_linters = {
-            \   'python': ['flake8'],
-            \   'tex': ['chktex', 'lacheck'],
-            \   'cs': ['OmniSharp'],
-            \   }
+            \    'python': ['flake8'],
+            \    'tex': ['chktex', 'lacheck'],
+            \    'cs': ['OmniSharp'],
+            \    }
 
 " Set syntax fixers
 let g:ale_fixers = {
-            \   'tex': ['latexindent'],
-            \   'lua': ['stylua']
-            \   }
+            \    'tex': ['latexindent'],
+            \    'lua': ['stylua']
+            \    }
 let g:ale_fix_on_save_ignore = {
-            \   'tex': ['latexindent'],
-            \   }
+            \    'tex': ['latexindent'],
+            \    }
 
 " Icons
 let g:ale_sign_error = ''
 let g:ale_sign_warning = ''
 let g:ale_sign_info = ''
 
-" --------------------------------- Keybinds --------------------------------- "
+" --------------------------------- Mappings --------------------------------- "
 
 nnoremap <F4> :ALEFix<CR>

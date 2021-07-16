@@ -1,39 +1,18 @@
 -- -------------------------------- Settings -------------------------------- --
 
--- Use an on_attach function to only map the following keys
--- after the language server attaches to the current buffer
-local on_attach = function(client, bufnr)
-	local function buf_set_keymap(...)
-		vim.api.nvim_buf_set_keymap(bufnr, ...)
-	end
+-- Define borders
+local border = {
+	{ "┌", "FloatBorder" },
+	{ "─", "FloatBorder" },
+	{ "┐", "FloatBorder" },
+	{ "│", "FloatBorder" },
+	{ "┘", "FloatBorder" },
+	{ "─", "FloatBorder" },
+	{ "└", "FloatBorder" },
+	{ "│", "FloatBorder" },
+}
 
-	-- local function buf_set_option(...)
-	-- 	vim.api.nvim_buf_set_option(bufnr, ...)
-	-- end
-
-	--Enable completion triggered by <c-x><c-o>
-	-- buf_set_option("omnifunc", "v:lua.vim.lsp.omnifunc")
-
-	-- Keybinds
-	local opts = { noremap = true, silent = true }
-
-	-- See `:help vim.lsp.*` for documentation on any of the below functions
-	-- buf_set_keymap("n", "<space>D", "<cmd>lua vim.lsp.buf.type_definition()<CR>", opts)
-	-- buf_set_keymap("n", "<space>q", "<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>", opts)
-	buf_set_keymap("n", "[d", "<cmd>lua require'lspsaga.diagnostic'.lsp_jump_diagnostic_prev()<CR>", opts)
-	buf_set_keymap("n", "]d", "<cmd>lua require'lspsaga.diagnostic'.lsp_jump_diagnostic_next()<CR>", opts)
-	buf_set_keymap("n", "ga", "<cmd>lua require('lspsaga.codeaction').code_action()<CR>", opts)
-	buf_set_keymap("n", "gd", "<cmd>lua require'lspsaga.provider'.preview_definition()<CR>", opts)
-	buf_set_keymap("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opts)
-	buf_set_keymap("n", "gh", "<cmd>lua require('lspsaga.hover').render_hover_doc()<CR>", opts)
-	buf_set_keymap("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)
-	buf_set_keymap("n", "gl", "<cmd>lua require'lspsaga.diagnostic'.show_line_diagnostics()<CR>", opts)
-	buf_set_keymap("n", "gr", "<cmd>lua require('lspsaga.rename').rename()<CR>", opts)
-	buf_set_keymap("n", "gR", "<cmd>lua vim.lsp.buf.references()<CR>", opts)
-	buf_set_keymap("n", "gs", "<cmd>lua require('lspsaga.signaturehelp').signature_help()<CR>", opts)
-end
-
--- Completion icons
+-- Define completion icons
 vim.lsp.protocol.CompletionItemKind = {
 	"   (Text) ",
 	"   (Method)",
@@ -62,18 +41,66 @@ vim.lsp.protocol.CompletionItemKind = {
 	"   (TypeParameter)",
 }
 
+-- Use an on_attach function to only map the following keys
+-- after the language server attaches to the current buffer
+local on_attach = function(client, bufnr)
+	-- Mappings
+	local function buf_set_keymap(...)
+		vim.api.nvim_buf_set_keymap(bufnr, ...)
+	end
+
+	local opts = { noremap = true, silent = true }
+
+	-- See `:help vim.lsp.*` for documentation on any of the below functions
+	-- buf_set_keymap("n", "<space>D", "<cmd>lua vim.lsp.buf.type_definition()<CR>", opts)
+	-- buf_set_keymap("n", "<space>q", "<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>", opts)
+	buf_set_keymap("n", "[d", "<cmd>lua require'lspsaga.diagnostic'.lsp_jump_diagnostic_prev()<CR>", opts)
+	buf_set_keymap("n", "]d", "<cmd>lua require'lspsaga.diagnostic'.lsp_jump_diagnostic_next()<CR>", opts)
+	buf_set_keymap("n", "ga", "<cmd>lua require'lspsaga.codeaction'.code_action()<CR>", opts)
+	buf_set_keymap("n", "gd", "<cmd>lua require'lspsaga.provider'.preview_definition()<CR>", opts)
+	buf_set_keymap("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opts)
+	buf_set_keymap("n", "gh", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
+	buf_set_keymap("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)
+	buf_set_keymap("n", "gl", "<cmd>lua require'lspsaga.diagnostic'.show_line_diagnostics()<CR>", opts)
+	buf_set_keymap("n", "gr", "<cmd>lua require'lspsaga.rename'.rename()<CR>", opts)
+	buf_set_keymap("n", "gR", "<cmd>lua vim.lsp.buf.references()<CR>", opts)
+	buf_set_keymap("n", "gs", "<cmd>lua require'lspsaga.signaturehelp'.signature_help()<CR>", opts)
+
+	-- Borders
+	vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = border })
+	vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.hover, { border = border })
+
+	-- Lsp signature config
+	require("lsp_signature").on_attach({
+		bind = true,
+		floating_window = true,
+		fix_pos = false,
+		hint_enable = false,
+		hi_parameter = "BufferCurrent",
+		handler_opts = {
+			border = "single",
+		},
+		extra_trigger_chars = { "(", "," },
+	})
+end
+
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities.textDocument.completion.completionItem.snippetSupport = true
+
+-- Languages with defaults setup
 local nvim_lsp = require("lspconfig")
 local servers = { "pyright" }
 
 for _, lsp in ipairs(servers) do
 	nvim_lsp[lsp].setup({
 		on_attach = on_attach,
+		capabilities = capabilities,
 	})
 end
 
--- Lua lsp
-local sumneko_root_path = "C:\\tools\\lua-language-server\\server"
-local sumneko_binary = "C:\\tools\\lua-language-server\\server\\bin\\lua-language-server.exe"
+-- Lua setup
+local sumneko_root_path = "C:\\tools\\lua-language-server"
+local sumneko_binary = "C:\\tools\\lua-language-server\\bin\\lua-language-server.exe"
 
 local runtime_path = vim.split(package.path, ";")
 table.insert(runtime_path, "lua/?.lua")
@@ -81,6 +108,7 @@ table.insert(runtime_path, "lua/?/init.lua")
 
 require("lspconfig").sumneko_lua.setup({
 	on_attach = on_attach,
+	capabilities = capabilities,
 	cmd = { sumneko_binary, "-E", sumneko_root_path .. "/main.lua" },
 	settings = {
 		Lua = {
@@ -106,22 +134,8 @@ require("lspconfig").sumneko_lua.setup({
 	},
 })
 
--- Icons
+-- Set completion icons
 vim.fn.sign_define("LspDiagnosticsSignError", { text = "", numhl = "LspDiagnosticsDefaultError" })
 vim.fn.sign_define("LspDiagnosticsSignWarning", { text = "", numhl = "LspDiagnosticsDefaultWarning" })
 vim.fn.sign_define("LspDiagnosticsSignInformation", { text = "", numhl = "LspDiagnosticsDefaultInformation" })
-vim.fn.sign_define("LspDiagnosticsSignHint", { text = "ﯦ", numhl = "LspDiagnosticsDefaultHint" })
-
--- -------------------------------- Keybinds -------------------------------- --
-
--- vim.cmd([[
--- 	nnoremap <silent> gD <cmd> lua vim.lsp.buf.declaration()<CR>
--- 	nnoremap <silent> gd <cmd> lua vim.lsp.buf.definition()<CR>
--- 	nnoremap <silent> gh <cmd> lua vim.lsp.buf.hover()<CR>
--- 	nnoremap <silent> gi <cmd> lua vim.lsp.buf.implementation()<CR>
--- 	nnoremap <silent> gR <cmd> lua vim.lsp.buf.references()<CR>
--- 	nnoremap <silent> gr <cmd> lua vim.lsp.buf.rename()<CR>
--- 	nnoremap <silent> <C k> <cmd> lua vim.lsp.buf.signature_help()<CR>
--- 	nnoremap <silent> <C-n> <cmd> lua vim.lsp.diagnostic.goto_prev()<CR>
--- 	nnoremap <silent> <C-p> <cmd> lua vim.lsp.diagnostic.goto_next()<CR>
--- 	]])
+vim.fn.sign_define("LspDiagnosticsSignHint", { text = "", numhl = "LspDiagnosticsDefaultHint" })

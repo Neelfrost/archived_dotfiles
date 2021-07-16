@@ -13,7 +13,7 @@ autocmd FileType startify silent! lcd ~\Appdata\Local\nvim\
 autocmd BufWritePre * silent! call Cleanup()
 
 " Highlight on yank
-au TextYankPost * lua vim.highlight.on_yank { higroup = "Visual", timeout = 500, on_visual = false, on_macro = true }
+autocmd TextYankPost * lua vim.highlight.on_yank { higroup = "Visual", timeout = 500, on_visual = false, on_macro = true }
 
 " Automatically reload the file if it is changed outside of Nvim, see
 " https://unix.stackexchange.com/a/383044/221410. It seems that `checktime`
@@ -95,4 +95,19 @@ function! QFixToggle(forced)
         copen 10
         let g:qfix_win = bufnr("$")
     endif
+endfunction
+
+" Buffer text object
+" https://github.com/jdhao/nvim-config/blob/nvim-lsp/autoload/text_obj.vim
+function! BufferTextObj() abort
+    let buf_num = bufnr()
+    call setpos("'<", [buf_num, 1, 1, 0])
+    call setpos("'>", [buf_num, line('$'), 1, 0])
+    execute 'normal! `<V`>'
+endfunction
+
+" Launch external program
+function! LaunchExternalProg(launch_prog, launch_args) abort
+    exe '!'.a:launch_prog.' '.a:launch_args
+    redraw!
 endfunction

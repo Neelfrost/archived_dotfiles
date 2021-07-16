@@ -1,10 +1,10 @@
 -- -------------------------------- Settings -------------------------------- --
 
 vim.api.nvim_exec(
-	[[
-	autocmd BufEnter NvimTree :setlocal fillchars=eob:\ ,
-]],
-	false
+    [[
+    autocmd BufEnter NvimTree :setlocal fillchars=eob:\ ,
+    ]],
+    false
 )
 
 local g = vim.g
@@ -20,36 +20,36 @@ g.nvim_tree_width = 24
 g.nvim_tree_hijack_cursor = 1
 g.nvim_tree_update_cwd = 1
 g.nvim_tree_show_icons = {
-	git = 0,
-	folders = 1,
-	files = 1,
-	folder_arrows = 1,
+    git = 0,
+    folders = 1,
+    files = 1,
+    folder_arrows = 1,
 }
 g.nvim_tree_ignore = {
-	-- tex
-	"*.pdf",
-	"*.gz",
-	"*.aux",
-	"*.lof",
-	"*.lot",
-	"*.fls",
-	"*.out",
-	"*.toc",
-	"*.fmt",
-	"*.fot",
-	"*.cb",
-	"*.cb2",
-	".*.lb",
-	"*.fdb_latexmk",
-	"*.synctex",
-	"*.synctex.gz",
-	"*.synctex(busy)",
-	-- python
-	"__pycache__",
+    -- tex
+    "*.pdf",
+    "*.gz",
+    "*.aux",
+    "*.lof",
+    "*.lot",
+    "*.fls",
+    "*.out",
+    "*.toc",
+    "*.fmt",
+    "*.fot",
+    "*.cb",
+    "*.cb2",
+    ".*.lb",
+    "*.fdb_latexmk",
+    "*.synctex",
+    "*.synctex.gz",
+    "*.synctex(busy)",
+    -- python
+    "__pycache__",
 }
 
--- -------------------------------- Keybinds -------------------------------- --
+-- -------------------------------- Mappings -------------------------------- --
 
 vim.cmd([[
-	nnoremap <silent><C-b> :NvimTreeToggle<CR>
+    nnoremap <silent><C-b> :NvimTreeToggle<CR>
 ]])

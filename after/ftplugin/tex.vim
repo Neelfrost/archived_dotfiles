@@ -75,7 +75,7 @@ autocmd BufLeave * :call ResetIndentLine()
 autocmd User VimtexEventQuit VimtexStopAll
 autocmd User VimtexEventQuit VimtexClean
 
-" --------------------------------- Keybinds --------------------------------- "
+" --------------------------------- Mappings --------------------------------- "
 
 " Push to next item of the list
 nnoremap <Insert> i<CR>\item <Esc>

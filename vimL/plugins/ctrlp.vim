@@ -8,6 +8,6 @@ let g:ctrlp_max_files = 50
 let g:ctrlp_mruf_max = 50
 let g:ctrlp_by_filename = 1
 
-" --------------------------------- Keybinds --------------------------------- "
+" --------------------------------- Mappings --------------------------------- "
 
-nmap <silent><C-S-m> :<C-U>CtrlPMRUFiles<CR>
+nmap <silent><C-S-p> :<C-U>CtrlPMRUFiles<CR>
