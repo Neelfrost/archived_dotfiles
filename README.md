@@ -22,8 +22,6 @@ Using [Neovim-qt](https://github.com/equalsraf/neovim-qt) + [Gruvbox Material](h
 ![tex](.assets/tex.png "LaTeX Preview")
 ![python](.assets/py.png "Python Preview")
 
----
-
 # Installation ⚡
 
 The following instructions are for Windows (powershell). **An admin prompt is required.**
@@ -128,8 +126,6 @@ cmd /c for /F %i in ('type C:\Users\ADMINI~1\AppData\Local\Temp\curnvimserver.tx
 
     4. Use `:checkhealth` to check for errors if any.
 
----
-
 # Update 🚀
 
 1. Pull changes.
@@ -143,8 +139,6 @@ cd $HOME\Appdata\Local\nvim; git pull
 ```
 :PlugUpdate
 ```
-
----
 
 # Features 📃
 
@@ -166,14 +160,11 @@ LaTeX
 
 ## Plugins Used ⚓
 
-<!-- <details> -->
-<!-- <summary>Plugins Used</summary> -->
-
+-   Plugin manager: [packer.nvim](https://github.com/wbthomason/packer.nvim)
 -   Bufferline and navigation: [barbar.nvim](https://github.com/romgrk/barbar.nvim)
 -   Statusline: [lightline.vim](https://github.com/itchyny/lightline.vim)
 -   Start screen: [vim-startify](https://github.com/mhinz/vim-startify)
--   File navigation: [nvim-tree.lua](https://github.com/kyazdani42/nvim-tree.lua)
--   Fuzzy file search: [ctrlp.vim](https://github.com/ctrlpvim/ctrlp.vim)
+-   File navigation: [nvim-tree.lua](https://github.com/kyazdani42/nvim-tree.lua), [telescope.nvim](https://github.com/nvim-telescope/telescope.nvim)
 -   Icons for nvimtree, startify, bufferline, and statusline: [nvim-web-devicons](https://github.com/kyazdani42/nvim-web-devicons), [vim-devicons](https://github.com/ryanoasis/vim-devicons)
 -   Syntax highlighting: [vim-polyglot](https://github.com/sheerun/vim-polyglot)
 -   Code completion: [nvim-compe](https://github.com/hrsh7th/nvim-compe)
@@ -191,7 +182,7 @@ LaTeX
 -   Run commands asynchronously: [asyncrun.vim](https://github.com/skywind3000/asyncrun.vim), [asyncrun.extra](https://github.com/skywind3000/asyncrun.extra)
 -   Snippet engine: [ultisnips](https://github.com/SirVer/ultisnips)
 -   Snippet collection: [vim-snippets](https://github.com/honza/vim-snippets) _(disabled by default)_
--   Commenting: [vim-commentary](https://github.com/tpope/vim-commentary)
+-   Commenting: [kommentary](https://github.com/b3nj5m1n/kommentary)
 -   Faster motion: [hop.nvim](https://github.com/phaazon/hop.nvim)
 -   Tag management: [vim-gutentags](https://github.com/ludovicchabant/vim-gutentags)
 -   Repeat actions: [vim-repeat](https://github.com/tpope/vim-repeat)
@@ -204,10 +195,6 @@ LaTeX
 -   Terminal config: [vim-terminal-help](https://github.com/skywind3000/vim-terminal-help)
 -   Open URLs and more: [vim-open-url](https://github.com/dhruvasagar/vim-open-url)
 
-    <!-- </details> -->
-
-    ***
-
 ## Mappings ⌨
 
 | Shortcut                  | Mode                 | Description                                        |
@@ -219,8 +206,8 @@ LaTeX
 | <kbd>\\\\t</kbd>          | Normal               | Open alacritty at cwd                              |
 | <kbd>\\\\e</kbd>          | Normal               | Open explorer at cwd                               |
 | <kbd>\\\\c</kbd>          | Normal               | Open current file in VSCode                        |
+| <kbd>\\\\\r</kbd>         | Normal               | Replace word under cursor                          |
 | <kbd>\q</kbd>             | Normal               | Open quickfix                                      |
-| <kbd>\r</kbd>             | Normal               | Replace word under cursor                          |
 | <kbd>\h</kbd>             | Normal               | Disable search highlight                           |
 | <kbd>\v</kbd>             | Normal/Insert        | Paste from system clipboard in paste mode          |
 | <kbd>\w</kbd>             | Normal               | Close buffer _(will discard changes if not saved)_ |
@@ -238,6 +225,7 @@ LaTeX
 | <kbd>Enter</kbd>          | Insert               | Select completion item                             |
 | <kbd>Ctrl e</kbd>         | Insert               | Force completion menu to close                     |
 | <kbd>Alt d</kbd>          | Normal               | Duplicate current line below                       |
+| <kbd>Alt j(k)</kbd>       | Normal/Visual        | Move line / block up or down                       |
 | <kbd>Alt ]</kbd>          | Normal               | Increase indent                                    |
 | <kbd>Alt [</kbd>          | Normal               | Decrease indent                                    |
 | <kbd>Shift Tab</kbd>      | Insert               | Decrease indent                                    |
@@ -279,14 +267,13 @@ LaTeX
 | <kbd>\lt</kbd>            | Normal               | Lua (LÖVE2D): Run game in external terminal        |
 | <kbd>\lr</kbd>            | Normal               | Lua (LÖVE2D): Run game without terminal output     |
 
----
-
 # Todo ✔
 
 -   [x] Add Lua Support
 -   [x] Add mappings list
 -   [x] Automatic plugin install
 -   [x] Improve install instructions.
+-   [x] Slowly move to Lua config
 -   [ ] Add C# Support
 -   [ ] Automatic install script
 -   [ ] Create video to showcase snippets

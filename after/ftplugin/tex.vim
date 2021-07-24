@@ -97,35 +97,3 @@ vnoremap <M-v> di\ch{}<Esc>P
 " Append period or comma to selected lines
 vnoremap np :norm A.
 vnoremap nc :norm A,
-
-" ------------------------------ Vimtex Settings ----------------------------- "
-
-" Disable imaps (using Ultisnips)
-let g:vimtex_imaps_enabled = 0
-" Do not open pdfviwer on compile
-let g:vimtex_view_automatic = 0
-" Disable conceal
-let g:vimtex_syntax_conceal_default = 0
-" Disable quickfix auto open
-let g:vimtex_quickfix_ignore_mode = 0
-" PDF viewer settings
-let g:vimtex_view_general_viewer = 'SumatraPDF'
-let g:vimtex_view_general_options
-            \='-reuse-instance -forward-search @tex @line @pdf'
-let g:vimtex_view_general_options_latexmk = '-reuse-instance'
-let g:vimtex_quickfix_mode = 0
-" Latex warnings to ignore
-let g:vimtex_quickfix_ignore_filters = [
-            \   'Underfull \\hbox (badness [0-9]*) in paragraph at lines',
-            \   'Overfull \\hbox ([0-9]*.[0-9]*pt too wide) in paragraph at lines',
-            \   'Underfull \\hbox (badness [0-9]*) in ',
-            \   'Overfull \\hbox ([0-9]*.[0-9]*pt too wide) in ',
-            \   'Package hyperref Warning: Token not allowed in a PDF string',
-            \   'Package typearea Warning: Bad type area settings!',
-            \   'Command terminated with space',
-            \   'Package fancyhdr Warning: \\headheight is too small ',
-            \   'Package caption Warning: The option ',
-            \   'Package caption Warning: Unused \\captionsetup',
-            \   'Package enumitem Warning: Negative labelwidth',
-            \   'LaTeX Font Warning: Font shape'
-            \   ]

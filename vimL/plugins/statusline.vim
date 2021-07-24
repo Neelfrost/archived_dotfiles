@@ -1,11 +1,13 @@
 " --------------------------------- Settings --------------------------------- "
 
-function! IsPlugin()
+function! LightlineIsPlugin()
       let filename = expand('%:t')
       return filename =~ 'NERD_tree' ? 1 :
                         \    filename =~# 'NvimTree' ? 1 :
                         \    filename ==# '[Plugins]' ? 1 :
-                        \    &filetype =~ 'startify' ? 1 : 0
+                        \    filename ==# 'packer' ? 1 :
+                        \    &filetype =~ 'startify' ? 1 : 
+                        \    &filetype =~ 'dashboard' ? 1 : 0
 endfunction
 
 function! LightlineFilename()
@@ -13,13 +15,14 @@ function! LightlineFilename()
       let fname = filename =~# 'NERD_tree' ? '' :
                         \    filename =~# 'NvimTree' ? '' :
                         \    filename ==# '[Plugins]' ? '' :
+                        \    filename ==# 'packer' ? '' :
                         \    filename !=# '' ? filename : '[No Name]'
       return LightlineFileIcon() . fname
 endfunction
 
 function! LightlineFileIcon()
       let filename = expand('%:t')
-      let icon = IsPlugin() ? '' :
+      let icon = LightlineIsPlugin() ? '' :
                         \    winwidth(0) > 70 ? (strlen(&filetype) ? WebDevIconsGetFileTypeSymbol() . ' ' : '') : ''
       return icon
 endfunction
@@ -33,17 +36,19 @@ function! LightLineMode()
       return fname =~ 'NERD_tree' ? 'NERDTree' :
                         \    fname =~# 'NvimTree' ? 'NvimTree' :
                         \    fname ==# '[Plugins]' ? 'Plug' :
+                        \    fname ==# 'packer' ? 'Packer' :
                         \    &filetype =~ 'startify' ? 'Startify' :
+                        \    &filetype =~ 'dashboard' ? 'Dashboard' :
                         \    lightline#mode()
 endfunction
 
 function! LightlineFileformat()
-      return IsPlugin() ? '' :
+      return LightlineIsPlugin() ? '' :
                         \    winwidth(0) > 70 ? &fileformat : ''
 endfunction
 
 function! LightlineFileencoding()
-      return IsPlugin() ? '' :
+      return LightlineIsPlugin() ? '' :
                         \    winwidth(0) > 70 ? &fileencoding : ''
 endfunction
 
