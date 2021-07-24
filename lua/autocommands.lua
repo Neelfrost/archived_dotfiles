@@ -1,11 +1,6 @@
 -- Set current file's dir to cwd
 vim.cmd([[autocmd BufEnter * silent! lcd %:p:h]])
 
--- Fix buffer movement, set lcd to nvim, set global variable to track bufnr of dashboard
-vim.cmd(
-	[[autocmd FileType dashboard :set buflisted | silent! lcd ~\\Appdata\\Local\\nvim\\ | let g:dashboard_bufnr = bufnr()]]
-)
-
 -- Remove trailing whitespace and newlines
 vim.cmd([[autocmd BufWritePre * silent! lua perform_cleanup()]])
 

@@ -137,7 +137,7 @@ cd $HOME\Appdata\Local\nvim; git pull
 2. Open nvim-qt or nvim and update plugins:
 
 ```
-:PlugUpdate
+:PackerSync
 ```
 
 # Features 📃
@@ -148,7 +148,7 @@ General
 -   Resume cursor position when re-opening a file.
 -   Auto update file if changed outside of neovim.
 -   Smart display line movement.
--   Ability to add custom directories to startify.
+-   Ability to search custom directories in telescope.nvim.
 -   Automatically trim trailing whitespaces and newlines on save.
 -   Open alacritty terminal, vscode, explorer at current directory using <kbd>\\\\t</kbd>, <kbd>\\\\c</kbd>, <kbd>\\\\e</kbd> respectively.
 
@@ -163,9 +163,9 @@ LaTeX
 -   Plugin manager: [packer.nvim](https://github.com/wbthomason/packer.nvim)
 -   Bufferline and navigation: [barbar.nvim](https://github.com/romgrk/barbar.nvim)
 -   Statusline: [lightline.vim](https://github.com/itchyny/lightline.vim)
--   Start screen: [vim-startify](https://github.com/mhinz/vim-startify)
+-   Start screen: [dashboard-nvim](https://github.com/glepnir/dashboard-nvim)
 -   File navigation: [nvim-tree.lua](https://github.com/kyazdani42/nvim-tree.lua), [telescope.nvim](https://github.com/nvim-telescope/telescope.nvim)
--   Icons for nvimtree, startify, bufferline, and statusline: [nvim-web-devicons](https://github.com/kyazdani42/nvim-web-devicons), [vim-devicons](https://github.com/ryanoasis/vim-devicons)
+-   Icons for nvimtree, dashboard, telescope, bufferline, and statusline: [nvim-web-devicons](https://github.com/kyazdani42/nvim-web-devicons), [vim-devicons](https://github.com/ryanoasis/vim-devicons)
 -   Syntax highlighting: [vim-polyglot](https://github.com/sheerun/vim-polyglot)
 -   Code completion: [nvim-compe](https://github.com/hrsh7th/nvim-compe)
 -   Language server: [nvim-lspconfig](https://github.com/neovim/nvim-lspconfig)
@@ -213,8 +213,10 @@ LaTeX
 | <kbd>\w</kbd>             | Normal               | Close buffer _(will discard changes if not saved)_ |
 | <kbd>\u</kbd>             | Normal               | Open URL under cursor in browser                   |
 | <kbd>\s</kbd>             | Normal               | Search word under cursor in browser                |
-| <kbd>\n</kbd>             | Normal               | Open startify                                      |
+| <kbd>\n</kbd>             | Normal               | Open dashboard                                     |
 | <kbd>\f</kbd>             | Normal               | Search buffer using 1 chars                        |
+| <kbd>\tf</kbd>            | Normal               | Fuzzy search in cwd                                |
+| <kbd>\tr</kbd>            | Normal               | Fuzzy search in most recently used files           |
 | <kbd>s</kbd>              | Normal               | Search buffer using 2 chars                        |
 | <kbd>Tab</kbd>            | Normal               | Move to next buffer                                |
 | <kbd>Shift Tab</kbd>      | Normal               | Move to previous buffer                            |
@@ -236,8 +238,6 @@ LaTeX
 | <kbd>Ctrl b</kbd>         | Normal               | Toggle nvimtree                                    |
 | <kbd>Ctrl f</kbd>         | Normal               | Format document                                    |
 | <kbd>Ctrl h(jkl)</kbd>    | Normal               | Move to window to the left (down, up, right)       |
-| <kbd>Ctrl p</kbd>         | Normal               | Fuzzy search in cwd                                |
-| <kbd>Ctrl P</kbd>         | Normal               | Fuzzy search in most recently used files           |
 | <kbd>Ctrl s</kbd>         | Normal               | Save current file                                  |
 | <kbd>Ctrl v</kbd>         | Normal               | Paste from system clipboard                        |
 | <kbd>Ctrl z</kbd>         | Insert               | Correct preceding misspelt word                    |

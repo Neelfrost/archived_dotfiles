@@ -1,7 +1,7 @@
 -- Compile oacker when pluginlist file changes
 vim.cmd([[autocmd BufWritePost pluginlist.lua source <afile> | PackerCompile]])
 
-local install_path = vim.fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
+local install_path = PACKER_PATH .. "\\packer.nvim"
 
 -- Check if packer is installed, if not install packer
 if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
@@ -75,7 +75,7 @@ return packer.startup(function()
 	-- use('honza/vim-snippets')
 
 	-- Automatic initial plugin installation
-	if vim.fn.len(vim.fn.globpath(vim.fn.stdpath("data") .. "/site/pack/packer/start", "*", 0, 1)) == 1 then
+	if vim.fn.len(vim.fn.globpath(PACKER_PATH, "*", 0, 1)) == 1 then
 		vim.cmd([[redraw! | PackerSync]])
 	end
 end)

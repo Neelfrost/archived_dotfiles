@@ -1,19 +1,18 @@
-vim.cmd([[
-    autocmd Filetype dashboard :setlocal fillchars=eob:\ ,
-]])
+-- Fix buffer movement, remove eob in dashboard
+vim.cmd([[autocmd FileType dashboard :set buflisted | :setlocal fillchars=eob:\ ]])
 
 -- Plugin count
-local plugins_count = vim.fn.len(vim.fn.globpath(vim.fn.stdpath("data") .. "/site/pack/packer/start", "*", 0, 1))
+local plugins_count = vim.fn.len(vim.fn.globpath(PACKER_PATH, "*", 0, 1))
 
 vim.g.dashboard_default_executive = "telescope"
-vim.g.dashboard_session_directory = vim.fn.stdpath("data") .. "/session"
+vim.g.dashboard_session_directory = vim.fn.stdpath("data") .. "\\session\\"
 
 vim.g.dashboard_custom_section = {
-	a = { description = { "  Recents                   " }, command = "Telescope oldfiles" },
-	b = { description = { "  Find File                 " }, command = "Telescope find_files" },
-	c = { description = { "洛 New File                  " }, command = "DashboardNewFile" },
-	d = { description = { "  Bookmarks                 " }, command = "Telescope marks" },
-	e = { description = { "  Load Last Session         " }, command = "SessionLoad" },
+	a = { description = { "  Recent Files              1" }, command = "Telescope oldfiles" },
+	b = { description = { "  Find File                 2" }, command = "Telescope find_files" },
+	c = { description = { "洛 New File                  3" }, command = "DashboardNewFile" },
+	d = { description = { "  Bookmarks                 4" }, command = "Telescope marks" },
+	e = { description = { "  Load Last Session         5" }, command = "SessionLoad" },
 }
 
 vim.g.dashboard_custom_footer = {
@@ -64,10 +63,3 @@ vim.g.dashboard_custom_header = {
 
 local opts = { noremap = true, silent = true }
 vim.api.nvim_set_keymap("n", "<Leader>n", "<cmd>Dashboard<CR>", opts)
-
--- Does not work
-vim.api.nvim_buf_set_keymap(vim.g.dashboard_bufnr, "", "<Leader>e", "<cmd>DashboardNewFile<CR>", {})
-vim.api.nvim_buf_set_keymap(vim.g.dashboard_bufnr, "", "<Leader>b", "<cmd>Telescope marks<CR>", {})
-vim.api.nvim_buf_set_keymap(vim.g.dashboard_bufnr, "", "<Leader>r", "<cmd>Telescope oldfiles<CR>", {})
-vim.api.nvim_buf_set_keymap(vim.g.dashboard_bufnr, "", "<Leader>f", "<cmd>Telescope find_files<CR>", {})
-vim.api.nvim_buf_set_keymap(vim.g.dashboard_bufnr, "", "<Leader>s", "<cmd>SessionLoad<CR>", {})

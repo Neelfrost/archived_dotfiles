@@ -90,6 +90,7 @@ function _G.gruvbox_material_custom()
 	vim.fn["gruvbox_material#highlight"]("TelescopeResultsBorder", palette.bg_blue, palette.none)
 	vim.fn["gruvbox_material#highlight"]("TelescopePreviewBorder", palette.bg_blue, palette.none)
 	vim.fn["gruvbox_material#highlight"]("TelescopePromptPrefix", palette.red, palette.none)
+	vim.fn["gruvbox_material#highlight"]("TelescopeMatching", palette.red, palette.none, "bold")
 	-- Dashboard
 	vim.fn["gruvbox_material#highlight"]("dashboardHeader", palette.bg_blue, palette.none)
 	vim.fn["gruvbox_material#highlight"]("dashboardFooter", palette.red, palette.none)

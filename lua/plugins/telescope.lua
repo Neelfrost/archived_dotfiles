@@ -11,8 +11,8 @@ require("telescope").setup({
 			"--column",
 			"--smart-case",
 		},
-		prompt_prefix = "> ",
-		selection_caret = "> ",
+		prompt_prefix = "❯ ",
+		selection_caret = "❯ ",
 		entry_prefix = "  ",
 		initial_mode = "insert",
 		selection_strategy = "reset",
@@ -56,16 +56,20 @@ require("telescope").setup({
 	},
 	pickers = {
 		find_files = {
-			-- theme = "dropdown",
+			theme = "dropdown",
 			previewer = false,
 		},
 		oldfiles = {
-			-- theme = "dropdown",
+			prompt_title = "Recent Files",
+			theme = "dropdown",
 			previewer = false,
 		},
 	},
 })
 
 local opts = { noremap = true, silent = true }
-vim.api.nvim_set_keymap("n", "<C-S-p>", "<cmd>lua require('telescope.builtin').oldfiles()<CR>", opts)
-vim.api.nvim_set_keymap("n", "<C-p>", "<cmd>lua require('telescope.builtin').find_files()<CR>", opts)
+vim.api.nvim_set_keymap("n", "<Leader>tr", "<cmd>lua require('telescope.builtin').oldfiles()<CR>", opts)
+vim.api.nvim_set_keymap("n", "<Leader>tf", "<cmd>lua require('telescope.builtin').find_files()<CR>", opts)
+vim.api.nvim_set_keymap("n", "<Leader>tp", "<cmd>lua require('plugins.telescope_custom').dir_python()<CR>", opts)
+vim.api.nvim_set_keymap("n", "<Leader>tn", "<cmd>lua require('plugins.telescope_custom').dir_nvim()<CR>", opts)
+vim.api.nvim_set_keymap("n", "<Leader>tl", "<cmd>lua require('plugins.telescope_custom').dir_latex()<CR>", opts)

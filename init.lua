@@ -2,6 +2,11 @@
 -- Github: https:/github.com/Neelfrost
 -- File: init.lua
 
+-- Paths
+HOME_PATH = vim.fn.expand("$HOME")
+CONFIG_PATH = vim.fn.stdpath("config")
+PACKER_PATH = vim.fn.stdpath("data") .. "\\site\\pack\\packer\\start"
+
 -- General config
 require("options")
 require("mappings")
@@ -10,7 +15,7 @@ require("autocommands")
 require("pluginlist")
 
 -- Require plugin configs once installed
-if vim.fn.len(vim.fn.globpath(vim.fn.stdpath("data") .. "/site/pack/packer/start", "*", 0, 1)) > 1 then
+if vim.fn.len(vim.fn.globpath(PACKER_PATH, "*", 0, 1)) > 1 then
 	require("plugins.ale")
 	require("plugins.autopairs")
 	require("plugins.barbar")
@@ -29,5 +34,5 @@ if vim.fn.len(vim.fn.globpath(vim.fn.stdpath("data") .. "/site/pack/packer/start
 	require("plugins.ultisnips")
 	require("plugins.vimtex")
 	require("theme")
-	vim.cmd([[source ~/Appdata/Local/nvim/vimL/plugins/statusline.vim]])
+	vim.cmd([[source ~/AppData/Local/nvim/vimL/plugins/statusline.vim]])
 end
