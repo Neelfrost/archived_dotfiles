@@ -162,7 +162,7 @@ LaTeX
 
 -   Plugin manager: [packer.nvim](https://github.com/wbthomason/packer.nvim)
 -   Bufferline and navigation: [barbar.nvim](https://github.com/romgrk/barbar.nvim)
--   Statusline: [lightline.vim](https://github.com/itchyny/lightline.vim)
+-   Statusline: [lualine.nvim](https://github.com/hoob3rt/lualine.nvim)
 -   Start screen: [dashboard-nvim](https://github.com/glepnir/dashboard-nvim)
 -   File navigation: [nvim-tree.lua](https://github.com/kyazdani42/nvim-tree.lua), [telescope.nvim](https://github.com/nvim-telescope/telescope.nvim)
 -   Icons for nvimtree, dashboard, telescope, bufferline, and statusline: [nvim-web-devicons](https://github.com/kyazdani42/nvim-web-devicons), [vim-devicons](https://github.com/ryanoasis/vim-devicons)

@@ -28,11 +28,11 @@ if vim.fn.len(vim.fn.globpath(PACKER_PATH, "*", 0, 1)) > 1 then
 	require("plugins.kommentary")
 	require("plugins.lsp")
 	require("plugins.lspsaga")
+	require("plugins.lualine")
 	require("plugins.nvimtree")
 	require("plugins.rainbow-brackets")
 	require("plugins.telescope")
 	require("plugins.ultisnips")
 	require("plugins.vimtex")
 	require("theme")
-	vim.cmd([[source ~/AppData/Local/nvim/vimL/plugins/statusline.vim]])
 end

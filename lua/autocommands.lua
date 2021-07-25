@@ -18,29 +18,30 @@ vim.cmd([[
     augroup AUTO_READ
         autocmd!
         autocmd FocusGained,BufEnter,CursorHold,CursorHoldI * if mode() == 'n' && getcmdwintype() == '' | checktime | endif
-        autocmd FileChangedShellPost * echohl WarningMsg | echo "File changed on disk. Buffer reloaded!" | echohl None
+        autocmd FileChangedShellPost * echohl WarningMsg | echo 'File changed on disk. Buffer reloaded!' | echohl None
     augroup END
 ]])
 
 -- Return to last edit position when opening a file
-vim.cmd([[
-    augroup RESUME_EDIT_POSITION
-        autocmd!
-        autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") && &ft !~# 'commit' | execute "normal! g`\"zvzz" | endif
-    augroup END
-]])
+-- vim.cmd([[
+--     augroup RESUME_EDIT_POSITION
+--         autocmd!
+--         autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") && &ft !~# 'commit' | execute "normal! g`\"zvzz" | endif
+--     augroup END
+-- ]])
 
 -- Set window title
 vim.cmd([[
     augroup UPDATE_WINDOW_TITLE
         autocmd!
-        autocmd BufEnter * :set title | let &titlestring = expand('%') !=# "" ? expand('%') : "Neovim"
+        autocmd BufEnter * :set title | let &titlestring = expand('%') !=# '' ? expand('%') : 'Neovim'
     augroup END
 ]])
 
 -- Save and restore folds
+-- Also resumes edit position
 vim.cmd([[
-    augroup SAVE_FOLD_VIEW
+    augroup SAVE_VIEW
         autocmd!
         autocmd BufWinLeave *.* if expand('%') != '' | mkview | endif
         autocmd BufWinEnter *.* if expand('%') != '' | silent! loadview | endif

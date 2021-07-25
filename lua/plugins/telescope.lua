@@ -70,6 +70,6 @@ require("telescope").setup({
 local opts = { noremap = true, silent = true }
 vim.api.nvim_set_keymap("n", "<Leader>tr", "<cmd>lua require('telescope.builtin').oldfiles()<CR>", opts)
 vim.api.nvim_set_keymap("n", "<Leader>tf", "<cmd>lua require('telescope.builtin').find_files()<CR>", opts)
-vim.api.nvim_set_keymap("n", "<Leader>tp", "<cmd>lua require('plugins.telescope_custom').dir_python()<CR>", opts)
-vim.api.nvim_set_keymap("n", "<Leader>tn", "<cmd>lua require('plugins.telescope_custom').dir_nvim()<CR>", opts)
-vim.api.nvim_set_keymap("n", "<Leader>tl", "<cmd>lua require('plugins.telescope_custom').dir_latex()<CR>", opts)
+vim.api.nvim_set_keymap("n", "<Leader>tp", "<cmd>lua require('plugins.config.telescope').dir_python()<CR>", opts)
+vim.api.nvim_set_keymap("n", "<Leader>tn", "<cmd>lua require('plugins.config.telescope').dir_nvim()<CR>", opts)
+vim.api.nvim_set_keymap("n", "<Leader>tl", "<cmd>lua require('plugins.config.telescope').dir_latex()<CR>", opts)

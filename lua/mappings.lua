@@ -2,15 +2,6 @@ local ns_opts = { noremap = true, silent = true }
 local ne_opts = { noremap = true, expr = true }
 local n_opts = { noremap = true }
 
--- Reload config
--- https://github.com/jdhao/nvim-config/blob/master/core/mappings.vim
-vim.api.nvim_set_keymap(
-	"n",
-	"<F5>",
-	[[<cmd>silent update $MYVIMRC | source $MYVIMRC | echohl WarningMsg | echomsg "Config reloaded!" | echohl None<CR>]],
-	ns_opts
-)
-
 -- Open alacritty terminal at cwd
 vim.api.nvim_set_keymap(
 	"n",

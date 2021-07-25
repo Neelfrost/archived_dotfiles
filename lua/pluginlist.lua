@@ -6,6 +6,10 @@ local install_path = PACKER_PATH .. "\\packer.nvim"
 -- Check if packer is installed, if not install packer
 if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
 	print("Installing packer.nvim.")
+	vim.cmd([[
+        highlight Normalfloat guibg=NONE
+        highlight Floatborder guibg=NONE
+    ]])
 	vim.fn.system({ "git", "clone", "https://github.com/wbthomason/packer.nvim", install_path })
 	vim.cmd([[packadd packer.nvim]])
 	print("Installation complete.")
@@ -52,7 +56,6 @@ return packer.startup(function()
 	use("dhruvasagar/vim-open-url")
 	use("inkarkat/vim-ingo-library")
 	use("inkarkat/vim-SpellCheck")
-	use("itchyny/lightline.vim")
 	use("junegunn/vim-easy-align")
 	use("kevinhwang91/nvim-bqf")
 	use("ludovicchabant/vim-gutentags")
@@ -71,7 +74,8 @@ return packer.startup(function()
 	use("jiangmiao/auto-pairs")
 	use({ "glepnir/dashboard-nvim" })
 	use({ "kyazdani42/nvim-tree.lua", commit = "10e845e01cb5fe62c952ccedf2edfe4ea78be727" })
-	-- use("windwp/nvim-autopairs")
+	use("hoob3rt/lualine.nvim")
+	-- use("windwp/nvim-autopairs") < missing features, using vim version instead >
 	-- use('honza/vim-snippets')
 
 	-- Automatic initial plugin installation

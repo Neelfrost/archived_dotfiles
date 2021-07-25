@@ -51,7 +51,7 @@ vim.opt.splitright = true
 vim.opt.foldtext = "v:lua.custom_fold_text()"
 vim.opt.fillchars = { eob = "-", fold = " " }
 vim.opt.viewoptions:remove("options")
--- vim.opt_global.foldmethod = "marker"
+vim.opt_global.foldmethod = "marker"
 
 -- Use en_us to spellcheck
 vim.opt.spelllang = "en_us"
@@ -117,7 +117,7 @@ vim.opt.wildignore = {
 vim.g.python3_host_prog = vim.fn.trim(vim.fn.system("which python"))
 
 -- Polyglot
-vim.g.polyglot_disabled = { "sensible", "ftdetect" }
+vim.g.polyglot_disabled = { "sensible" }
 
 -- Disable builtin vim plugins
 local disabled_built_ins = {
