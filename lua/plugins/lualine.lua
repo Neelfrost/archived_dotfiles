@@ -6,7 +6,7 @@ require("lualine").setup({
 		lualine_a = { { areas.Mode }, { areas.Paste } },
 		lualine_b = { { areas.Filename }, { areas.Spell } },
 		lualine_c = { { areas.FileEncoding }, { areas.FileFormat } },
-		lualine_x = { "diagnostics" },
+		lualine_x = {},
 		lualine_y = { { areas.LineInfo } },
 		lualine_z = { { areas.TotalLines } },
 	},

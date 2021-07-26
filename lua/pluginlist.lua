@@ -12,7 +12,7 @@ if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
     ]])
 	vim.fn.system({ "git", "clone", "https://github.com/wbthomason/packer.nvim", install_path })
 	vim.cmd([[packadd packer.nvim]])
-	print("Installation complete.")
+	print("Installation complete.\nStarting plugin installation.")
 end
 
 local packer = require("packer")
@@ -31,50 +31,160 @@ packer.init({
 
 return packer.startup(function()
 	-- Packer
-	use("wbthomason/packer.nvim")
+	use({ "wbthomason/packer.nvim" })
 
 	-- Style
-	use("kyazdani42/nvim-web-devicons")
-	use("lukas-reineke/indent-blankline.nvim")
-	use("luochen1990/rainbow")
-	use("ryanoasis/vim-devicons")
-	use("sainnhe/gruvbox-material")
+	use({ "kyazdani42/nvim-web-devicons" })
+	use({
+		"lukas-reineke/indent-blankline.nvim",
+		config = function()
+			require("plugins.indentline")
+		end,
+	})
+	use({
+		"luochen1990/rainbow",
+		config = function()
+			require("plugins.rainbow-brackets")
+		end,
+	})
+	use({
+		"sainnhe/gruvbox-material",
+		config = function()
+			require("theme")
+		end,
+	})
 
 	-- Lsp stuff
-	use({ "psf/black", branch = "stable" })
-	use("lervag/vimtex")
-	use("neovim/nvim-lspconfig")
-	use("glepnir/lspsaga.nvim")
-	use("hrsh7th/nvim-compe")
-	use("ray-x/lsp_signature.nvim")
+	use({ "psf/black", branch = "stable", ft = "py", cmd = "Black" })
+	use({
+		"lervag/vimtex",
+		config = function()
+			require("plugins.vimtex")
+		end,
+	})
+	use({
+		"hrsh7th/nvim-compe",
+		config = function()
+			require("plugins.compe")
+		end,
+	})
+	use({
+		"neovim/nvim-lspconfig",
+		config = function()
+			require("plugins.lsp")
+		end,
+	})
+	use({
+		"glepnir/lspsaga.nvim",
+		config = function()
+			require("plugins.lspsaga")
+		end,
+	})
+	use({ "ray-x/lsp_signature.nvim" })
 
 	-- Features
-	use("axvr/zepl.vim")
-	use("b3nj5m1n/kommentary")
-	use("christoomey/vim-titlecase")
-	use("dense-analysis/ale")
-	use("dhruvasagar/vim-open-url")
-	use("inkarkat/vim-ingo-library")
-	use("inkarkat/vim-SpellCheck")
-	use("junegunn/vim-easy-align")
-	use("kevinhwang91/nvim-bqf")
-	use("ludovicchabant/vim-gutentags")
-	use("nvim-lua/plenary.nvim")
-	use("nvim-lua/popup.nvim")
-	use("nvim-telescope/telescope.nvim")
-	use("phaazon/hop.nvim")
-	use("romgrk/barbar.nvim")
-	use("sheerun/vim-polyglot")
-	use("SirVer/ultisnips")
-	use("skywind3000/asyncrun.extra")
-	use("skywind3000/asyncrun.vim")
-	use("skywind3000/vim-terminal-help")
-	use("tpope/vim-repeat")
-	use("tpope/vim-surround")
-	use("jiangmiao/auto-pairs")
-	use({ "glepnir/dashboard-nvim" })
-	use({ "kyazdani42/nvim-tree.lua", commit = "10e845e01cb5fe62c952ccedf2edfe4ea78be727" })
-	use("hoob3rt/lualine.nvim")
+	use({
+		"axvr/zepl.vim",
+		cmd = { "Repl", "ReplSend" },
+		ft = { "py" },
+		config = function()
+			require("plugins.zepl")
+		end,
+	})
+	use({
+		"b3nj5m1n/kommentary",
+		config = function()
+			require("plugins.kommentary")
+		end,
+	})
+	use({ "christoomey/vim-titlecase" })
+	use({
+		"dense-analysis/ale",
+		config = function()
+			require("plugins.ale")
+		end,
+	})
+	use({
+		"dhruvasagar/vim-open-url",
+		config = function()
+			require("plugins.open-url")
+		end,
+	})
+	use({ "inkarkat/vim-SpellCheck", requires = { "inkarkat/vim-ingo-library" }, cmd = { "SpellCheck", "SpellLCheck" } })
+	use({ "junegunn/vim-easy-align", cmd = "EasyAlign" })
+	use({ "kevinhwang91/nvim-bqf", cmd = "QFix" })
+	use({
+		"ludovicchabant/vim-gutentags",
+		config = function()
+			require("plugins.gutentags")
+		end,
+	})
+	use({ "nvim-lua/plenary.nvim" })
+	use({ "nvim-lua/popup.nvim" })
+	use({
+		"nvim-telescope/telescope.nvim",
+		config = function()
+			require("plugins.telescope")
+		end,
+	})
+	use({
+		"phaazon/hop.nvim",
+		config = function()
+			require("plugins.hop")
+		end,
+	})
+	use({
+		"romgrk/barbar.nvim",
+		config = function()
+			require("plugins.barbar")
+		end,
+	})
+	use({ "sheerun/vim-polyglot" })
+	use({
+		"SirVer/ultisnips",
+		config = function()
+			require("plugins.ultisnips")
+		end,
+	})
+	use({ "skywind3000/asyncrun.extra", after = "asyncrun.vim" })
+	use({ "skywind3000/asyncrun.vim", cmd = { "AsyncRun", "AsyncStop" } })
+	use({
+		"skywind3000/vim-terminal-help",
+		config = function()
+			require("plugins.terminal-help")
+		end,
+	})
+	use({ "tpope/vim-repeat" })
+	use({ "tpope/vim-surround" })
+	use({
+		"jiangmiao/auto-pairs",
+		config = function()
+			require("plugins.autopairs")
+		end,
+	})
+	use({
+		"Neelfrost/dashboard-nvim",
+		event = "VimEnter",
+		cmd = { "Dashboard", "SessionSave", "SessionLoad" },
+		config = function()
+			require("plugins.dashboard")
+		end,
+	})
+	use({
+		"kyazdani42/nvim-tree.lua",
+		commit = "10e845e01cb5fe62c952ccedf2edfe4ea78be727",
+		event = "VimEnter",
+		cmd = { "NvimTreeToggle", "NvimTreeRefresh" },
+		config = function()
+			require("plugins.nvimtree")
+		end,
+	})
+	use({
+		"hoob3rt/lualine.nvim",
+		config = function()
+			require("plugins.lualine")
+		end,
+	})
 	-- use("windwp/nvim-autopairs") < missing features, using vim version instead >
 	-- use('honza/vim-snippets')
 

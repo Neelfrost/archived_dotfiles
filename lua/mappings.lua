@@ -25,7 +25,7 @@ vim.api.nvim_set_keymap("n", "<Leader><Leader>c", "<cmd>lua launch_ext_prog('cod
 vim.api.nvim_set_keymap("n", "<Leader><Leader>r", [[:%s/\<<C-r><C-w>\>/]], n_opts)
 
 -- Save file
-vim.api.nvim_set_keymap("n", "<C-s>", "<cmd>w!<CR>", ns_opts)
+vim.api.nvim_set_keymap("n", "<C-s>", "<cmd>update!<CR>", ns_opts)
 
 -- Toggle quickfix
 vim.api.nvim_set_keymap("n", "<Leader>q", "<cmd>QFix<CR>", ns_opts)

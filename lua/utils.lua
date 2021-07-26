@@ -78,7 +78,7 @@ end
 
 -- Custom foldtext
 function _G.custom_fold_text()
-	local line = vim.fn.getline(vim.v.foldstart):gsub(" %{%{%{", "")
+	local line = vim.fn.getline(vim.v.foldstart):gsub("%s*%{%{%{", "")
 	local line_count = vim.v.foldend - vim.v.foldstart + 1
 	return "  " .. line .. ": " .. line_count .. " lines"
 end

@@ -5,14 +5,13 @@ vim.cmd([[autocmd FileType dashboard :set buflisted | :setlocal fillchars=eob:\ 
 local plugins_count = vim.fn.len(vim.fn.globpath(PACKER_PATH, "*", 0, 1))
 
 vim.g.dashboard_default_executive = "telescope"
-vim.g.dashboard_session_directory = vim.fn.stdpath("data") .. "\\session\\"
+vim.g.dashboard_session_directory = vim.fn.stdpath("data") .. "\\session"
 
 vim.g.dashboard_custom_section = {
-	a = { description = { "  Recent Files              1" }, command = "Telescope oldfiles" },
+	a = { description = { "  Recent File               1" }, command = "Telescope oldfiles" },
 	b = { description = { "  Find File                 2" }, command = "Telescope find_files" },
 	c = { description = { "洛 New File                  3" }, command = "DashboardNewFile" },
-	d = { description = { "  Bookmarks                 4" }, command = "Telescope marks" },
-	e = { description = { "  Load Last Session         5" }, command = "SessionLoad" },
+	d = { description = { "  Load Last Session         4" }, command = "SessionLoad" },
 }
 
 vim.g.dashboard_custom_footer = {
