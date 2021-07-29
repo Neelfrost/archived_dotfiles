@@ -1,5 +1,5 @@
 vim.cmd([[
-    autocmd BufEnter NvimTree :setlocal fillchars=eob:\ ,
+    autocmd BufEnter NvimTree :setlocal scrolloff=0 | :setlocal fillchars=eob:\ ,
 ]])
 
 vim.g.nvim_tree_auto_close = 1
@@ -42,4 +42,4 @@ vim.g.nvim_tree_ignore = {
 }
 
 local opts = { noremap = true, silent = true }
-vim.api.nvim_set_keymap("n", "<C-b>", "<cmd>NvimTreeRefresh<CR><cmd>NvimTreeToggle<CR>", opts)
+vim.api.nvim_set_keymap("n", "<C-b>", "<cmd>NvimTreeToggle<CR>", opts)

@@ -148,9 +148,10 @@ General
 -   Resume cursor position when re-opening a file.
 -   Auto update file if changed outside of neovim.
 -   Smart display line movement.
--   Ability to search custom directories in telescope.nvim.
 -   Automatically trim trailing whitespaces and newlines on save.
 -   Open alacritty terminal, vscode, explorer at current directory using <kbd>\\\\t</kbd>, <kbd>\\\\c</kbd>, <kbd>\\\\e</kbd> respectively.
+-   Ability to search custom directories in telescope.nvim.
+-   Ability to reload specific modules using telescope.nvim.
 
 LaTeX
 
@@ -201,7 +202,7 @@ LaTeX
 | ------------------------- | -------------------- | -------------------------------------------------- |
 | <kbd>F1</kbd>             | Normal               | Toggle spellcheck                                  |
 | <kbd>F4</kbd>             | Normal               | Format using ALE fixers                            |
-| <kbd>F5</kbd>             | Normal               | Reload init.vim                                    |
+| <kbd>F5</kbd>             | Normal               | Open file picker to select file to be reloaded |
 | <kbd>F12</kbd>            | Normal               | Toggle paste mode                                  |
 | <kbd>\\\\t</kbd>          | Normal               | Open alacritty at cwd                              |
 | <kbd>\\\\e</kbd>          | Normal               | Open explorer at cwd                               |

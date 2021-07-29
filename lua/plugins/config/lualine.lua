@@ -1,10 +1,12 @@
 local M = {}
 function M.BufIsPlugin()
+	local plugins = { "NvimTree", "packer", "dashboard" }
 	local filename = vim.fn.expand("%:t")
-	return filename == "NvimTree" and true
-		or filename == "packer" and true
-		or vim.bo.filetype == "dashboard" and true
-		or false
+	for _, v in pairs(plugins) do
+		if filename == v or vim.bo.filetype == v then
+			return true
+		end
+	end
 end
 
 function M.FileIcon()
@@ -32,10 +34,21 @@ end
 
 function M.Mode()
 	local fname = vim.fn.expand("%:t")
-	return fname == "NvimTree" and "NVIMTREE"
-		or fname == "packer" and "PACKER"
-		or vim.bo.filetype == "dashboard" and "DASHBOARD"
-		or require("lualine.utils.mode").get_mode()
+
+	local plugins = {
+		NvimTree = "NVIMTREE",
+		packer = "PACKER",
+		dashboard = "DASHBOARD",
+		mode = require("lualine.utils.mode").get_mode(),
+	}
+
+	for k, v in pairs(plugins) do
+		if vim.bo.filetype == k or fname == k then
+			return v
+		end
+	end
+
+	return plugins["mode"]
 end
 
 function M.Paste()
@@ -51,7 +64,6 @@ function M.FileFormat()
 	if not M.BufIsPlugin() and vim.fn.winwidth(0) > 70 then
 		fileformat = vim.bo.fileformat
 	end
-
 	return fileformat
 end
 
@@ -60,7 +72,6 @@ function M.FileEncoding()
 	if not M.BufIsPlugin() and vim.fn.winwidth(0) > 70 then
 		fileencoding = vim.bo.fileencoding
 	end
-
 	return fileencoding
 end
 

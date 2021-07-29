@@ -78,7 +78,44 @@ end
 
 -- Custom foldtext
 function _G.custom_fold_text()
-	local line = vim.fn.getline(vim.v.foldstart):gsub("%s*%{%{%{", "")
+	local matches = {
+		["^"] = "%^",
+		["$"] = "%$",
+		["("] = "%(",
+		[")"] = "%)",
+		["%"] = "%%",
+		["."] = "%.",
+		["["] = "%[",
+		["]"] = "%]",
+		["*"] = "%*",
+		["+"] = "%+",
+		["-"] = "%-",
+		["?"] = "%?",
+	}
+	local line = vim.fn.getline(vim.v.foldstart)
+	local comment = vim.bo.commentstring:gsub("%s*%%s", ""):gsub(".", matches)
+	-- Remove markers
+	line = line:gsub("%{%{%{", "")
+	-- Remove commentstring
+	line = line:gsub(comment, "")
+	-- Remove spaces and tabs
+	line = line:gsub("%c", ""):gsub("%s+", " ")
 	local line_count = vim.v.foldend - vim.v.foldstart + 1
 	return "  " .. line .. ": " .. line_count .. " lines"
+end
+
+-- Reloading lua modules using Telescope
+-- taken and modified from:
+-- https://ustrajunior.com/posts/reloading-neovim-config-with-telescope/
+function _G.verbose_print(v)
+	print(vim.inspect(v))
+	return v
+end
+
+if pcall(require, "plenary") then
+	local reload = require("plenary.reload").reload_module
+	function _G.plenary_reload(name)
+		reload(name)
+		return require(name)
+	end
 end

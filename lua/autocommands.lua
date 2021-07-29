@@ -13,6 +13,9 @@ vim.cmd(
 --     autocmd TextChangedP if pumvisible() | highlight! 'Normalfloat' guifg=vim.g.gruvbox_material_palette.fg1,guibg=vim.g.gruvbox_material_palette.bg3 | else | highlight! 'Normalfloat' guifg=vim.g.gruvbox_material_palette.blue,guibg=vim.g.gruvbox_material_palette.bg0 | endif
 -- ]])
 
+-- Latex class file syntax
+vim.cmd([[autocmd BufNewFile,BufRead *.cls set filetype=tex]])
+
 -- Automatically reload the file if it is changed outside of nvim
 vim.cmd([[
     augroup AUTO_READ

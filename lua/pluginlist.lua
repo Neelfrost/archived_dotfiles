@@ -42,17 +42,30 @@ return packer.startup(function()
 		end,
 	})
 	use({
-		"luochen1990/rainbow",
+		"mhartington/oceanic-next",
 		config = function()
-			require("plugins.rainbow-brackets")
+			require("theme").oceanic()
 		end,
 	})
 	use({
 		"sainnhe/gruvbox-material",
 		config = function()
-			require("theme")
+			require("theme").gruvbox()
 		end,
 	})
+	use({
+		"p00f/nvim-ts-rainbow",
+		config = function()
+			require("plugins.ts-rainbow")
+		end,
+	})
+	-- use({
+	-- "luochen1990/rainbow",
+	-- cmd = { "RainbowToggleOn" },
+	-- config = function()
+	-- 	require("plugins.rainbow-brackets")
+	-- end,
+	-- })
 
 	-- Lsp stuff
 	use({ "psf/black", branch = "stable", ft = "py", cmd = "Black" })
@@ -83,6 +96,22 @@ return packer.startup(function()
 	use({ "ray-x/lsp_signature.nvim" })
 
 	-- Features
+	use({ "nvim-lua/plenary.nvim" })
+	use({ "nvim-lua/popup.nvim" })
+	use({ "tpope/vim-repeat" })
+	use({ "tpope/vim-surround" })
+	use({ "kevinhwang91/nvim-bqf", cmd = "QFix" })
+	use({ "junegunn/vim-easy-align", cmd = "EasyAlign" })
+	use({ "skywind3000/asyncrun.extra", after = "asyncrun.vim" })
+	use({ "skywind3000/asyncrun.vim", cmd = { "AsyncRun", "AsyncStop" } })
+	use({ "inkarkat/vim-SpellCheck", requires = { "inkarkat/vim-ingo-library" }, cmd = { "SpellCheck", "SpellLCheck" } })
+	use({
+		"nvim-treesitter/nvim-treesitter",
+		run = ":TSUpdate",
+		config = function()
+			require("plugins.treesitter")
+		end,
+	})
 	use({
 		"axvr/zepl.vim",
 		cmd = { "Repl", "ReplSend" },
@@ -110,17 +139,12 @@ return packer.startup(function()
 			require("plugins.open-url")
 		end,
 	})
-	use({ "inkarkat/vim-SpellCheck", requires = { "inkarkat/vim-ingo-library" }, cmd = { "SpellCheck", "SpellLCheck" } })
-	use({ "junegunn/vim-easy-align", cmd = "EasyAlign" })
-	use({ "kevinhwang91/nvim-bqf", cmd = "QFix" })
 	use({
 		"ludovicchabant/vim-gutentags",
 		config = function()
 			require("plugins.gutentags")
 		end,
 	})
-	use({ "nvim-lua/plenary.nvim" })
-	use({ "nvim-lua/popup.nvim" })
 	use({
 		"nvim-telescope/telescope.nvim",
 		config = function()
@@ -139,23 +163,18 @@ return packer.startup(function()
 			require("plugins.barbar")
 		end,
 	})
-	use({ "sheerun/vim-polyglot" })
 	use({
 		"SirVer/ultisnips",
 		config = function()
 			require("plugins.ultisnips")
 		end,
 	})
-	use({ "skywind3000/asyncrun.extra", after = "asyncrun.vim" })
-	use({ "skywind3000/asyncrun.vim", cmd = { "AsyncRun", "AsyncStop" } })
 	use({
 		"skywind3000/vim-terminal-help",
 		config = function()
 			require("plugins.terminal-help")
 		end,
 	})
-	use({ "tpope/vim-repeat" })
-	use({ "tpope/vim-surround" })
 	use({
 		"jiangmiao/auto-pairs",
 		config = function()
