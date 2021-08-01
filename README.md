@@ -167,7 +167,7 @@ LaTeX
 -   Start screen: [dashboard-nvim](https://github.com/glepnir/dashboard-nvim)
 -   File navigation: [nvim-tree.lua](https://github.com/kyazdani42/nvim-tree.lua), [telescope.nvim](https://github.com/nvim-telescope/telescope.nvim)
 -   Icons for nvimtree, dashboard, telescope, bufferline, and statusline: [nvim-web-devicons](https://github.com/kyazdani42/nvim-web-devicons), [vim-devicons](https://github.com/ryanoasis/vim-devicons)
--   Syntax highlighting: [vim-polyglot](https://github.com/sheerun/vim-polyglot)
+-   Syntax highlighting: [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter)
 -   Code completion: [nvim-compe](https://github.com/hrsh7th/nvim-compe)
 -   Language server: [nvim-lspconfig](https://github.com/neovim/nvim-lspconfig)
 -   Cleaner Lsp UI: [lspsaga.nvim](https://github.com/glepnir/lspsaga.nvim)
@@ -178,7 +178,7 @@ LaTeX
 -   Syntax checking and formatting: [ale](https://github.com/dense-analysis/ale)
 -   Indent lines: [indent-blankline.nvim](https://github.com/lukas-reineke/indent-blankline.nvim)
 -   Auto pair brackets: [auto-pairs](https://github.com/jiangmiao/auto-pairs)
--   Colored matching brackets: [rainbow](https://github.com/luochen1990/rainbow)
+-   Colored matching brackets: [nvim-ts-rainbow](https://github.com/p00f/nvim-ts-rainbow)
 -   Python formatter: [black](https://github.com/psf/black)
 -   Run commands asynchronously: [asyncrun.vim](https://github.com/skywind3000/asyncrun.vim), [asyncrun.extra](https://github.com/skywind3000/asyncrun.extra)
 -   Snippet engine: [ultisnips](https://github.com/SirVer/ultisnips)
@@ -202,12 +202,14 @@ LaTeX
 | ------------------------- | -------------------- | -------------------------------------------------- |
 | <kbd>F1</kbd>             | Normal               | Toggle spellcheck                                  |
 | <kbd>F4</kbd>             | Normal               | Format using ALE fixers                            |
-| <kbd>F5</kbd>             | Normal               | Open file picker to select file to be reloaded |
+| <kbd>F5</kbd>             | Normal               | Open file picker to select file to be reloaded     |
 | <kbd>F12</kbd>            | Normal               | Toggle paste mode                                  |
 | <kbd>\\\\t</kbd>          | Normal               | Open alacritty at cwd                              |
 | <kbd>\\\\e</kbd>          | Normal               | Open explorer at cwd                               |
 | <kbd>\\\\c</kbd>          | Normal               | Open current file in VSCode                        |
-| <kbd>\\\\\r</kbd>         | Normal               | Replace word under cursor                          |
+| <kbd>\\\\r</kbd>          | Normal               | Replace word under cursor                          |
+| <kbd>\tr</kbd>            | Normal               | Fuzzy search in most recently used files           |
+| <kbd>\tf</kbd>            | Normal               | Fuzzy search in cwd                                |
 | <kbd>\q</kbd>             | Normal               | Open quickfix                                      |
 | <kbd>\h</kbd>             | Normal               | Disable search highlight                           |
 | <kbd>\v</kbd>             | Normal/Insert        | Paste from system clipboard in paste mode          |
@@ -216,8 +218,6 @@ LaTeX
 | <kbd>\s</kbd>             | Normal               | Search word under cursor in browser                |
 | <kbd>\n</kbd>             | Normal               | Open dashboard                                     |
 | <kbd>\f</kbd>             | Normal               | Search buffer using 1 chars                        |
-| <kbd>\tf</kbd>            | Normal               | Fuzzy search in cwd                                |
-| <kbd>\tr</kbd>            | Normal               | Fuzzy search in most recently used files           |
 | <kbd>s</kbd>              | Normal               | Search buffer using 2 chars                        |
 | <kbd>Tab</kbd>            | Normal               | Move to next buffer                                |
 | <kbd>Shift Tab</kbd>      | Normal               | Move to previous buffer                            |

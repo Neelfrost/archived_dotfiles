@@ -14,6 +14,7 @@ require("compe").setup({
 	documentation = {
 		true,
 		border = { "", "", "", " ", "", "", "", " " },
+		winhighlight = "NormalFloat:CompeDocumentation,FloatBorder:CompeDocumentationBorder",
 	},
 	source = {
 		omni = {

@@ -65,6 +65,9 @@ function M.gruvbox()
 		-- and the last parameter is for `guisp` which is also optional.
 		-- See `autoload/gruvbox_material.vim` for the format of `l:palette`.
 
+		-- Compe
+		vim.fn["gruvbox_material#highlight"]("CompeDocumentation", palette.fg1, palette.bg3)
+		vim.fn["gruvbox_material#highlight"]("CompeDocumentationBorder", palette.fg1, palette.bg3)
 		-- Barbar
 		vim.fn["gruvbox_material#highlight"]("BufferCurrent", palette.bg_blue, palette.bg0, "bold")
 		vim.fn["gruvbox_material#highlight"]("BufferCurrent", palette.bg_blue, palette.bg0, "bold")
@@ -85,7 +88,7 @@ function M.gruvbox()
 		-- Spell
 		vim.fn["gruvbox_material#highlight"]("SpellBad", palette.red, palette.none, "bold")
 		-- Lsp
-		vim.fn["gruvbox_material#highlight"]("Normalfloat", palette.blue, palette.bg0)
+		vim.fn["gruvbox_material#highlight"]("Normalfloat", palette.none, palette.bg0)
 		vim.fn["gruvbox_material#highlight"]("Floatborder", palette.blue, palette.bg0)
 		-- Telescope
 		vim.fn["gruvbox_material#highlight"]("TelescopeBorder", palette.bg_blue, palette.none)
@@ -114,8 +117,10 @@ end
 function M.oceanic()
 	function _G.oceanic_next_custom()
 		vim.cmd([[
-            hi Folded guifg=NONE guibg=NONE
-            hi NormalFloat guibg=NONE
+            highlight CompeDocumentation guibg=#343d46
+            highlight CompeDocumentationBorder guibg=#343d46
+            highlight Folded guifg=NONE guibg=NONE
+            highlight NormalFloat guibg=NONE
         ]])
 	end
 
