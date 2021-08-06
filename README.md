@@ -14,13 +14,13 @@
 
 # Screenshots 📷
 
-Using [Neovim-qt](https://github.com/equalsraf/neovim-qt) + [Gruvbox Material](https://github.com/sainnhe/gruvbox-material) + [Cascadia Code NF](https://www.nerdfonts.com/font-downloads)
+Using [Neovim-qt](https://github.com/equalsraf/neovim-qt) + [Gruvbox Material](https://github.com/sainnhe/gruvbox-material) + [Victor Mono NF](https://www.nerdfonts.com/font-downloads)
 
-![start](.assets/start.png "Startify Start Screen")
-![explorer](.assets/explorer.png "NvimTree File Explorer")
-![navigation](.assets/finder.png "Ctrl-P Fuzzy Finder")
-![tex](.assets/tex.png "LaTeX Preview")
-![python](.assets/py.png "Python Preview")
+![start](../assets/start.png "Dashboard Start Screen")
+![explorer](../assets/explorer.png "NvimTree File Explorer")
+![navigation](../assets/finder.png "Telescope Finder")
+![tex](../assets/tex.png "LaTeX Preview")
+![python](../assets/py.png "Python Preview")
 
 # Installation ⚡
 
@@ -54,23 +54,23 @@ rm $HOME\Appdata\Local\nvim -Recurse; git clone https://github.com/Neelfrost/dot
 
 1. For formatting, install [latexindent](https://github.com/cmhughes/latexindent.pl).
 
-    1. cd into install directory. _example:_
+   1. cd into install directory. _example:_
 
-    ```powershell
-    cd C:\tools\latexindent
-    ```
+   ```powershell
+   cd C:\tools\latexindent
+   ```
 
-    2. Get latexindent.exe.
+   2. Get latexindent.exe.
 
-    ```powershell
-    curl.exe -LJO $(curl.exe -s https://api.github.com/repos/cmhughes/latexindent.pl/releases/latest | findstr.exe "browser_" | %{"$($_.Split('"')[3])"}); mv $HOME\Appdata\Local\nvim\.misc\defaultSettings.yaml C:\tools\latexindent; rm $HOME\Appdata\Local\nvim\.misc
-    ```
+   ```powershell
+   curl.exe -LJO $(curl.exe -s https://api.github.com/repos/cmhughes/latexindent.pl/releases/latest | findstr.exe "browser_" | %{"$($_.Split('"')[3])"}); mv $HOME\Appdata\Local\nvim\.misc\defaultSettings.yaml C:\tools\latexindent; rm $HOME\Appdata\Local\nvim\.misc
+   ```
 
-    3. Set enviornment paths.
+   3. Set enviornment paths.
 
-    ```powershell
-    Set-ItemProperty -Path 'Registry::HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\Session Manager\Environment' -Name path -Value $((Get-ItemProperty -Path 'Registry::HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\Session Manager\Environment' -Name path).path + ";" + "C:\tools\latexindent" + ";"); RefreshEnv.cmd; exit
-    ```
+   ```powershell
+   Set-ItemProperty -Path 'Registry::HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\Session Manager\Environment' -Name path -Value $((Get-ItemProperty -Path 'Registry::HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\Session Manager\Environment' -Name path).path + ";" + "C:\tools\latexindent" + ";"); RefreshEnv.cmd; exit
+   ```
 
 2. To launch sumatrapdf using VimTeX (<kbd>\lv</kbd>), ensure `sumatrapdf.exe` is added to paths.
 
@@ -108,15 +108,15 @@ cmd /c for /F %i in ('type C:\Users\ADMINI~1\AppData\Local\Temp\curnvimserver.tx
 
     1. Install dependencies.
 
-        ```powershell
-        choco install 7zip -y; RefreshEnv.cmd; exit
-        ```
+       ```powershell
+       choco install 7zip -y; RefreshEnv.cmd; exit
+       ```
 
     2. cd into install directory. _example:_
 
-        ```powershell
-        cd C:\tools
-        ```
+       ```powershell
+       cd C:\tools
+       ```
 
     3. Install sumneko lua-language-server.
 
@@ -144,57 +144,57 @@ cd $HOME\Appdata\Local\nvim; git pull
 
 General
 
--   Persistent cursor positions when switching buffers.
--   Resume cursor position when re-opening a file.
--   Auto update file if changed outside of neovim.
--   Smart display line movement.
--   Automatically trim trailing whitespaces and newlines on save.
--   Open alacritty terminal, vscode, explorer at current directory using <kbd>\\\\t</kbd>, <kbd>\\\\c</kbd>, <kbd>\\\\e</kbd> respectively.
--   Ability to search custom directories in telescope.nvim.
--   Ability to reload specific modules using telescope.nvim.
+- Persistent cursor positions when switching buffers.
+- Resume cursor position when re-opening a file.
+- Auto update file if changed outside of neovim.
+- Smart display line movement.
+- Automatically trim trailing whitespaces and newlines on save.
+- Open alacritty terminal, vscode, explorer at current directory using <kbd>\\\\t</kbd>, <kbd>\\\\c</kbd>, <kbd>\\\\e</kbd> respectively.
+- Ability to search custom directories in telescope.nvim.
+- Ability to reload specific modules using telescope.nvim.
 
 LaTeX
 
--   Extensive snippets for LaTeX.
--   Automatically substitute `\` in imports (include, input) with `/` on save.
--   Start newline with \item (or \task) if inside a list environment when pressing <kbd>Enter</kbd>, <kbd>o</kbd> or <kbd>O</kbd>.
+- Extensive snippets for LaTeX.
+- Automatically substitute `\` in imports (include, input) with `/` on save.
+- Start newline with \item (or \task) if inside a list environment when pressing <kbd>Enter</kbd>, <kbd>o</kbd> or <kbd>O</kbd>.
 
 ## Plugins Used ⚓
 
--   Plugin manager: [packer.nvim](https://github.com/wbthomason/packer.nvim)
--   Bufferline and navigation: [barbar.nvim](https://github.com/romgrk/barbar.nvim)
--   Statusline: [lualine.nvim](https://github.com/hoob3rt/lualine.nvim)
--   Start screen: [dashboard-nvim](https://github.com/glepnir/dashboard-nvim)
--   File navigation: [nvim-tree.lua](https://github.com/kyazdani42/nvim-tree.lua), [telescope.nvim](https://github.com/nvim-telescope/telescope.nvim)
--   Icons for nvimtree, dashboard, telescope, bufferline, and statusline: [nvim-web-devicons](https://github.com/kyazdani42/nvim-web-devicons), [vim-devicons](https://github.com/ryanoasis/vim-devicons)
--   Syntax highlighting: [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter)
--   Code completion: [nvim-compe](https://github.com/hrsh7th/nvim-compe)
--   Language server: [nvim-lspconfig](https://github.com/neovim/nvim-lspconfig)
--   Cleaner Lsp UI: [lspsaga.nvim](https://github.com/glepnir/lspsaga.nvim)
--   Function signature when typing: [lsp_signature.nvim](https://github.com/ray-x/lsp_signature.nvim)
--   Python support: [pyright](https://github.com/microsoft/pyright)
--   Lua support: [sumneko_lua](https://github.com/sumneko/lua-language-server)
--   LaTeX support: [vimtex](https://github.com/lervag/vimtex)
--   Syntax checking and formatting: [ale](https://github.com/dense-analysis/ale)
--   Indent lines: [indent-blankline.nvim](https://github.com/lukas-reineke/indent-blankline.nvim)
--   Auto pair brackets: [auto-pairs](https://github.com/jiangmiao/auto-pairs)
--   Colored matching brackets: [nvim-ts-rainbow](https://github.com/p00f/nvim-ts-rainbow)
--   Python formatter: [black](https://github.com/psf/black)
--   Run commands asynchronously: [asyncrun.vim](https://github.com/skywind3000/asyncrun.vim), [asyncrun.extra](https://github.com/skywind3000/asyncrun.extra)
--   Snippet engine: [ultisnips](https://github.com/SirVer/ultisnips)
--   Snippet collection: [vim-snippets](https://github.com/honza/vim-snippets) _(disabled by default)_
--   Commenting: [kommentary](https://github.com/b3nj5m1n/kommentary)
--   Faster motion: [hop.nvim](https://github.com/phaazon/hop.nvim)
--   Tag management: [vim-gutentags](https://github.com/ludovicchabant/vim-gutentags)
--   Repeat actions: [vim-repeat](https://github.com/tpope/vim-repeat)
--   Bracket operations: [vim-surround](https://github.com/tpope/vim-surround)
--   TitleCase: [vim-titlecase](https://github.com/christoomey/vim-titlecase)
--   Better quickfix: [nvim-bqf](https://github.com/kevinhwang91/nvim-bqf)
--   Aligning: [vim-easy-align](https://github.com/junegunn/vim-easy-align)
--   Spelling errors in quickfix list: [vim-SpellCheck](https://github.com/inkarkat/vim-SpellCheck), [vim-ingo-library](https://github.com/inkarkat/vim-ingo-library)
--   Repl for python: [zepl.vim](https://github.com/axvr/zepl.vim)
--   Terminal config: [vim-terminal-help](https://github.com/skywind3000/vim-terminal-help)
--   Open URLs and more: [vim-open-url](https://github.com/dhruvasagar/vim-open-url)
+- Plugin manager: [packer.nvim](https://github.com/wbthomason/packer.nvim)
+- Bufferline and navigation: [barbar.nvim](https://github.com/romgrk/barbar.nvim)
+- Statusline: [lualine.nvim](https://github.com/hoob3rt/lualine.nvim)
+- Start screen: [dashboard-nvim](https://github.com/glepnir/dashboard-nvim)
+- File navigation: [nvim-tree.lua](https://github.com/kyazdani42/nvim-tree.lua), [telescope.nvim](https://github.com/nvim-telescope/telescope.nvim)
+- Icons for nvimtree, dashboard, telescope, bufferline, and statusline: [nvim-web-devicons](https://github.com/kyazdani42/nvim-web-devicons), [vim-devicons](https://github.com/ryanoasis/vim-devicons)
+- Syntax highlighting: [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter)
+- Code completion: [nvim-compe](https://github.com/hrsh7th/nvim-compe)
+- Language server: [nvim-lspconfig](https://github.com/neovim/nvim-lspconfig)
+- Cleaner Lsp UI: [lspsaga.nvim](https://github.com/glepnir/lspsaga.nvim)
+- Function signature when typing: [lsp_signature.nvim](https://github.com/ray-x/lsp_signature.nvim)
+- Python support: [pyright](https://github.com/microsoft/pyright)
+- Lua support: [sumneko_lua](https://github.com/sumneko/lua-language-server)
+- LaTeX support: [vimtex](https://github.com/lervag/vimtex)
+- Syntax checking and formatting: [ale](https://github.com/dense-analysis/ale)
+- Indent lines: [indent-blankline.nvim](https://github.com/lukas-reineke/indent-blankline.nvim)
+- Auto pair brackets: [auto-pairs](https://github.com/jiangmiao/auto-pairs)
+- Colored matching brackets: [nvim-ts-rainbow](https://github.com/p00f/nvim-ts-rainbow)
+- Python formatter: [black](https://github.com/psf/black)
+- Run commands asynchronously: [asyncrun.vim](https://github.com/skywind3000/asyncrun.vim), [asyncrun.extra](https://github.com/skywind3000/asyncrun.extra)
+- Snippet engine: [ultisnips](https://github.com/SirVer/ultisnips)
+- Snippet collection: [vim-snippets](https://github.com/honza/vim-snippets) _(disabled by default)_
+- Commenting: [kommentary](https://github.com/b3nj5m1n/kommentary)
+- Faster motion: [hop.nvim](https://github.com/phaazon/hop.nvim)
+- Tag management: [vim-gutentags](https://github.com/ludovicchabant/vim-gutentags)
+- Repeat actions: [vim-repeat](https://github.com/tpope/vim-repeat)
+- Bracket operations: [vim-surround](https://github.com/tpope/vim-surround)
+- TitleCase: [vim-titlecase](https://github.com/christoomey/vim-titlecase)
+- Better quickfix: [nvim-bqf](https://github.com/kevinhwang91/nvim-bqf)
+- Aligning: [vim-easy-align](https://github.com/junegunn/vim-easy-align)
+- Spelling errors in quickfix list: [vim-SpellCheck](https://github.com/inkarkat/vim-SpellCheck), [vim-ingo-library](https://github.com/inkarkat/vim-ingo-library)
+- Repl for python: [zepl.vim](https://github.com/axvr/zepl.vim)
+- Terminal config: [vim-terminal-help](https://github.com/skywind3000/vim-terminal-help)
+- Open URLs and more: [vim-open-url](https://github.com/dhruvasagar/vim-open-url)
 
 ## Mappings ⌨
 
@@ -270,11 +270,11 @@ LaTeX
 
 # Todo ✔
 
--   [x] Add Lua Support
--   [x] Add mappings list
--   [x] Automatic plugin install
--   [x] Improve install instructions.
--   [x] Slowly move to Lua config
--   [ ] Add C# Support
--   [ ] Automatic install script
--   [ ] Create video to showcase snippets
+- [x] Add Lua Support
+- [x] Add mappings list
+- [x] Automatic plugin install
+- [x] Improve install instructions.
+- [x] Slowly move to Lua config
+- [ ] Add C# Support
+- [ ] Automatic install script
+- [ ] Create video to showcase snippets
