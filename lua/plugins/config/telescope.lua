@@ -48,6 +48,9 @@ function M.dir_latex()
 			".synctex(busy)",
 			".ttf",
 			".otf",
+			".zip",
+			".png",
+			".jpg",
 		},
 
 		initial_mode = "insert",
@@ -64,7 +67,7 @@ function M.dir_python()
 		prompt_title = "Python",
 		shorten_path = false,
 		cwd = "D:\\My Folder\\Dev\\Python",
-		file_ignore_patterns = { ".git", "tags" },
+		file_ignore_patterns = { ".git", "tags", "__pycache__" },
 
 		initial_mode = "insert",
 		selection_strategy = "reset",

@@ -65,9 +65,6 @@ function M.gruvbox()
 		-- and the last parameter is for `guisp` which is also optional.
 		-- See `autoload/gruvbox_material.vim` for the format of `l:palette`.
 
-		-- Compe
-		vim.fn["gruvbox_material#highlight"]("CompeDocumentation", palette.fg1, palette.bg3)
-		vim.fn["gruvbox_material#highlight"]("CompeDocumentationBorder", palette.fg1, palette.bg3)
 		-- Barbar
 		vim.fn["gruvbox_material#highlight"]("BufferCurrent", palette.bg_blue, palette.bg0, "bold")
 		vim.fn["gruvbox_material#highlight"]("BufferCurrent", palette.bg_blue, palette.bg0, "bold")
@@ -100,6 +97,9 @@ function M.gruvbox()
 		-- Dashboard
 		vim.fn["gruvbox_material#highlight"]("dashboardHeader", palette.bg_blue, palette.none)
 		vim.fn["gruvbox_material#highlight"]("dashboardFooter", palette.red, palette.none)
+		-- Compe
+		vim.fn["gruvbox_material#highlight"]("CompeDocumentation", palette.fg1, palette.bg3)
+		vim.fn["gruvbox_material#highlight"]("CompeDocumentationBorder", palette.fg1, palette.bg3)
 	end
 
 	-- Apply custom highlights
@@ -134,6 +134,32 @@ function M.oceanic()
 
 	-- Set colorscheme
 	-- vim.cmd([[colorscheme OceanicNext]])
+end
+
+function M.palenight()
+	vim.g.palenight_terminal_italics = 1
+	vim.g.palenight_color_overrides = {
+		black = { gui = "#14161f", cterm = "0", cterm16 = "0" },
+	}
+
+	function _G.palenight_custom()
+		vim.cmd([[
+            highlight CompeDocumentation guibg=#3e4452
+            highlight CompeDocumentationBorder guibg=#3e4452
+            highlight NormalFloat guibg=NONE
+        ]])
+	end
+
+	-- Apply custom highlights
+	vim.cmd([[
+        augroup PALENIGHTCUSTOM
+        autocmd!
+        autocmd ColorScheme palenight lua palenight_custom()
+        augroup END
+    ]])
+
+	-- Set colorscheme
+	-- vim.cmd([[colorscheme palenight]])
 end
 
 return M

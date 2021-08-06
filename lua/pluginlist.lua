@@ -42,8 +42,15 @@ return packer.startup(function()
 		end,
 	})
 	use({
-		"mhartington/oceanic-next",
+		"p00f/nvim-ts-rainbow",
 		config = function()
+			require("plugins.ts-rainbow")
+		end,
+	})
+	use({
+		"mhartington/oceanic-next",
+		cmd = "colorscheme OceanicNext",
+		setup = function()
 			require("theme").oceanic()
 		end,
 	})
@@ -54,18 +61,11 @@ return packer.startup(function()
 		end,
 	})
 	use({
-		"p00f/nvim-ts-rainbow",
+		"drewtempelmeyer/palenight.vim",
 		config = function()
-			require("plugins.ts-rainbow")
+			require("theme").palenight()
 		end,
 	})
-	-- use({
-	-- "luochen1990/rainbow",
-	-- cmd = { "RainbowToggleOn" },
-	-- config = function()
-	-- 	require("plugins.rainbow-brackets")
-	-- end,
-	-- })
 
 	-- Lsp stuff
 	use({ "psf/black", branch = "stable", ft = "py", cmd = "Black" })
@@ -122,6 +122,7 @@ return packer.startup(function()
 	})
 	use({
 		"b3nj5m1n/kommentary",
+		keys = { "<C-/>" },
 		config = function()
 			require("plugins.kommentary")
 		end,
@@ -135,6 +136,7 @@ return packer.startup(function()
 	})
 	use({
 		"dhruvasagar/vim-open-url",
+		keys = { "<Leader>u", "<Leader>s" },
 		config = function()
 			require("plugins.open-url")
 		end,
@@ -171,12 +173,14 @@ return packer.startup(function()
 	})
 	use({
 		"skywind3000/vim-terminal-help",
+		event = "TermEnter",
 		config = function()
 			require("plugins.terminal-help")
 		end,
 	})
 	use({
 		"jiangmiao/auto-pairs",
+		event = "InsertEnter",
 		config = function()
 			require("plugins.autopairs")
 		end,
@@ -191,8 +195,7 @@ return packer.startup(function()
 	})
 	use({
 		"kyazdani42/nvim-tree.lua",
-		commit = "10e845e01cb5fe62c952ccedf2edfe4ea78be727",
-		event = "VimEnter",
+		keys = { "<C-b>" },
 		cmd = { "NvimTreeToggle", "NvimTreeRefresh" },
 		config = function()
 			require("plugins.nvimtree")

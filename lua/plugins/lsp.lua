@@ -138,7 +138,7 @@ nvim_lsp.sumneko_lua.setup({
 }) --}}}
 
 -- Set completion icons
-vim.fn.sign_define("LspDiagnosticsSignError", { text = "" })
-vim.fn.sign_define("LspDiagnosticsSignWarning", { text = "" })
-vim.fn.sign_define("LspDiagnosticsSignInformation", { text = "" })
-vim.fn.sign_define("LspDiagnosticsSignHint", { text = "" })
+vim.fn.sign_define("LspDiagnosticsSignError", { text = ICON_ERROR })
+vim.fn.sign_define("LspDiagnosticsSignWarning", { text = ICON_WARN })
+vim.fn.sign_define("LspDiagnosticsSignInformation", { text = ICON_INFO })
+vim.fn.sign_define("LspDiagnosticsSignHint", { text = ICON_HINT })

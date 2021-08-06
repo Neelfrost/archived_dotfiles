@@ -12,6 +12,7 @@ require("lualine").setup({
 			-- 	"diagnostics",
 			-- 	sources = { "nvim_lsp", "ale" },
 			-- },
+			{ components.LspProgress },
 			{
 				"branch",
 				condition = function()

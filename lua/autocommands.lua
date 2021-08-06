@@ -58,3 +58,7 @@ vim.cmd([[
     autocmd BufEnter * lua auto_restore_win_view()
     augroup END
 ]])
+
+vim.cmd([[
+    autocmd User LspProgressUpdate let &ro = &ro
+]])
